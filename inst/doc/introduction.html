@@ -1,0 +1,3932 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Manish Saraswat" />
+
+<meta name="date" content="2018-12-19" />
+
+<title>Introduction to SuperML</title>
+
+<script src="data:application/x-javascript;base64,JChkb2N1bWVudCkucmVhZHkoZnVuY3Rpb24oKXsKICAgICQoJ1tkYXRhLXRvZ2dsZT0idG9vbHRpcCJdJykudG9vbHRpcCgpOwogICAgJCgnW2RhdGEtdG9nZ2xlPSJwb3BvdmVyIl0nKS5wb3BvdmVyKCk7Cn0pOwo="></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction to SuperML</h1>
+<h4 class="author"><em>Manish Saraswat</em></h4>
+<h4 class="date"><em>2018-12-19</em></h4>
+
+
+
+<p>SuperML R package is designed to unify the model training process in R like Python. Generally, it’s seen that people spend lot of time in searching for packages, figuring out the syntax for training machine learning models in R. This behaviour is highly apparent in users who frequently switch between R and Python. This package provides a python´s scikit-learn interface (<code>fit</code>, <code>predict</code>) to train models faster.</p>
+<p>In addition to building machine learning models, there are handy functionalities to do feature engineering</p>
+<p>This ambitious package is my ongoing effort to help the r-community build ML models easily and faster in R.</p>
+<div id="install" class="section level2">
+<h2>Install</h2>
+<p>This package is still not on cran. Currently, you can install using:</p>
+<p><code>devtools::install_github(&quot;saraswatmks/superml&quot;)</code></p>
+</div>
+<div id="examples---machine-learning-models" class="section level2">
+<h2>Examples - Machine Learning Models</h2>
+<p>This package uses existing r-packages to build machine learning model. In this tutorial, we’ll use data.table R package to do all tasks related to data manipulation.</p>
+<div id="regression-data" class="section level3">
+<h3>Regression Data</h3>
+<p>We’ll quickly prepare the data set to be ready to served for model training.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;../data/reg_train.rda&quot;</span>)
+
+<span class="kw">library</span>(data.table)
+<span class="kw">library</span>(caret)
+<span class="co">#&gt; Loading required package: lattice</span>
+<span class="co">#&gt; Loading required package: ggplot2</span>
+<span class="kw">library</span>(superml)
+<span class="kw">library</span>(kableExtra)
+<span class="kw">library</span>(Metrics)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'Metrics'</span>
+<span class="co">#&gt; The following objects are masked from 'package:caret':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     precision, recall</span>
+
+<span class="kw">kable</span>(<span class="kw">head</span>(reg_train, <span class="dv">10</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">scroll_box</span>(<span class="dt">width =</span> <span class="st">&quot;100%&quot;</span>, <span class="dt">height =</span> <span class="st">&quot;300px&quot;</span>)</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Id
+</th>
+<th style="text-align:right;">
+MSSubClass
+</th>
+<th style="text-align:left;">
+MSZoning
+</th>
+<th style="text-align:right;">
+LotFrontage
+</th>
+<th style="text-align:right;">
+LotArea
+</th>
+<th style="text-align:left;">
+Street
+</th>
+<th style="text-align:left;">
+Alley
+</th>
+<th style="text-align:left;">
+LotShape
+</th>
+<th style="text-align:left;">
+LandContour
+</th>
+<th style="text-align:left;">
+Utilities
+</th>
+<th style="text-align:left;">
+LotConfig
+</th>
+<th style="text-align:left;">
+LandSlope
+</th>
+<th style="text-align:left;">
+Neighborhood
+</th>
+<th style="text-align:left;">
+Condition1
+</th>
+<th style="text-align:left;">
+Condition2
+</th>
+<th style="text-align:left;">
+BldgType
+</th>
+<th style="text-align:left;">
+HouseStyle
+</th>
+<th style="text-align:right;">
+OverallQual
+</th>
+<th style="text-align:right;">
+OverallCond
+</th>
+<th style="text-align:right;">
+YearBuilt
+</th>
+<th style="text-align:right;">
+YearRemodAdd
+</th>
+<th style="text-align:left;">
+RoofStyle
+</th>
+<th style="text-align:left;">
+RoofMatl
+</th>
+<th style="text-align:left;">
+Exterior1st
+</th>
+<th style="text-align:left;">
+Exterior2nd
+</th>
+<th style="text-align:left;">
+MasVnrType
+</th>
+<th style="text-align:right;">
+MasVnrArea
+</th>
+<th style="text-align:left;">
+ExterQual
+</th>
+<th style="text-align:left;">
+ExterCond
+</th>
+<th style="text-align:left;">
+Foundation
+</th>
+<th style="text-align:left;">
+BsmtQual
+</th>
+<th style="text-align:left;">
+BsmtCond
+</th>
+<th style="text-align:left;">
+BsmtExposure
+</th>
+<th style="text-align:left;">
+BsmtFinType1
+</th>
+<th style="text-align:right;">
+BsmtFinSF1
+</th>
+<th style="text-align:left;">
+BsmtFinType2
+</th>
+<th style="text-align:right;">
+BsmtFinSF2
+</th>
+<th style="text-align:right;">
+BsmtUnfSF
+</th>
+<th style="text-align:right;">
+TotalBsmtSF
+</th>
+<th style="text-align:left;">
+Heating
+</th>
+<th style="text-align:left;">
+HeatingQC
+</th>
+<th style="text-align:left;">
+CentralAir
+</th>
+<th style="text-align:left;">
+Electrical
+</th>
+<th style="text-align:right;">
+1stFlrSF
+</th>
+<th style="text-align:right;">
+2ndFlrSF
+</th>
+<th style="text-align:right;">
+LowQualFinSF
+</th>
+<th style="text-align:right;">
+GrLivArea
+</th>
+<th style="text-align:right;">
+BsmtFullBath
+</th>
+<th style="text-align:right;">
+BsmtHalfBath
+</th>
+<th style="text-align:right;">
+FullBath
+</th>
+<th style="text-align:right;">
+HalfBath
+</th>
+<th style="text-align:right;">
+BedroomAbvGr
+</th>
+<th style="text-align:right;">
+KitchenAbvGr
+</th>
+<th style="text-align:left;">
+KitchenQual
+</th>
+<th style="text-align:right;">
+TotRmsAbvGrd
+</th>
+<th style="text-align:left;">
+Functional
+</th>
+<th style="text-align:right;">
+Fireplaces
+</th>
+<th style="text-align:left;">
+FireplaceQu
+</th>
+<th style="text-align:left;">
+GarageType
+</th>
+<th style="text-align:right;">
+GarageYrBlt
+</th>
+<th style="text-align:left;">
+GarageFinish
+</th>
+<th style="text-align:right;">
+GarageCars
+</th>
+<th style="text-align:right;">
+GarageArea
+</th>
+<th style="text-align:left;">
+GarageQual
+</th>
+<th style="text-align:left;">
+GarageCond
+</th>
+<th style="text-align:left;">
+PavedDrive
+</th>
+<th style="text-align:right;">
+WoodDeckSF
+</th>
+<th style="text-align:right;">
+OpenPorchSF
+</th>
+<th style="text-align:right;">
+EnclosedPorch
+</th>
+<th style="text-align:right;">
+3SsnPorch
+</th>
+<th style="text-align:right;">
+ScreenPorch
+</th>
+<th style="text-align:right;">
+PoolArea
+</th>
+<th style="text-align:left;">
+PoolQC
+</th>
+<th style="text-align:left;">
+Fence
+</th>
+<th style="text-align:left;">
+MiscFeature
+</th>
+<th style="text-align:right;">
+MiscVal
+</th>
+<th style="text-align:right;">
+MoSold
+</th>
+<th style="text-align:right;">
+YrSold
+</th>
+<th style="text-align:left;">
+SaleType
+</th>
+<th style="text-align:left;">
+SaleCondition
+</th>
+<th style="text-align:right;">
+SalePrice
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+RL
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+8450
+</td>
+<td style="text-align:left;">
+Pave
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Reg
+</td>
+<td style="text-align:left;">
+Lvl
+</td>
+<td style="text-align:left;">
+AllPub
+</td>
+<td style="text-align:left;">
+Inside
+</td>
+<td style="text-align:left;">
+Gtl
+</td>
+<td style="text-align:left;">
+CollgCr
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+1Fam
+</td>
+<td style="text-align:left;">
+2Story
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2003
+</td>
+<td style="text-align:right;">
+2003
+</td>
+<td style="text-align:left;">
+Gable
+</td>
+<td style="text-align:left;">
+CompShg
+</td>
+<td style="text-align:left;">
+VinylSd
+</td>
+<td style="text-align:left;">
+VinylSd
+</td>
+<td style="text-align:left;">
+BrkFace
+</td>
+<td style="text-align:right;">
+196
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+PConc
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+GLQ
+</td>
+<td style="text-align:right;">
+706
+</td>
+<td style="text-align:left;">
+Unf
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+856
+</td>
+<td style="text-align:left;">
+GasA
+</td>
+<td style="text-align:left;">
+Ex
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:left;">
+SBrkr
+</td>
+<td style="text-align:right;">
+856
+</td>
+<td style="text-align:right;">
+854
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1710
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Typ
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Attchd
+</td>
+<td style="text-align:right;">
+2003
+</td>
+<td style="text-align:left;">
+RFn
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+548
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+61
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:left;">
+WD
+</td>
+<td style="text-align:left;">
+Normal
+</td>
+<td style="text-align:right;">
+208500
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+RL
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+9600
+</td>
+<td style="text-align:left;">
+Pave
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Reg
+</td>
+<td style="text-align:left;">
+Lvl
+</td>
+<td style="text-align:left;">
+AllPub
+</td>
+<td style="text-align:left;">
+FR2
+</td>
+<td style="text-align:left;">
+Gtl
+</td>
+<td style="text-align:left;">
+Veenker
+</td>
+<td style="text-align:left;">
+Feedr
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+1Fam
+</td>
+<td style="text-align:left;">
+1Story
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+1976
+</td>
+<td style="text-align:right;">
+1976
+</td>
+<td style="text-align:left;">
+Gable
+</td>
+<td style="text-align:left;">
+CompShg
+</td>
+<td style="text-align:left;">
+MetalSd
+</td>
+<td style="text-align:left;">
+MetalSd
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+CBlock
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+ALQ
+</td>
+<td style="text-align:right;">
+978
+</td>
+<td style="text-align:left;">
+Unf
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+284
+</td>
+<td style="text-align:right;">
+1262
+</td>
+<td style="text-align:left;">
+GasA
+</td>
+<td style="text-align:left;">
+Ex
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:left;">
+SBrkr
+</td>
+<td style="text-align:right;">
+1262
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1262
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Typ
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Attchd
+</td>
+<td style="text-align:right;">
+1976
+</td>
+<td style="text-align:left;">
+RFn
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+460
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:right;">
+298
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2007
+</td>
+<td style="text-align:left;">
+WD
+</td>
+<td style="text-align:left;">
+Normal
+</td>
+<td style="text-align:right;">
+181500
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+RL
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+11250
+</td>
+<td style="text-align:left;">
+Pave
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+IR1
+</td>
+<td style="text-align:left;">
+Lvl
+</td>
+<td style="text-align:left;">
+AllPub
+</td>
+<td style="text-align:left;">
+Inside
+</td>
+<td style="text-align:left;">
+Gtl
+</td>
+<td style="text-align:left;">
+CollgCr
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+1Fam
+</td>
+<td style="text-align:left;">
+2Story
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:right;">
+2002
+</td>
+<td style="text-align:left;">
+Gable
+</td>
+<td style="text-align:left;">
+CompShg
+</td>
+<td style="text-align:left;">
+VinylSd
+</td>
+<td style="text-align:left;">
+VinylSd
+</td>
+<td style="text-align:left;">
+BrkFace
+</td>
+<td style="text-align:right;">
+162
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+PConc
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Mn
+</td>
+<td style="text-align:left;">
+GLQ
+</td>
+<td style="text-align:right;">
+486
+</td>
+<td style="text-align:left;">
+Unf
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+434
+</td>
+<td style="text-align:right;">
+920
+</td>
+<td style="text-align:left;">
+GasA
+</td>
+<td style="text-align:left;">
+Ex
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:left;">
+SBrkr
+</td>
+<td style="text-align:right;">
+920
+</td>
+<td style="text-align:right;">
+866
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1786
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Typ
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Attchd
+</td>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:left;">
+RFn
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+608
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:left;">
+WD
+</td>
+<td style="text-align:left;">
+Normal
+</td>
+<td style="text-align:right;">
+223500
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:left;">
+RL
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+9550
+</td>
+<td style="text-align:left;">
+Pave
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+IR1
+</td>
+<td style="text-align:left;">
+Lvl
+</td>
+<td style="text-align:left;">
+AllPub
+</td>
+<td style="text-align:left;">
+Corner
+</td>
+<td style="text-align:left;">
+Gtl
+</td>
+<td style="text-align:left;">
+Crawfor
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+1Fam
+</td>
+<td style="text-align:left;">
+2Story
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1915
+</td>
+<td style="text-align:right;">
+1970
+</td>
+<td style="text-align:left;">
+Gable
+</td>
+<td style="text-align:left;">
+CompShg
+</td>
+<td style="text-align:left;">
+Wd Sdng
+</td>
+<td style="text-align:left;">
+Wd Shng
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+BrkTil
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+ALQ
+</td>
+<td style="text-align:right;">
+216
+</td>
+<td style="text-align:left;">
+Unf
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+540
+</td>
+<td style="text-align:right;">
+756
+</td>
+<td style="text-align:left;">
+GasA
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:left;">
+SBrkr
+</td>
+<td style="text-align:right;">
+961
+</td>
+<td style="text-align:right;">
+756
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1717
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Typ
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+Detchd
+</td>
+<td style="text-align:right;">
+1998
+</td>
+<td style="text-align:left;">
+Unf
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+642
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+272
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2006
+</td>
+<td style="text-align:left;">
+WD
+</td>
+<td style="text-align:left;">
+Abnorml
+</td>
+<td style="text-align:right;">
+140000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+RL
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+14260
+</td>
+<td style="text-align:left;">
+Pave
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+IR1
+</td>
+<td style="text-align:left;">
+Lvl
+</td>
+<td style="text-align:left;">
+AllPub
+</td>
+<td style="text-align:left;">
+FR2
+</td>
+<td style="text-align:left;">
+Gtl
+</td>
+<td style="text-align:left;">
+NoRidge
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+1Fam
+</td>
+<td style="text-align:left;">
+2Story
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+Gable
+</td>
+<td style="text-align:left;">
+CompShg
+</td>
+<td style="text-align:left;">
+VinylSd
+</td>
+<td style="text-align:left;">
+VinylSd
+</td>
+<td style="text-align:left;">
+BrkFace
+</td>
+<td style="text-align:right;">
+350
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+PConc
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Av
+</td>
+<td style="text-align:left;">
+GLQ
+</td>
+<td style="text-align:right;">
+655
+</td>
+<td style="text-align:left;">
+Unf
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+490
+</td>
+<td style="text-align:right;">
+1145
+</td>
+<td style="text-align:left;">
+GasA
+</td>
+<td style="text-align:left;">
+Ex
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:left;">
+SBrkr
+</td>
+<td style="text-align:right;">
+1145
+</td>
+<td style="text-align:right;">
+1053
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2198
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Typ
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Attchd
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+RFn
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+836
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:right;">
+192
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:left;">
+WD
+</td>
+<td style="text-align:left;">
+Normal
+</td>
+<td style="text-align:right;">
+250000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+RL
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+14115
+</td>
+<td style="text-align:left;">
+Pave
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+IR1
+</td>
+<td style="text-align:left;">
+Lvl
+</td>
+<td style="text-align:left;">
+AllPub
+</td>
+<td style="text-align:left;">
+Inside
+</td>
+<td style="text-align:left;">
+Gtl
+</td>
+<td style="text-align:left;">
+Mitchel
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+1Fam
+</td>
+<td style="text-align:left;">
+1.5Fin
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1993
+</td>
+<td style="text-align:right;">
+1995
+</td>
+<td style="text-align:left;">
+Gable
+</td>
+<td style="text-align:left;">
+CompShg
+</td>
+<td style="text-align:left;">
+VinylSd
+</td>
+<td style="text-align:left;">
+VinylSd
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Wood
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+GLQ
+</td>
+<td style="text-align:right;">
+732
+</td>
+<td style="text-align:left;">
+Unf
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+796
+</td>
+<td style="text-align:left;">
+GasA
+</td>
+<td style="text-align:left;">
+Ex
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:left;">
+SBrkr
+</td>
+<td style="text-align:right;">
+796
+</td>
+<td style="text-align:right;">
+566
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1362
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Typ
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Attchd
+</td>
+<td style="text-align:right;">
+1993
+</td>
+<td style="text-align:left;">
+Unf
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+480
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+320
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+MnPrv
+</td>
+<td style="text-align:left;">
+Shed
+</td>
+<td style="text-align:right;">
+700
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+WD
+</td>
+<td style="text-align:left;">
+Normal
+</td>
+<td style="text-align:right;">
+143000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+RL
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+10084
+</td>
+<td style="text-align:left;">
+Pave
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Reg
+</td>
+<td style="text-align:left;">
+Lvl
+</td>
+<td style="text-align:left;">
+AllPub
+</td>
+<td style="text-align:left;">
+Inside
+</td>
+<td style="text-align:left;">
+Gtl
+</td>
+<td style="text-align:left;">
+Somerst
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+1Fam
+</td>
+<td style="text-align:left;">
+1Story
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2004
+</td>
+<td style="text-align:right;">
+2005
+</td>
+<td style="text-align:left;">
+Gable
+</td>
+<td style="text-align:left;">
+CompShg
+</td>
+<td style="text-align:left;">
+VinylSd
+</td>
+<td style="text-align:left;">
+VinylSd
+</td>
+<td style="text-align:left;">
+Stone
+</td>
+<td style="text-align:right;">
+186
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+PConc
+</td>
+<td style="text-align:left;">
+Ex
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Av
+</td>
+<td style="text-align:left;">
+GLQ
+</td>
+<td style="text-align:right;">
+1369
+</td>
+<td style="text-align:left;">
+Unf
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+317
+</td>
+<td style="text-align:right;">
+1686
+</td>
+<td style="text-align:left;">
+GasA
+</td>
+<td style="text-align:left;">
+Ex
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:left;">
+SBrkr
+</td>
+<td style="text-align:right;">
+1694
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1694
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Typ
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+Attchd
+</td>
+<td style="text-align:right;">
+2004
+</td>
+<td style="text-align:left;">
+RFn
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+636
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:right;">
+255
+</td>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+2007
+</td>
+<td style="text-align:left;">
+WD
+</td>
+<td style="text-align:left;">
+Normal
+</td>
+<td style="text-align:right;">
+307000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+RL
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+10382
+</td>
+<td style="text-align:left;">
+Pave
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+IR1
+</td>
+<td style="text-align:left;">
+Lvl
+</td>
+<td style="text-align:left;">
+AllPub
+</td>
+<td style="text-align:left;">
+Corner
+</td>
+<td style="text-align:left;">
+Gtl
+</td>
+<td style="text-align:left;">
+NWAmes
+</td>
+<td style="text-align:left;">
+PosN
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+1Fam
+</td>
+<td style="text-align:left;">
+2Story
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1973
+</td>
+<td style="text-align:right;">
+1973
+</td>
+<td style="text-align:left;">
+Gable
+</td>
+<td style="text-align:left;">
+CompShg
+</td>
+<td style="text-align:left;">
+HdBoard
+</td>
+<td style="text-align:left;">
+HdBoard
+</td>
+<td style="text-align:left;">
+Stone
+</td>
+<td style="text-align:right;">
+240
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+CBlock
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Mn
+</td>
+<td style="text-align:left;">
+ALQ
+</td>
+<td style="text-align:right;">
+859
+</td>
+<td style="text-align:left;">
+BLQ
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+216
+</td>
+<td style="text-align:right;">
+1107
+</td>
+<td style="text-align:left;">
+GasA
+</td>
+<td style="text-align:left;">
+Ex
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:left;">
+SBrkr
+</td>
+<td style="text-align:right;">
+1107
+</td>
+<td style="text-align:right;">
+983
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2090
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Typ
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Attchd
+</td>
+<td style="text-align:right;">
+1973
+</td>
+<td style="text-align:left;">
+RFn
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+484
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:right;">
+235
+</td>
+<td style="text-align:right;">
+204
+</td>
+<td style="text-align:right;">
+228
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Shed
+</td>
+<td style="text-align:right;">
+350
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+WD
+</td>
+<td style="text-align:left;">
+Normal
+</td>
+<td style="text-align:right;">
+200000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+RM
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+6120
+</td>
+<td style="text-align:left;">
+Pave
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Reg
+</td>
+<td style="text-align:left;">
+Lvl
+</td>
+<td style="text-align:left;">
+AllPub
+</td>
+<td style="text-align:left;">
+Inside
+</td>
+<td style="text-align:left;">
+Gtl
+</td>
+<td style="text-align:left;">
+OldTown
+</td>
+<td style="text-align:left;">
+Artery
+</td>
+<td style="text-align:left;">
+Norm
+</td>
+<td style="text-align:left;">
+1Fam
+</td>
+<td style="text-align:left;">
+1.5Fin
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1931
+</td>
+<td style="text-align:right;">
+1950
+</td>
+<td style="text-align:left;">
+Gable
+</td>
+<td style="text-align:left;">
+CompShg
+</td>
+<td style="text-align:left;">
+BrkFace
+</td>
+<td style="text-align:left;">
+Wd Shng
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+BrkTil
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Unf
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Unf
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+952
+</td>
+<td style="text-align:right;">
+952
+</td>
+<td style="text-align:left;">
+GasA
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:left;">
+FuseF
+</td>
+<td style="text-align:right;">
+1022
+</td>
+<td style="text-align:right;">
+752
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1774
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Min1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Detchd
+</td>
+<td style="text-align:right;">
+1931
+</td>
+<td style="text-align:left;">
+Unf
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+468
+</td>
+<td style="text-align:left;">
+Fa
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+205
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:left;">
+WD
+</td>
+<td style="text-align:left;">
+Abnorml
+</td>
+<td style="text-align:right;">
+129900
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+190
+</td>
+<td style="text-align:left;">
+RL
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+7420
+</td>
+<td style="text-align:left;">
+Pave
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Reg
+</td>
+<td style="text-align:left;">
+Lvl
+</td>
+<td style="text-align:left;">
+AllPub
+</td>
+<td style="text-align:left;">
+Corner
+</td>
+<td style="text-align:left;">
+Gtl
+</td>
+<td style="text-align:left;">
+BrkSide
+</td>
+<td style="text-align:left;">
+Artery
+</td>
+<td style="text-align:left;">
+Artery
+</td>
+<td style="text-align:left;">
+2fmCon
+</td>
+<td style="text-align:left;">
+1.5Unf
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1939
+</td>
+<td style="text-align:right;">
+1950
+</td>
+<td style="text-align:left;">
+Gable
+</td>
+<td style="text-align:left;">
+CompShg
+</td>
+<td style="text-align:left;">
+MetalSd
+</td>
+<td style="text-align:left;">
+MetalSd
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+BrkTil
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+GLQ
+</td>
+<td style="text-align:right;">
+851
+</td>
+<td style="text-align:left;">
+Unf
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:right;">
+991
+</td>
+<td style="text-align:left;">
+GasA
+</td>
+<td style="text-align:left;">
+Ex
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:left;">
+SBrkr
+</td>
+<td style="text-align:right;">
+1077
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1077
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Typ
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Attchd
+</td>
+<td style="text-align:right;">
+1939
+</td>
+<td style="text-align:left;">
+RFn
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+205
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+TA
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:left;">
+WD
+</td>
+<td style="text-align:left;">
+Normal
+</td>
+<td style="text-align:right;">
+118000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+split &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y =</span> reg_train<span class="op">$</span>SalePrice, <span class="dt">p =</span> <span class="fl">0.7</span>)
+xtrain &lt;-<span class="st"> </span>reg_train[split<span class="op">$</span>Resample1]
+xtest &lt;-<span class="st"> </span>reg_train[<span class="op">!</span>split<span class="op">$</span>Resample1]</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># remove features with 90% or more missing values</span>
+<span class="co"># we will also remove the Id column because it doesn't contain</span>
+<span class="co"># any useful information</span>
+na_cols &lt;-<span class="st"> </span><span class="kw">colSums</span>(<span class="kw">is.na</span>(xtrain)) <span class="op">/</span><span class="st"> </span><span class="kw">nrow</span>(xtrain)
+na_cols &lt;-<span class="st"> </span><span class="kw">names</span>(na_cols[<span class="kw">which</span>(na_cols <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.9</span>)])
+
+xtrain[, <span class="kw">c</span>(na_cols, <span class="st">&quot;Id&quot;</span>) <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="ot">NULL</span>]
+xtest[, <span class="kw">c</span>(na_cols, <span class="st">&quot;Id&quot;</span>) <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="ot">NULL</span>]
+
+<span class="co"># encode categorical variables</span>
+cat_cols &lt;-<span class="st"> </span><span class="kw">names</span>(xtrain)[<span class="kw">sapply</span>(xtrain, is.character)]
+
+<span class="cf">for</span>(c <span class="cf">in</span> cat_cols){
+    lbl &lt;-<span class="st"> </span>LabelEncoder<span class="op">$</span><span class="kw">new</span>()
+    lbl<span class="op">$</span><span class="kw">fit</span>(<span class="kw">c</span>(xtrain[[c]], xtest[[c]]))
+    xtrain[[c]] &lt;-<span class="st"> </span>lbl<span class="op">$</span><span class="kw">transform</span>(xtrain[[c]])
+    xtest[[c]] &lt;-<span class="st"> </span>lbl<span class="op">$</span><span class="kw">transform</span>(xtest[[c]])
+}
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA' </span>
+<span class="co">#&gt; The data contains NA values. Imputing NA with 'NA'</span>
+
+<span class="co"># removing noise column</span>
+noise &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'GrLivArea'</span>,<span class="st">'TotalBsmtSF'</span>)
+
+xtrain[, <span class="kw">c</span>(noise) <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="ot">NULL</span>]
+xtest[, <span class="kw">c</span>(noise) <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="ot">NULL</span>]
+
+<span class="co"># fill missing value with  -1</span>
+xtrain[<span class="kw">is.na</span>(xtrain)] &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">1</span>
+xtest[<span class="kw">is.na</span>(xtest)] &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">1</span></code></pre></div>
+<p><strong>KNN Regression</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knn &lt;-<span class="st"> </span>KNNTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">k =</span> <span class="dv">2</span>,<span class="dt">prob =</span> T,<span class="dt">type =</span> <span class="st">'reg'</span>)
+knn<span class="op">$</span><span class="kw">fit_predict</span>(<span class="dt">train =</span> xtrain, <span class="dt">test =</span> xtest, <span class="dt">y =</span> <span class="st">'SalePrice'</span>)
+probs &lt;-<span class="st"> </span>knn<span class="op">$</span><span class="kw">get_predictions</span>(<span class="dt">type =</span> <span class="st">'prob'</span>)
+labels &lt;-<span class="st"> </span>knn<span class="op">$</span><span class="kw">get_predictions</span>(<span class="dt">type=</span><span class="st">'raw'</span>)
+<span class="kw">auc</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>Survived, <span class="dt">predicted=</span>labels)
+<span class="co">#&gt; Warning in auc(actual = xtest$Survived, predicted = labels): longer object</span>
+<span class="co">#&gt; length is not a multiple of shorter object length</span>
+<span class="co">#&gt; [1] NaN</span></code></pre></div>
+<p><strong>Simple Regresison</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lf &lt;-<span class="st"> </span>LMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">family=</span><span class="st">&quot;gaussian&quot;</span>)
+lf<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;SalePrice&quot;</span>)
+<span class="kw">summary</span>(lf<span class="op">$</span>model)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; stats::glm(formula = f, family = self$family, data = X, weights = self$weights)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;     Min       1Q   Median       3Q      Max  </span>
+<span class="co">#&gt; -415628   -14565     -479    12425   257642  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;                 Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="co">#&gt; (Intercept)   -1.829e+06  1.670e+06  -1.095 0.273653    </span>
+<span class="co">#&gt; MSSubClass    -1.270e+01  5.975e+01  -0.212 0.831782    </span>
+<span class="co">#&gt; MSZoning      -9.749e+02  1.581e+03  -0.617 0.537619    </span>
+<span class="co">#&gt; LotFrontage   -4.076e+01  3.383e+01  -1.205 0.228594    </span>
+<span class="co">#&gt; LotArea        1.347e-01  1.522e-01   0.885 0.376284    </span>
+<span class="co">#&gt; Street        -1.874e+04  1.660e+04  -1.129 0.259297    </span>
+<span class="co">#&gt; LotShape      -1.598e+03  2.102e+03  -0.760 0.447338    </span>
+<span class="co">#&gt; LandContour   -1.640e+02  2.238e+03  -0.073 0.941611    </span>
+<span class="co">#&gt; Utilities     -7.878e+04  3.549e+04  -2.220 0.026639 *  </span>
+<span class="co">#&gt; LotConfig      4.127e+03  1.764e+03   2.339 0.019531 *  </span>
+<span class="co">#&gt; LandSlope      7.256e+03  5.459e+03   1.329 0.184079    </span>
+<span class="co">#&gt; Neighborhood  -2.911e+02  1.919e+02  -1.517 0.129479    </span>
+<span class="co">#&gt; Condition1    -2.610e+03  1.131e+03  -2.308 0.021225 *  </span>
+<span class="co">#&gt; Condition2    -8.498e+02  6.918e+03  -0.123 0.902257    </span>
+<span class="co">#&gt; BldgType      -5.984e+03  2.275e+03  -2.630 0.008668 ** </span>
+<span class="co">#&gt; HouseStyle    -1.697e+02  9.126e+02  -0.186 0.852514    </span>
+<span class="co">#&gt; OverallQual    1.199e+04  1.442e+03   8.315 3.15e-16 ***</span>
+<span class="co">#&gt; OverallCond    7.063e+03  1.328e+03   5.321 1.29e-07 ***</span>
+<span class="co">#&gt; YearBuilt      5.073e+02  8.363e+01   6.066 1.89e-09 ***</span>
+<span class="co">#&gt; YearRemodAdd   2.758e+01  8.249e+01   0.334 0.738163    </span>
+<span class="co">#&gt; RoofStyle      8.112e+03  2.131e+03   3.807 0.000150 ***</span>
+<span class="co">#&gt; RoofMatl      -1.453e+04  2.652e+03  -5.479 5.48e-08 ***</span>
+<span class="co">#&gt; Exterior1st   -7.066e+02  6.600e+02  -1.071 0.284576    </span>
+<span class="co">#&gt; Exterior2nd    6.001e+02  6.169e+02   0.973 0.330926    </span>
+<span class="co">#&gt; MasVnrType    -5.226e+03  1.886e+03  -2.771 0.005693 ** </span>
+<span class="co">#&gt; MasVnrArea     4.103e+01  7.666e+00   5.352 1.09e-07 ***</span>
+<span class="co">#&gt; ExterQual      1.091e+04  2.638e+03   4.135 3.87e-05 ***</span>
+<span class="co">#&gt; ExterCond     -6.188e+03  2.815e+03  -2.199 0.028152 *  </span>
+<span class="co">#&gt; Foundation     5.324e+02  1.583e+03   0.336 0.736709    </span>
+<span class="co">#&gt; BsmtQual       8.106e+03  1.544e+03   5.251 1.87e-07 ***</span>
+<span class="co">#&gt; BsmtCond      -1.507e+03  2.007e+03  -0.751 0.452824    </span>
+<span class="co">#&gt; BsmtExposure  -5.512e+03  1.452e+03  -3.797 0.000156 ***</span>
+<span class="co">#&gt; BsmtFinType1   2.960e+02  7.240e+02   0.409 0.682806    </span>
+<span class="co">#&gt; BsmtFinSF1     7.887e+00  6.201e+00   1.272 0.203688    </span>
+<span class="co">#&gt; BsmtFinType2   6.599e+02  1.244e+03   0.530 0.595935    </span>
+<span class="co">#&gt; BsmtFinSF2     3.285e+00  1.077e+01   0.305 0.760400    </span>
+<span class="co">#&gt; BsmtUnfSF      2.395e+00  5.745e+00   0.417 0.676859    </span>
+<span class="co">#&gt; Heating       -3.122e+03  3.675e+03  -0.849 0.395850    </span>
+<span class="co">#&gt; HeatingQC      3.928e+02  1.516e+03   0.259 0.795648    </span>
+<span class="co">#&gt; CentralAir    -9.254e+02  5.849e+03  -0.158 0.874325    </span>
+<span class="co">#&gt; Electrical     2.488e+03  2.256e+03   1.103 0.270482    </span>
+<span class="co">#&gt; `1stFlrSF`     6.393e+01  7.624e+00   8.385  &lt; 2e-16 ***</span>
+<span class="co">#&gt; `2ndFlrSF`     5.449e+01  6.218e+00   8.763  &lt; 2e-16 ***</span>
+<span class="co">#&gt; LowQualFinSF   7.197e+00  2.737e+01   0.263 0.792641    </span>
+<span class="co">#&gt; BsmtFullBath   1.251e+04  3.080e+03   4.062 5.28e-05 ***</span>
+<span class="co">#&gt; BsmtHalfBath   9.122e+03  4.860e+03   1.877 0.060864 .  </span>
+<span class="co">#&gt; FullBath       5.949e+03  3.459e+03   1.720 0.085786 .  </span>
+<span class="co">#&gt; HalfBath      -1.727e+03  3.225e+03  -0.535 0.592477    </span>
+<span class="co">#&gt; BedroomAbvGr  -7.529e+03  2.101e+03  -3.584 0.000355 ***</span>
+<span class="co">#&gt; KitchenAbvGr  -2.488e+04  6.289e+03  -3.956 8.17e-05 ***</span>
+<span class="co">#&gt; KitchenQual    6.016e+03  1.875e+03   3.208 0.001381 ** </span>
+<span class="co">#&gt; TotRmsAbvGrd   3.240e+03  1.509e+03   2.147 0.032044 *  </span>
+<span class="co">#&gt; Functional    -4.777e+03  1.538e+03  -3.106 0.001954 ** </span>
+<span class="co">#&gt; Fireplaces     5.470e+03  2.338e+03   2.340 0.019505 *  </span>
+<span class="co">#&gt; FireplaceQu    4.551e+03  1.314e+03   3.465 0.000555 ***</span>
+<span class="co">#&gt; GarageType     9.724e+02  1.300e+03   0.748 0.454708    </span>
+<span class="co">#&gt; GarageYrBlt   -2.487e+00  5.872e+00  -0.424 0.672022    </span>
+<span class="co">#&gt; GarageFinish   3.832e+03  1.520e+03   2.522 0.011840 *  </span>
+<span class="co">#&gt; GarageCars     1.589e+04  3.461e+03   4.592 4.98e-06 ***</span>
+<span class="co">#&gt; GarageArea    -1.466e+01  1.155e+01  -1.269 0.204578    </span>
+<span class="co">#&gt; GarageQual     3.385e+03  3.880e+03   0.872 0.383270    </span>
+<span class="co">#&gt; GarageCond    -2.916e+03  3.624e+03  -0.805 0.421161    </span>
+<span class="co">#&gt; PavedDrive    -1.469e+03  3.402e+03  -0.432 0.666018    </span>
+<span class="co">#&gt; WoodDeckSF     2.063e+01  9.240e+00   2.233 0.025781 *  </span>
+<span class="co">#&gt; OpenPorchSF    1.016e+01  1.879e+01   0.541 0.588791    </span>
+<span class="co">#&gt; EnclosedPorch -1.427e+01  1.970e+01  -0.724 0.469073    </span>
+<span class="co">#&gt; `3SsnPorch`   -5.051e+00  3.548e+01  -0.142 0.886827    </span>
+<span class="co">#&gt; ScreenPorch    5.189e+01  2.123e+01   2.444 0.014690 *  </span>
+<span class="co">#&gt; PoolArea      -1.318e+01  2.625e+01  -0.502 0.615790    </span>
+<span class="co">#&gt; Fence         -1.954e+03  1.476e+03  -1.324 0.185811    </span>
+<span class="co">#&gt; MiscVal        7.190e-02  2.024e+00   0.036 0.971672    </span>
+<span class="co">#&gt; MoSold         2.985e+01  3.942e+02   0.076 0.939655    </span>
+<span class="co">#&gt; YrSold         3.591e+02  8.274e+02   0.434 0.664385    </span>
+<span class="co">#&gt; SaleType      -6.432e+02  1.374e+03  -0.468 0.639833    </span>
+<span class="co">#&gt; SaleCondition  4.637e+03  1.493e+03   3.105 0.001961 ** </span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for gaussian family taken to be 1082276968)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 6.7433e+12  on 1023  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 1.0271e+12  on  949  degrees of freedom</span>
+<span class="co">#&gt; AIC: 24282</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 2</span>
+predictions &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)
+<span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> predictions)
+<span class="co">#&gt; [1] 34942.05</span></code></pre></div>
+<p><strong>Lasso Regression</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lf &lt;-<span class="st"> </span>LMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">family =</span> <span class="st">&quot;gaussian&quot;</span>, <span class="dt">alpha=</span><span class="dv">1</span>, <span class="dt">lambda =</span> <span class="dv">1000</span>)
+lf<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;SalePrice&quot;</span>)
+predictions &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)
+<span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> predictions)
+<span class="co">#&gt; [1] 37247.37</span></code></pre></div>
+<p><strong>Ridge Regression</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lf &lt;-<span class="st"> </span>LMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">family =</span> <span class="st">&quot;gaussian&quot;</span>, <span class="dt">alpha=</span><span class="dv">0</span>)
+lf<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;SalePrice&quot;</span>)
+predictions &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)
+<span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> predictions)
+<span class="co">#&gt; [1] 37168.12</span></code></pre></div>
+<p><strong>Logistic Regression with CV</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lf &lt;-<span class="st"> </span>LMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">family =</span> <span class="st">&quot;gaussian&quot;</span>)
+lf<span class="op">$</span><span class="kw">cv_model</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">'SalePrice'</span>, <span class="dt">nfolds =</span> <span class="dv">5</span>, <span class="dt">parallel =</span> <span class="ot">FALSE</span>)
+<span class="co">#&gt; Computation done.</span>
+predictions &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">cv_predict</span>(<span class="dt">df =</span> xtest)
+coefs &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">get_importance</span>()
+<span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> predictions)
+<span class="co">#&gt; [1] 36197.44</span></code></pre></div>
+<p><strong>Random Forest</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rf &lt;-<span class="st"> </span>RFTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">n_estimators =</span> <span class="dv">500</span>,<span class="dt">classification =</span> <span class="dv">0</span>)
+rf<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;SalePrice&quot;</span>)
+pred &lt;-<span class="st"> </span>rf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)
+rf<span class="op">$</span><span class="kw">get_importance</span>()
+<span class="co">#&gt;               tmp.order.tmp..decreasing...TRUE..</span>
+<span class="co">#&gt; OverallQual                         783165647201</span>
+<span class="co">#&gt; GarageCars                          493327424965</span>
+<span class="co">#&gt; 1stFlrSF                            444256416285</span>
+<span class="co">#&gt; ExterQual                           431473669083</span>
+<span class="co">#&gt; GarageArea                          426584499742</span>
+<span class="co">#&gt; YearBuilt                           361457805289</span>
+<span class="co">#&gt; FullBath                            303023775651</span>
+<span class="co">#&gt; BsmtFinSF1                          275239028295</span>
+<span class="co">#&gt; GarageYrBlt                         265762810472</span>
+<span class="co">#&gt; TotRmsAbvGrd                        264823768807</span>
+<span class="co">#&gt; 2ndFlrSF                            235962008304</span>
+<span class="co">#&gt; LotArea                             212894703393</span>
+<span class="co">#&gt; KitchenQual                         202757765931</span>
+<span class="co">#&gt; YearRemodAdd                        180257031584</span>
+<span class="co">#&gt; MasVnrArea                          176661524468</span>
+<span class="co">#&gt; Fireplaces                          152440938414</span>
+<span class="co">#&gt; BsmtQual                            130604044591</span>
+<span class="co">#&gt; FireplaceQu                         113777282000</span>
+<span class="co">#&gt; LotFrontage                          96974873182</span>
+<span class="co">#&gt; OpenPorchSF                          87151480885</span>
+<span class="co">#&gt; WoodDeckSF                           80361681881</span>
+<span class="co">#&gt; BsmtUnfSF                            69675014973</span>
+<span class="co">#&gt; BedroomAbvGr                         53092044734</span>
+<span class="co">#&gt; Neighborhood                         52278334327</span>
+<span class="co">#&gt; GarageType                           46264741988</span>
+<span class="co">#&gt; RoofStyle                            46145773703</span>
+<span class="co">#&gt; HeatingQC                            42386340452</span>
+<span class="co">#&gt; BsmtExposure                         38352314961</span>
+<span class="co">#&gt; MSSubClass                           37502912726</span>
+<span class="co">#&gt; GarageFinish                         35226019092</span>
+<span class="co">#&gt; Exterior2nd                          33151824597</span>
+<span class="co">#&gt; MoSold                               33067821801</span>
+<span class="co">#&gt; MasVnrType                           31702846742</span>
+<span class="co">#&gt; OverallCond                          31418954660</span>
+<span class="co">#&gt; Exterior1st                          31254759265</span>
+<span class="co">#&gt; HalfBath                             28300758839</span>
+<span class="co">#&gt; BsmtFullBath                         23160900492</span>
+<span class="co">#&gt; BsmtFinType1                         22985050944</span>
+<span class="co">#&gt; SaleCondition                        22689914367</span>
+<span class="co">#&gt; YrSold                               22649917921</span>
+<span class="co">#&gt; LotShape                             22600345472</span>
+<span class="co">#&gt; MSZoning                             18997236282</span>
+<span class="co">#&gt; HouseStyle                           18962190305</span>
+<span class="co">#&gt; Foundation                           16788195549</span>
+<span class="co">#&gt; LandContour                          15894245763</span>
+<span class="co">#&gt; LotConfig                            15454153115</span>
+<span class="co">#&gt; SaleType                             15015837653</span>
+<span class="co">#&gt; ScreenPorch                          14565973729</span>
+<span class="co">#&gt; BldgType                             14114654438</span>
+<span class="co">#&gt; GarageCond                           13357462803</span>
+<span class="co">#&gt; GarageQual                           12596283176</span>
+<span class="co">#&gt; CentralAir                           11295194841</span>
+<span class="co">#&gt; PoolArea                             10780586438</span>
+<span class="co">#&gt; BsmtCond                             10713639659</span>
+<span class="co">#&gt; RoofMatl                              9523627865</span>
+<span class="co">#&gt; EnclosedPorch                         9520608357</span>
+<span class="co">#&gt; LandSlope                             9104553289</span>
+<span class="co">#&gt; Fence                                 8697996384</span>
+<span class="co">#&gt; Condition1                            8105823860</span>
+<span class="co">#&gt; BsmtHalfBath                          7079007307</span>
+<span class="co">#&gt; BsmtFinSF2                            6815789768</span>
+<span class="co">#&gt; Functional                            6720942152</span>
+<span class="co">#&gt; ExterCond                             6451384706</span>
+<span class="co">#&gt; PavedDrive                            6144814768</span>
+<span class="co">#&gt; BsmtFinType2                          6046633582</span>
+<span class="co">#&gt; KitchenAbvGr                          5739780112</span>
+<span class="co">#&gt; Electrical                            2851017800</span>
+<span class="co">#&gt; 3SsnPorch                             2156392798</span>
+<span class="co">#&gt; MiscVal                               1919882177</span>
+<span class="co">#&gt; Heating                               1101675918</span>
+<span class="co">#&gt; Street                                 687858599</span>
+<span class="co">#&gt; LowQualFinSF                           633587353</span>
+<span class="co">#&gt; Condition2                             177295073</span>
+<span class="co">#&gt; Utilities                               33334805</span>
+<span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> pred)
+<span class="co">#&gt; [1] 28637.62</span></code></pre></div>
+<p><strong>Xgboost</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xgb &lt;-<span class="st"> </span>XGBTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">objective =</span> <span class="st">&quot;reg:linear&quot;</span>
+                      , <span class="dt">n_estimators =</span> <span class="dv">500</span>
+                      , <span class="dt">eval_metric =</span> <span class="st">&quot;rmse&quot;</span>
+                      , <span class="dt">maximize =</span> F
+                      , <span class="dt">learning_rate =</span> <span class="fl">0.1</span>
+                      ,<span class="dt">max_depth =</span> <span class="dv">6</span>)
+xgb<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;SalePrice&quot;</span>, <span class="dt">valid =</span> xtest)
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-rmse:179849.765625    val-rmse:176584.281250 </span>
+<span class="co">#&gt; [51] train-rmse:8126.902344  val-rmse:33075.578125 </span>
+<span class="co">#&gt; [101]    train-rmse:4940.106445  val-rmse:33232.164062 </span>
+<span class="co">#&gt; [151]    train-rmse:3332.927490  val-rmse:33217.136719 </span>
+<span class="co">#&gt; [201]    train-rmse:2242.137207  val-rmse:33165.082031 </span>
+<span class="co">#&gt; [251]    train-rmse:1568.891602  val-rmse:33145.296875 </span>
+<span class="co">#&gt; [301]    train-rmse:1111.639160  val-rmse:33153.835938 </span>
+<span class="co">#&gt; [351]    train-rmse:804.120667   val-rmse:33160.457031 </span>
+<span class="co">#&gt; [401]    train-rmse:591.843811   val-rmse:33156.765625 </span>
+<span class="co">#&gt; [451]    train-rmse:431.189850   val-rmse:33152.750000 </span>
+<span class="co">#&gt; [500]    train-rmse:332.463287   val-rmse:33149.964844</span>
+pred &lt;-<span class="st"> </span>xgb<span class="op">$</span><span class="kw">predict</span>(xtest)
+<span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> pred)
+<span class="co">#&gt; [1] 33149.96</span></code></pre></div>
+<p><strong>Grid Search</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xgb &lt;-<span class="st"> </span>XGBTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">objective=</span><span class="st">&quot;reg:linear&quot;</span>)
+
+gst &lt;-GridSearchTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">trainer =</span> xgb,
+                             <span class="dt">parameters =</span> <span class="kw">list</span>(<span class="dt">n_estimators =</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">50</span>), <span class="dt">max_depth =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>)),
+                             <span class="dt">n_folds =</span> <span class="dv">3</span>,
+                             <span class="dt">scoring =</span> <span class="kw">c</span>(<span class="st">'accuracy'</span>,<span class="st">'auc'</span>))
+gst<span class="op">$</span><span class="kw">fit</span>(xtrain, <span class="st">&quot;SalePrice&quot;</span>)
+<span class="co">#&gt; [1] &quot;entering grid search&quot;</span>
+<span class="co">#&gt; [1] &quot;In total, 4 models will be trained&quot;</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-rmse:140703.296875 </span>
+<span class="co">#&gt; [10] train-rmse:16649.193359</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-rmse:143633.156250 </span>
+<span class="co">#&gt; [10] train-rmse:16114.295898</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-rmse:144703.062500 </span>
+<span class="co">#&gt; [10] train-rmse:16503.988281</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-rmse:140703.296875 </span>
+<span class="co">#&gt; [50] train-rmse:4600.740234</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-rmse:143633.156250 </span>
+<span class="co">#&gt; [50] train-rmse:3559.837402</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-rmse:144703.062500 </span>
+<span class="co">#&gt; [50] train-rmse:4065.962158</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-rmse:141586.750000 </span>
+<span class="co">#&gt; [10] train-rmse:29210.416016</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-rmse:144483.890625 </span>
+<span class="co">#&gt; [10] train-rmse:29556.125000</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-rmse:145774.046875 </span>
+<span class="co">#&gt; [10] train-rmse:32064.306641</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-rmse:141586.750000 </span>
+<span class="co">#&gt; [50] train-rmse:16623.572266</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-rmse:144483.890625 </span>
+<span class="co">#&gt; [50] train-rmse:16999.929688</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-rmse:145774.046875 </span>
+<span class="co">#&gt; [50] train-rmse:18379.587891</span>
+gst<span class="op">$</span><span class="kw">best_iteration</span>()
+<span class="co">#&gt; $n_estimators</span>
+<span class="co">#&gt; [1] 10</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $max_depth</span>
+<span class="co">#&gt; [1] 5</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $accuracy_avg</span>
+<span class="co">#&gt; [1] 0</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $accuracy_sd</span>
+<span class="co">#&gt; [1] 0</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $auc_avg</span>
+<span class="co">#&gt; [1] NaN</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $auc_sd</span>
+<span class="co">#&gt; [1] NA</span></code></pre></div>
+<p><strong>Random Search</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rf &lt;-<span class="st"> </span>RFTrainer<span class="op">$</span><span class="kw">new</span>()
+rst &lt;-RandomSearchTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">trainer =</span> rf,
+                             <span class="dt">parameters =</span> <span class="kw">list</span>(<span class="dt">n_estimators =</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">50</span>),
+                             <span class="dt">max_depth =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>)),
+                             <span class="dt">n_folds =</span> <span class="dv">3</span>,
+                             <span class="dt">scoring =</span> <span class="kw">c</span>(<span class="st">'accuracy'</span>,<span class="st">'auc'</span>),
+                             <span class="dt">n_iter=</span><span class="dv">3</span>)
+rst<span class="op">$</span><span class="kw">fit</span>(xtrain, <span class="st">&quot;SalePrice&quot;</span>)
+<span class="co">#&gt; [1] &quot;In total, 3 models will be trained&quot;</span>
+rst<span class="op">$</span><span class="kw">best_iteration</span>()
+<span class="co">#&gt; $n_estimators</span>
+<span class="co">#&gt; [1] 50</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $max_depth</span>
+<span class="co">#&gt; [1] 2</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $accuracy_avg</span>
+<span class="co">#&gt; [1] 0.001955051</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $accuracy_sd</span>
+<span class="co">#&gt; [1] 0.001693146</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $auc_avg</span>
+<span class="co">#&gt; [1] NaN</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $auc_sd</span>
+<span class="co">#&gt; [1] NA</span></code></pre></div>
+</div>
+<div id="binary-classification-data" class="section level3">
+<h3>Binary Classification Data</h3>
+<p>Here, we will solve a simple binary classification problem (predict people who survived on titanic ship). The idea here is to demonstrate how to use this package to solve classification problems.</p>
+<p><strong>Data Preparation</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load class</span>
+<span class="kw">load</span>(<span class="st">'../data/cla_train.rda'</span>)
+
+<span class="kw">kable</span>(<span class="kw">head</span>(cla_train, <span class="dv">10</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">scroll_box</span>(<span class="dt">width =</span> <span class="st">&quot;100%&quot;</span>, <span class="dt">height =</span> <span class="st">&quot;300px&quot;</span>)</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+PassengerId
+</th>
+<th style="text-align:right;">
+Survived
+</th>
+<th style="text-align:right;">
+Pclass
+</th>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:left;">
+Sex
+</th>
+<th style="text-align:right;">
+Age
+</th>
+<th style="text-align:right;">
+SibSp
+</th>
+<th style="text-align:right;">
+Parch
+</th>
+<th style="text-align:left;">
+Ticket
+</th>
+<th style="text-align:right;">
+Fare
+</th>
+<th style="text-align:left;">
+Cabin
+</th>
+<th style="text-align:left;">
+Embarked
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Braund, Mr. Owen Harris
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+A/5 21171
+</td>
+<td style="text-align:right;">
+7.2500
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Cumings, Mrs. John Bradley (Florence Briggs Thayer)
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+PC 17599
+</td>
+<td style="text-align:right;">
+71.2833
+</td>
+<td style="text-align:left;">
+C85
+</td>
+<td style="text-align:left;">
+C
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Heikkinen, Miss. Laina
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+STON/O2. 3101282
+</td>
+<td style="text-align:right;">
+7.9250
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Futrelle, Mrs. Jacques Heath (Lily May Peel)
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+113803
+</td>
+<td style="text-align:right;">
+53.1000
+</td>
+<td style="text-align:left;">
+C123
+</td>
+<td style="text-align:left;">
+S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Allen, Mr. William Henry
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+373450
+</td>
+<td style="text-align:right;">
+8.0500
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Moran, Mr. James
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+330877
+</td>
+<td style="text-align:right;">
+8.4583
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Q
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+McCarthy, Mr. Timothy J
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+17463
+</td>
+<td style="text-align:right;">
+51.8625
+</td>
+<td style="text-align:left;">
+E46
+</td>
+<td style="text-align:left;">
+S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Palsson, Master. Gosta Leonard
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+349909
+</td>
+<td style="text-align:right;">
+21.0750
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg)
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+347742
+</td>
+<td style="text-align:right;">
+11.1333
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+S
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Nasser, Mrs. Nicholas (Adele Achem)
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+237736
+</td>
+<td style="text-align:right;">
+30.0708
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+C
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="co"># split the data</span>
+split &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y =</span> cla_train<span class="op">$</span>Survived,<span class="dt">p =</span> <span class="fl">0.7</span>)
+xtrain &lt;-<span class="st"> </span>cla_train[split<span class="op">$</span>Resample1]
+xtest &lt;-<span class="st"> </span>cla_train[<span class="op">!</span>split<span class="op">$</span>Resample1]
+
+<span class="co"># encode categorical variables - shorter way</span>
+<span class="cf">for</span>(c <span class="cf">in</span> <span class="kw">c</span>(<span class="st">'Embarked'</span>,<span class="st">'Sex'</span>,<span class="st">'Cabin'</span>)){
+    lbl &lt;-<span class="st"> </span>LabelEncoder<span class="op">$</span><span class="kw">new</span>()
+    lbl<span class="op">$</span><span class="kw">fit</span>(<span class="kw">c</span>(xtrain[[c]], xtest[[c]]))
+    xtrain[[c]] &lt;-<span class="st"> </span>lbl<span class="op">$</span><span class="kw">transform</span>(xtrain[[c]])
+    xtest[[c]] &lt;-<span class="st"> </span>lbl<span class="op">$</span><span class="kw">transform</span>(xtest[[c]])
+}
+<span class="co">#&gt; The data contains blank values. Imputing them with 'NA' </span>
+<span class="co">#&gt; The data contains blank values. Imputing them with 'NA' </span>
+<span class="co">#&gt; The data contains blank values. Imputing them with 'NA' </span>
+<span class="co">#&gt; The data contains blank values. Imputing them with 'NA' </span>
+<span class="co">#&gt; The data contains blank values. Imputing them with 'NA' </span>
+<span class="co">#&gt; The data contains blank values. Imputing them with 'NA'</span>
+
+<span class="co"># impute missing values</span>
+xtrain[, Age <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">replace</span>(Age, <span class="kw">is.na</span>(Age), <span class="kw">median</span>(Age, <span class="dt">na.rm =</span> T))]
+xtest[, Age <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">replace</span>(Age, <span class="kw">is.na</span>(Age), <span class="kw">median</span>(Age, <span class="dt">na.rm =</span> T))]
+
+<span class="co"># drop these features</span>
+to_drop &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'PassengerId'</span>,<span class="st">'Ticket'</span>,<span class="st">'Name'</span>)
+
+xtrain &lt;-<span class="st"> </span>xtrain[,<span class="op">-</span><span class="kw">c</span>(to_drop), with=F]
+xtest &lt;-<span class="st"> </span>xtest[,<span class="op">-</span><span class="kw">c</span>(to_drop), with=F]</code></pre></div>
+<p>Now, our data is ready to be served for model training. Let’s do it.</p>
+<p><strong>KNN Classification</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knn &lt;-<span class="st"> </span>KNNTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">k =</span> <span class="dv">2</span>,<span class="dt">prob =</span> T,<span class="dt">type =</span> <span class="st">'class'</span>)
+knn<span class="op">$</span><span class="kw">fit_predict</span>(<span class="dt">train =</span> xtrain, <span class="dt">test =</span> xtest, <span class="dt">y =</span> <span class="st">'Survived'</span>)
+probs &lt;-<span class="st"> </span>knn<span class="op">$</span><span class="kw">get_predictions</span>(<span class="dt">type =</span> <span class="st">'prob'</span>)
+labels &lt;-<span class="st"> </span>knn<span class="op">$</span><span class="kw">get_predictions</span>(<span class="dt">type=</span><span class="st">'raw'</span>)
+<span class="kw">auc</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>Survived, <span class="dt">predicted=</span>labels)
+<span class="co">#&gt; [1] 0.6776491</span></code></pre></div>
+<p><strong>Logistic Regression</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lf &lt;-<span class="st"> </span>LMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">family=</span><span class="st">&quot;binomial&quot;</span>)
+lf<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;Survived&quot;</span>)
+<span class="kw">summary</span>(lf<span class="op">$</span>model)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; stats::glm(formula = f, family = self$family, data = X, weights = self$weights)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;     Min       1Q   Median       3Q      Max  </span>
+<span class="co">#&gt; -2.0647  -0.5139  -0.3550   0.5659   2.5979  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;              Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)  1.882835   0.667638   2.820  0.00480 ** </span>
+<span class="co">#&gt; Pclass      -0.991285   0.198153  -5.003 5.66e-07 ***</span>
+<span class="co">#&gt; Sex          3.014839   0.250533  12.034  &lt; 2e-16 ***</span>
+<span class="co">#&gt; Age         -0.050270   0.010402  -4.833 1.35e-06 ***</span>
+<span class="co">#&gt; SibSp       -0.376242   0.132598  -2.837  0.00455 ** </span>
+<span class="co">#&gt; Parch       -0.137521   0.146524  -0.939  0.34796    </span>
+<span class="co">#&gt; Fare         0.001671   0.002794   0.598  0.54981    </span>
+<span class="co">#&gt; Cabin        0.017868   0.005923   3.017  0.00256 ** </span>
+<span class="co">#&gt; Embarked     0.076637   0.148818   0.515  0.60657    </span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 823.56  on 623  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 495.21  on 615  degrees of freedom</span>
+<span class="co">#&gt; AIC: 513.21</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 5</span>
+predictions &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)
+<span class="kw">auc</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>Survived, <span class="dt">predicted =</span> predictions)
+<span class="co">#&gt; [1] 0.7930805</span></code></pre></div>
+<p><strong>Lasso Logistic Regression</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lf &lt;-<span class="st"> </span>LMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">family=</span><span class="st">&quot;binomial&quot;</span>, <span class="dt">alpha=</span><span class="dv">1</span>)
+lf<span class="op">$</span><span class="kw">cv_model</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;Survived&quot;</span>, <span class="dt">nfolds =</span> <span class="dv">5</span>, <span class="dt">parallel =</span> <span class="ot">FALSE</span>)
+<span class="co">#&gt; Computation done.</span>
+pred &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">cv_predict</span>(<span class="dt">df =</span> xtest)
+<span class="kw">auc</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>Survived, <span class="dt">predicted =</span> pred)
+<span class="co">#&gt; [1] 0.7960625</span></code></pre></div>
+<p><strong>Ridge Logistic Regression</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lf &lt;-<span class="st"> </span>LMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">family=</span><span class="st">&quot;binomial&quot;</span>, <span class="dt">alpha=</span><span class="dv">0</span>)
+lf<span class="op">$</span><span class="kw">cv_model</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;Survived&quot;</span>, <span class="dt">nfolds =</span> <span class="dv">5</span>, <span class="dt">parallel =</span> <span class="ot">FALSE</span>)
+<span class="co">#&gt; Computation done.</span>
+pred &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">cv_predict</span>(<span class="dt">df =</span> xtest)
+<span class="kw">auc</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>Survived, <span class="dt">predicted =</span> pred)
+<span class="co">#&gt; [1] 0.7948466</span></code></pre></div>
+<p><strong>Random Forest</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rf &lt;-<span class="st"> </span>RFTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">n_estimators =</span> <span class="dv">500</span>,<span class="dt">classification =</span> <span class="dv">1</span>, <span class="dt">max_features =</span> <span class="dv">3</span>)
+rf<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;Survived&quot;</span>)
+
+pred &lt;-<span class="st"> </span>rf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)
+rf<span class="op">$</span><span class="kw">get_importance</span>()
+<span class="co">#&gt;          tmp.order.tmp..decreasing...TRUE..</span>
+<span class="co">#&gt; Sex                               83.179331</span>
+<span class="co">#&gt; Fare                              49.530245</span>
+<span class="co">#&gt; Age                               44.026986</span>
+<span class="co">#&gt; Cabin                             27.806777</span>
+<span class="co">#&gt; Pclass                            22.210427</span>
+<span class="co">#&gt; SibSp                             13.742906</span>
+<span class="co">#&gt; Parch                              9.837351</span>
+<span class="co">#&gt; Embarked                           6.777296</span>
+
+<span class="kw">auc</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>Survived, <span class="dt">predicted =</span> pred)
+<span class="co">#&gt; [1] 0.7512739</span></code></pre></div>
+<p><strong>Xgboost</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xgb &lt;-<span class="st"> </span>XGBTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">objective =</span> <span class="st">&quot;binary:logistic&quot;</span>
+                      , <span class="dt">n_estimators =</span> <span class="dv">500</span>
+                      , <span class="dt">eval_metric =</span> <span class="st">&quot;auc&quot;</span>
+                      , <span class="dt">maximize =</span> T
+                      , <span class="dt">learning_rate =</span> <span class="fl">0.1</span>
+                      ,<span class="dt">max_depth =</span> <span class="dv">6</span>)
+xgb<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;Survived&quot;</span>, <span class="dt">valid =</span> xtest)
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-auc:0.910654  val-auc:0.815229 </span>
+<span class="co">#&gt; [51] train-auc:0.977882  val-auc:0.803243 </span>
+<span class="co">#&gt; [101]    train-auc:0.990142  val-auc:0.808280 </span>
+<span class="co">#&gt; [151]    train-auc:0.994508  val-auc:0.807354 </span>
+<span class="co">#&gt; [201]    train-auc:0.996520  val-auc:0.809352 </span>
+<span class="co">#&gt; [251]    train-auc:0.997454  val-auc:0.809496 </span>
+<span class="co">#&gt; [301]    train-auc:0.998147  val-auc:0.808309 </span>
+<span class="co">#&gt; [351]    train-auc:0.998554  val-auc:0.808136 </span>
+<span class="co">#&gt; [401]    train-auc:0.998796  val-auc:0.809120 </span>
+<span class="co">#&gt; [451]    train-auc:0.999060  val-auc:0.809699 </span>
+<span class="co">#&gt; [500]    train-auc:0.999104  val-auc:0.809699</span>
+
+pred &lt;-<span class="st"> </span>xgb<span class="op">$</span><span class="kw">predict</span>(xtest)
+<span class="kw">auc</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>Survived, <span class="dt">predicted =</span> pred)
+<span class="co">#&gt; [1] 0.8096989</span></code></pre></div>
+<p><strong>Grid Search</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xgb &lt;-<span class="st"> </span>XGBTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">objective=</span><span class="st">&quot;binary:logistic&quot;</span>)
+gst &lt;-GridSearchTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">trainer =</span> xgb,
+                             <span class="dt">parameters =</span> <span class="kw">list</span>(<span class="dt">n_estimators =</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">50</span>),
+                             <span class="dt">max_depth =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>)),
+                             <span class="dt">n_folds =</span> <span class="dv">3</span>,
+                             <span class="dt">scoring =</span> <span class="kw">c</span>(<span class="st">'accuracy'</span>,<span class="st">'auc'</span>))
+gst<span class="op">$</span><span class="kw">fit</span>(xtrain, <span class="st">&quot;Survived&quot;</span>)
+<span class="co">#&gt; [1] &quot;entering grid search&quot;</span>
+<span class="co">#&gt; [1] &quot;In total, 4 models will be trained&quot;</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-error:0.129808 </span>
+<span class="co">#&gt; [10] train-error:0.098558</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-error:0.105769 </span>
+<span class="co">#&gt; [10] train-error:0.088942</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-error:0.098558 </span>
+<span class="co">#&gt; [10] train-error:0.069712</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-error:0.129808 </span>
+<span class="co">#&gt; [50] train-error:0.038462</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-error:0.105769 </span>
+<span class="co">#&gt; [50] train-error:0.036058</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-error:0.098558 </span>
+<span class="co">#&gt; [50] train-error:0.036058</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-error:0.177885 </span>
+<span class="co">#&gt; [10] train-error:0.153846</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-error:0.201923 </span>
+<span class="co">#&gt; [10] train-error:0.137019</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-error:0.182692 </span>
+<span class="co">#&gt; [10] train-error:0.115385</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-error:0.177885 </span>
+<span class="co">#&gt; [50] train-error:0.110577</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-error:0.201923 </span>
+<span class="co">#&gt; [50] train-error:0.096154</span>
+<span class="co">#&gt; converting the data into xgboost format..</span>
+<span class="co">#&gt; starting with training...</span>
+<span class="co">#&gt; [1]  train-error:0.182692 </span>
+<span class="co">#&gt; [50] train-error:0.081731</span>
+gst<span class="op">$</span><span class="kw">best_iteration</span>()
+<span class="co">#&gt; $n_estimators</span>
+<span class="co">#&gt; [1] 10</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $max_depth</span>
+<span class="co">#&gt; [1] 5</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $accuracy_avg</span>
+<span class="co">#&gt; [1] 0</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $accuracy_sd</span>
+<span class="co">#&gt; [1] 0</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $auc_avg</span>
+<span class="co">#&gt; [1] 0.883034</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $auc_sd</span>
+<span class="co">#&gt; [1] 0.0242347</span></code></pre></div>
+<p><strong>Random Search</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rf &lt;-<span class="st"> </span>RFTrainer<span class="op">$</span><span class="kw">new</span>()
+rst &lt;-RandomSearchTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">trainer =</span> rf,
+                             <span class="dt">parameters =</span> <span class="kw">list</span>(<span class="dt">n_estimators =</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">50</span>),
+                             <span class="dt">max_depth =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>)),
+                             <span class="dt">n_folds =</span> <span class="dv">3</span>,
+                             <span class="dt">scoring =</span> <span class="kw">c</span>(<span class="st">'accuracy'</span>,<span class="st">'auc'</span>),
+                             <span class="dt">n_iter =</span> <span class="dv">3</span>)
+rst<span class="op">$</span><span class="kw">fit</span>(xtrain, <span class="st">&quot;Survived&quot;</span>)
+<span class="co">#&gt; [1] &quot;In total, 3 models will be trained&quot;</span>
+rst<span class="op">$</span><span class="kw">best_iteration</span>()
+<span class="co">#&gt; $n_estimators</span>
+<span class="co">#&gt; [1] 50</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $max_depth</span>
+<span class="co">#&gt; [1] 5</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $accuracy_avg</span>
+<span class="co">#&gt; [1] 0.849359</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $accuracy_sd</span>
+<span class="co">#&gt; [1] 0.0264787</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $auc_avg</span>
+<span class="co">#&gt; [1] 0.8279856</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $auc_sd</span>
+<span class="co">#&gt; [1] 0.02242134</span></code></pre></div>
+<p>Let’s create some new feature based on target variable using target encoding and test a model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add target encoding features</span>
+xtrain[, feat_<span class="dv">01</span> <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">smoothMean</span>(<span class="dt">train_df =</span> xtrain,
+                        <span class="dt">test_df =</span> xtest,
+                        <span class="dt">colname =</span> <span class="st">&quot;Embarked&quot;</span>,
+                        <span class="dt">target =</span> <span class="st">&quot;Survived&quot;</span>)<span class="op">$</span>train[[<span class="dv">2</span>]]]
+xtest[, feat_<span class="dv">01</span> <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">smoothMean</span>(<span class="dt">train_df =</span> xtrain,
+                               <span class="dt">test_df =</span> xtest,
+                               <span class="dt">colname =</span> <span class="st">&quot;Embarked&quot;</span>,
+                               <span class="dt">target =</span> <span class="st">&quot;Survived&quot;</span>)<span class="op">$</span>test[[<span class="dv">2</span>]]]
+
+<span class="co"># train a random forest</span>
+<span class="co"># Random Forest</span>
+rf &lt;-<span class="st"> </span>RFTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">n_estimators =</span> <span class="dv">500</span>,<span class="dt">classification =</span> <span class="dv">1</span>, <span class="dt">max_features =</span> <span class="dv">4</span>)
+rf<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;Survived&quot;</span>)
+pred &lt;-<span class="st"> </span>rf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)
+rf<span class="op">$</span><span class="kw">get_importance</span>()
+<span class="co">#&gt;          tmp.order.tmp..decreasing...TRUE..</span>
+<span class="co">#&gt; Sex                               85.213569</span>
+<span class="co">#&gt; Fare                              51.676287</span>
+<span class="co">#&gt; Age                               47.071256</span>
+<span class="co">#&gt; Cabin                             28.804936</span>
+<span class="co">#&gt; Pclass                            22.431287</span>
+<span class="co">#&gt; SibSp                             13.735815</span>
+<span class="co">#&gt; Parch                              9.643044</span>
+<span class="co">#&gt; feat_01                            4.449812</span>
+<span class="co">#&gt; Embarked                           4.385365</span>
+
+<span class="kw">auc</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>Survived, <span class="dt">predicted =</span> pred)
+<span class="co">#&gt; [1] 0.7512739</span></code></pre></div>
+</div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
