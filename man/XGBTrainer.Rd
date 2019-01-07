@@ -3,20 +3,25 @@
 \docType{data}
 \name{XGBTrainer}
 \alias{XGBTrainer}
-\title{Extreme Gradient Boosting Model}
+\title{Extreme Gradient Boosting Trainer}
 \format{\code{\link{R6Class}} object.}
 \usage{
 XGBTrainer
 }
 \description{
-Trains a Extreme Gradient Boosting Model. It is a wrapper around xgboost R package to provide a similar interface to scikit-learn. You simply need to provide a data-frame or data.table to make it work.
+Trains a Extreme Gradient Boosting Model. XGBoost belongs to a family of boosting algorithms
+             that creates an ensemble of weak learner to learn about data.
 }
 \section{Usage}{
 
 For usage details see \bold{Methods, Arguments and Examples} sections.
 \preformatted{
-bst = XGBTrainer$new(n_estimators, max_features, max_depth, min_samples_split, criterion,classification, class_weights, verbose, seed,always_split)
-bst$fit(X_train, y_train, valid=NULL)
+bst = XGBTrainer$new(booster, objective, nthread, silent=0, n_estimators=100, learning_rate=0.3,
+                     gamma=0, max_depth=6, min_child_weight=1, subsample=1, colsample_bytree=1,
+                     lambda=1, alpha = 0, eval_metric, print_every = 50, feval, early_stopping, maximize,
+                     custom_objective, save_period, save_name, xgb_model, callbacks, verbose,
+                     num_class, weight, na_missing)
+bst$fit(X_train, "target", valid=NULL)
 tfidf$predict(X_test)
 }
 }
@@ -54,11 +59,11 @@ tfidf$predict(X_test)
  \item{lambda}{L2 regularization term on weights. Increasing this value will make model more conservative. Default = 1}
  \item{alpha}{L1 regularization term on weights. Increasing this value will make model more conservative. Default = 0}
  \item{eval_metric}{Evaluation metrics for validation data, a default metric will be assigned according to objective }
- \item{print_every}{print training log after n interations. Default = 50}
+ \item{print_every}{print training log after n iterations. Default = 50}
  \item{feval}{custom evaluation function}
  \item{early_stopping}{Used to prevent overfitting, stops model training after this number of iterations if there is no improvement seen}
  \item{maximize}{If feval and early_stopping_rounds are set, then this parameter must be set as well. When it is TRUE, it means the larger the evaluation score the better. }
- \item{custom_objective}{custom objective functioon}
+ \item{custom_objective}{custom objective function}
  \item{save_period}{when it is non-NULL, model is saved to disk after every save_period rounds, 0 means save at the end.}
  \item{save_name}{the name or path for periodically saved model file.}
  \item{xgb_model}{a previously built model to continue the training from. Could be either an object of class xgb.Booster, or its raw data, or the name of a file with a previously saved model.}
@@ -83,7 +88,7 @@ xgb <- XGBTrainer$new(objective = 'multi:softmax',
                       maximize = FALSE,
                       eval_metric = 'merror',
                       num_class=3,
-                      n_estimators = 10)
+                      n_estimators = 2)
 xgb$fit(df, 'Species')
 
 # do cross validation to find optimal value for n_estimators

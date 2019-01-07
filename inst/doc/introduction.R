@@ -4,8 +4,15 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
+## ---- eval=FALSE---------------------------------------------------------
+#  install.packages("superml")
+
+## ---- eval=FALSE---------------------------------------------------------
+#  devtools::install_github("saraswatmks/superml")
+
 ## ------------------------------------------------------------------------
 load("../data/reg_train.rda")
+# if the above doesn't work, you can try: load("reg_train.rda")
 
 library(data.table)
 library(caret)
@@ -52,10 +59,17 @@ xtest[is.na(xtest)] <- -1
 
 ## ------------------------------------------------------------------------
 knn <- KNNTrainer$new(k = 2,prob = T,type = 'reg')
-knn$fit_predict(train = xtrain, test = xtest, y = 'SalePrice')
-probs <- knn$get_predictions(type = 'prob')
-labels <- knn$get_predictions(type='raw')
-auc(actual = xtest$Survived, predicted=labels)
+knn$fit(train = xtrain, test = xtest, y = 'SalePrice')
+probs <- knn$predict(type = 'prob')
+labels <- knn$predict(type='raw')
+rmse(actual = xtest$SalePrice, predicted=labels)
+
+## ------------------------------------------------------------------------
+#predicts probabilities - must specify mc_type ("OvA_hinge", "AvA_hinge")
+svm <- SVMTrainer$new(type="ls")
+svm$fit(xtrain, 'SalePrice')
+pred <- svm$predict(xtest)
+rmse(actual = xtest$SalePrice, predicted = pred)
 
 ## ------------------------------------------------------------------------
 lf <- LMTrainer$new(family="gaussian")
@@ -104,7 +118,7 @@ rmse(actual = xtest$SalePrice, predicted = pred)
 ## ------------------------------------------------------------------------
 xgb <- XGBTrainer$new(objective="reg:linear")
 
-gst <-GridSearchTrainer$new(trainer = xgb,
+gst <-GridSearchCV$new(trainer = xgb,
                              parameters = list(n_estimators = c(10,50), max_depth = c(5,2)),
                              n_folds = 3,
                              scoring = c('accuracy','auc'))
@@ -113,7 +127,7 @@ gst$best_iteration()
 
 ## ------------------------------------------------------------------------
 rf <- RFTrainer$new()
-rst <-RandomSearchTrainer$new(trainer = rf,
+rst <-RandomSearchCV$new(trainer = rf,
                              parameters = list(n_estimators = c(10,50),
                              max_depth = c(5,2)),
                              n_folds = 3,
@@ -125,6 +139,7 @@ rst$best_iteration()
 ## ------------------------------------------------------------------------
 # load class
 load('../data/cla_train.rda')
+# if the above doesn't work, you can try: load("cla_train.rda")
 
 kable(head(cla_train, 10)) %>%
   scroll_box(width = "100%", height = "300px")
@@ -154,10 +169,29 @@ xtest <- xtest[,-c(to_drop), with=F]
 
 ## ------------------------------------------------------------------------
 knn <- KNNTrainer$new(k = 2,prob = T,type = 'class')
-knn$fit_predict(train = xtrain, test = xtest, y = 'Survived')
-probs <- knn$get_predictions(type = 'prob')
-labels <- knn$get_predictions(type='raw')
+knn$fit(train = xtrain, test = xtest, y = 'Survived')
+probs <- knn$predict(type = 'prob')
+labels <- knn$predict(type='raw')
 auc(actual = xtest$Survived, predicted=labels)
+
+## ------------------------------------------------------------------------
+nb <- NBTrainer$new()
+nb$fit(xtrain, 'Survived')
+pred <- nb$predict(xtest)
+auc(actual = xtest$Survived, predicted=pred)
+
+## ------------------------------------------------------------------------
+#predicts probabilities - must specify mc_type ("OvA_hinge", "AvA_hinge")
+svm <- SVMTrainer$new(predict.prob = T, type="bc", mc_type="OvA_hinge")
+svm$fit(xtrain, 'Survived')
+pred <- svm$predict(xtest)
+auc(actual = xtest$Survived, predicted=pred[,2])
+
+#predicts labels
+svm <- SVMTrainer$new(predict.prob = F, type="bc")
+svm$fit(xtrain, 'Survived')
+pred <- svm$predict(xtest)
+auc(actual = xtest$Survived, predicted=pred)
 
 ## ------------------------------------------------------------------------
 lf <- LMTrainer$new(family="binomial")
@@ -203,7 +237,7 @@ auc(actual = xtest$Survived, predicted = pred)
 
 ## ------------------------------------------------------------------------
 xgb <- XGBTrainer$new(objective="binary:logistic")
-gst <-GridSearchTrainer$new(trainer = xgb,
+gst <-GridSearchCV$new(trainer = xgb,
                              parameters = list(n_estimators = c(10,50),
                              max_depth = c(5,2)),
                              n_folds = 3,
@@ -213,7 +247,7 @@ gst$best_iteration()
 
 ## ------------------------------------------------------------------------
 rf <- RFTrainer$new()
-rst <-RandomSearchTrainer$new(trainer = rf,
+rst <-RandomSearchCV$new(trainer = rf,
                              parameters = list(n_estimators = c(10,50),
                              max_depth = c(5,2)),
                              n_folds = 3,
