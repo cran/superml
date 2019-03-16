@@ -10,6 +10,12 @@ The goal of SuperML is to provide sckit-learn's `fit`,`predict`,`transform` stan
 Installation
 ------------
 
+You can install latest stable cran version using (recommended):
+
+```r
+install.packages("superml")
+```
+
 You can install superml from github with:
 
 ``` r
@@ -59,3 +65,10 @@ Documentation
 -------------
 
 The documentation can be found here: [SuperML Documentation](https://saraswatmks.github.io/superml/)
+
+
+Contributions & Support
+-------------
+
+SuperML is my ambitious effort to help people train machine learning models in R as easily as they do in python.
+I encourage you to use this library, post bugs and feature suggestions in the issues above.

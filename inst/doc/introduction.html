@@ -12,11 +12,10 @@
 
 <meta name="author" content="Manish Saraswat" />
 
-<meta name="date" content="2019-01-04" />
+<meta name="date" content="2019-03-16" />
 
 <title>Introduction to SuperML</title>
 
-<script src="data:application/x-javascript;base64,JChkb2N1bWVudCkucmVhZHkoZnVuY3Rpb24oKXsKICAgICQoJ1tkYXRhLXRvZ2dsZT0idG9vbHRpcCJdJykudG9vbHRpcCgpOwogICAgJCgnW2RhdGEtdG9nZ2xlPSJwb3BvdmVyIl0nKS5wb3BvdmVyKCk7Cn0pOwo="></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -71,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">Introduction to SuperML</h1>
 <h4 class="author"><em>Manish Saraswat</em></h4>
-<h4 class="date"><em>2019-01-04</em></h4>
+<h4 class="date"><em>2019-03-16</em></h4>
 
 
 
@@ -100,7 +99,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#&gt; Loading required package: ggplot2</span>
 <span class="kw">library</span>(superml)
 <span class="co">#&gt; Loading required package: R6</span>
-<span class="kw">library</span>(kableExtra)
+
 <span class="kw">library</span>(Metrics)
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'Metrics'</span>
@@ -108,2712 +107,99 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     precision, recall</span>
 
-<span class="kw">kable</span>(<span class="kw">head</span>(reg_train, <span class="dv">10</span>)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">scroll_box</span>(<span class="dt">width =</span> <span class="st">&quot;100%&quot;</span>, <span class="dt">height =</span> <span class="st">&quot;300px&quot;</span>)</code></pre></div>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
-<table>
-<thead>
-<tr>
-<th style="text-align:right;">
-Id
-</th>
-<th style="text-align:right;">
-MSSubClass
-</th>
-<th style="text-align:left;">
-MSZoning
-</th>
-<th style="text-align:right;">
-LotFrontage
-</th>
-<th style="text-align:right;">
-LotArea
-</th>
-<th style="text-align:left;">
-Street
-</th>
-<th style="text-align:left;">
-Alley
-</th>
-<th style="text-align:left;">
-LotShape
-</th>
-<th style="text-align:left;">
-LandContour
-</th>
-<th style="text-align:left;">
-Utilities
-</th>
-<th style="text-align:left;">
-LotConfig
-</th>
-<th style="text-align:left;">
-LandSlope
-</th>
-<th style="text-align:left;">
-Neighborhood
-</th>
-<th style="text-align:left;">
-Condition1
-</th>
-<th style="text-align:left;">
-Condition2
-</th>
-<th style="text-align:left;">
-BldgType
-</th>
-<th style="text-align:left;">
-HouseStyle
-</th>
-<th style="text-align:right;">
-OverallQual
-</th>
-<th style="text-align:right;">
-OverallCond
-</th>
-<th style="text-align:right;">
-YearBuilt
-</th>
-<th style="text-align:right;">
-YearRemodAdd
-</th>
-<th style="text-align:left;">
-RoofStyle
-</th>
-<th style="text-align:left;">
-RoofMatl
-</th>
-<th style="text-align:left;">
-Exterior1st
-</th>
-<th style="text-align:left;">
-Exterior2nd
-</th>
-<th style="text-align:left;">
-MasVnrType
-</th>
-<th style="text-align:right;">
-MasVnrArea
-</th>
-<th style="text-align:left;">
-ExterQual
-</th>
-<th style="text-align:left;">
-ExterCond
-</th>
-<th style="text-align:left;">
-Foundation
-</th>
-<th style="text-align:left;">
-BsmtQual
-</th>
-<th style="text-align:left;">
-BsmtCond
-</th>
-<th style="text-align:left;">
-BsmtExposure
-</th>
-<th style="text-align:left;">
-BsmtFinType1
-</th>
-<th style="text-align:right;">
-BsmtFinSF1
-</th>
-<th style="text-align:left;">
-BsmtFinType2
-</th>
-<th style="text-align:right;">
-BsmtFinSF2
-</th>
-<th style="text-align:right;">
-BsmtUnfSF
-</th>
-<th style="text-align:right;">
-TotalBsmtSF
-</th>
-<th style="text-align:left;">
-Heating
-</th>
-<th style="text-align:left;">
-HeatingQC
-</th>
-<th style="text-align:left;">
-CentralAir
-</th>
-<th style="text-align:left;">
-Electrical
-</th>
-<th style="text-align:right;">
-1stFlrSF
-</th>
-<th style="text-align:right;">
-2ndFlrSF
-</th>
-<th style="text-align:right;">
-LowQualFinSF
-</th>
-<th style="text-align:right;">
-GrLivArea
-</th>
-<th style="text-align:right;">
-BsmtFullBath
-</th>
-<th style="text-align:right;">
-BsmtHalfBath
-</th>
-<th style="text-align:right;">
-FullBath
-</th>
-<th style="text-align:right;">
-HalfBath
-</th>
-<th style="text-align:right;">
-BedroomAbvGr
-</th>
-<th style="text-align:right;">
-KitchenAbvGr
-</th>
-<th style="text-align:left;">
-KitchenQual
-</th>
-<th style="text-align:right;">
-TotRmsAbvGrd
-</th>
-<th style="text-align:left;">
-Functional
-</th>
-<th style="text-align:right;">
-Fireplaces
-</th>
-<th style="text-align:left;">
-FireplaceQu
-</th>
-<th style="text-align:left;">
-GarageType
-</th>
-<th style="text-align:right;">
-GarageYrBlt
-</th>
-<th style="text-align:left;">
-GarageFinish
-</th>
-<th style="text-align:right;">
-GarageCars
-</th>
-<th style="text-align:right;">
-GarageArea
-</th>
-<th style="text-align:left;">
-GarageQual
-</th>
-<th style="text-align:left;">
-GarageCond
-</th>
-<th style="text-align:left;">
-PavedDrive
-</th>
-<th style="text-align:right;">
-WoodDeckSF
-</th>
-<th style="text-align:right;">
-OpenPorchSF
-</th>
-<th style="text-align:right;">
-EnclosedPorch
-</th>
-<th style="text-align:right;">
-3SsnPorch
-</th>
-<th style="text-align:right;">
-ScreenPorch
-</th>
-<th style="text-align:right;">
-PoolArea
-</th>
-<th style="text-align:left;">
-PoolQC
-</th>
-<th style="text-align:left;">
-Fence
-</th>
-<th style="text-align:left;">
-MiscFeature
-</th>
-<th style="text-align:right;">
-MiscVal
-</th>
-<th style="text-align:right;">
-MoSold
-</th>
-<th style="text-align:right;">
-YrSold
-</th>
-<th style="text-align:left;">
-SaleType
-</th>
-<th style="text-align:left;">
-SaleCondition
-</th>
-<th style="text-align:right;">
-SalePrice
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-60
-</td>
-<td style="text-align:left;">
-RL
-</td>
-<td style="text-align:right;">
-65
-</td>
-<td style="text-align:right;">
-8450
-</td>
-<td style="text-align:left;">
-Pave
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Reg
-</td>
-<td style="text-align:left;">
-Lvl
-</td>
-<td style="text-align:left;">
-AllPub
-</td>
-<td style="text-align:left;">
-Inside
-</td>
-<td style="text-align:left;">
-Gtl
-</td>
-<td style="text-align:left;">
-CollgCr
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-1Fam
-</td>
-<td style="text-align:left;">
-2Story
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-2003
-</td>
-<td style="text-align:right;">
-2003
-</td>
-<td style="text-align:left;">
-Gable
-</td>
-<td style="text-align:left;">
-CompShg
-</td>
-<td style="text-align:left;">
-VinylSd
-</td>
-<td style="text-align:left;">
-VinylSd
-</td>
-<td style="text-align:left;">
-BrkFace
-</td>
-<td style="text-align:right;">
-196
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-PConc
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-GLQ
-</td>
-<td style="text-align:right;">
-706
-</td>
-<td style="text-align:left;">
-Unf
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-150
-</td>
-<td style="text-align:right;">
-856
-</td>
-<td style="text-align:left;">
-GasA
-</td>
-<td style="text-align:left;">
-Ex
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:left;">
-SBrkr
-</td>
-<td style="text-align:right;">
-856
-</td>
-<td style="text-align:right;">
-854
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1710
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-Typ
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Attchd
-</td>
-<td style="text-align:right;">
-2003
-</td>
-<td style="text-align:left;">
-RFn
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-548
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-61
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2008
-</td>
-<td style="text-align:left;">
-WD
-</td>
-<td style="text-align:left;">
-Normal
-</td>
-<td style="text-align:right;">
-208500
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:left;">
-RL
-</td>
-<td style="text-align:right;">
-80
-</td>
-<td style="text-align:right;">
-9600
-</td>
-<td style="text-align:left;">
-Pave
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Reg
-</td>
-<td style="text-align:left;">
-Lvl
-</td>
-<td style="text-align:left;">
-AllPub
-</td>
-<td style="text-align:left;">
-FR2
-</td>
-<td style="text-align:left;">
-Gtl
-</td>
-<td style="text-align:left;">
-Veenker
-</td>
-<td style="text-align:left;">
-Feedr
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-1Fam
-</td>
-<td style="text-align:left;">
-1Story
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-1976
-</td>
-<td style="text-align:right;">
-1976
-</td>
-<td style="text-align:left;">
-Gable
-</td>
-<td style="text-align:left;">
-CompShg
-</td>
-<td style="text-align:left;">
-MetalSd
-</td>
-<td style="text-align:left;">
-MetalSd
-</td>
-<td style="text-align:left;">
-None
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-CBlock
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-ALQ
-</td>
-<td style="text-align:right;">
-978
-</td>
-<td style="text-align:left;">
-Unf
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-284
-</td>
-<td style="text-align:right;">
-1262
-</td>
-<td style="text-align:left;">
-GasA
-</td>
-<td style="text-align:left;">
-Ex
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:left;">
-SBrkr
-</td>
-<td style="text-align:right;">
-1262
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1262
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:left;">
-Typ
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Attchd
-</td>
-<td style="text-align:right;">
-1976
-</td>
-<td style="text-align:left;">
-RFn
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-460
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:right;">
-298
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-2007
-</td>
-<td style="text-align:left;">
-WD
-</td>
-<td style="text-align:left;">
-Normal
-</td>
-<td style="text-align:right;">
-181500
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-60
-</td>
-<td style="text-align:left;">
-RL
-</td>
-<td style="text-align:right;">
-68
-</td>
-<td style="text-align:right;">
-11250
-</td>
-<td style="text-align:left;">
-Pave
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-IR1
-</td>
-<td style="text-align:left;">
-Lvl
-</td>
-<td style="text-align:left;">
-AllPub
-</td>
-<td style="text-align:left;">
-Inside
-</td>
-<td style="text-align:left;">
-Gtl
-</td>
-<td style="text-align:left;">
-CollgCr
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-1Fam
-</td>
-<td style="text-align:left;">
-2Story
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-2001
-</td>
-<td style="text-align:right;">
-2002
-</td>
-<td style="text-align:left;">
-Gable
-</td>
-<td style="text-align:left;">
-CompShg
-</td>
-<td style="text-align:left;">
-VinylSd
-</td>
-<td style="text-align:left;">
-VinylSd
-</td>
-<td style="text-align:left;">
-BrkFace
-</td>
-<td style="text-align:right;">
-162
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-PConc
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Mn
-</td>
-<td style="text-align:left;">
-GLQ
-</td>
-<td style="text-align:right;">
-486
-</td>
-<td style="text-align:left;">
-Unf
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-434
-</td>
-<td style="text-align:right;">
-920
-</td>
-<td style="text-align:left;">
-GasA
-</td>
-<td style="text-align:left;">
-Ex
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:left;">
-SBrkr
-</td>
-<td style="text-align:right;">
-920
-</td>
-<td style="text-align:right;">
-866
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1786
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:left;">
-Typ
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Attchd
-</td>
-<td style="text-align:right;">
-2001
-</td>
-<td style="text-align:left;">
-RFn
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-608
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-42
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-2008
-</td>
-<td style="text-align:left;">
-WD
-</td>
-<td style="text-align:left;">
-Normal
-</td>
-<td style="text-align:right;">
-223500
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-70
-</td>
-<td style="text-align:left;">
-RL
-</td>
-<td style="text-align:right;">
-60
-</td>
-<td style="text-align:right;">
-9550
-</td>
-<td style="text-align:left;">
-Pave
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-IR1
-</td>
-<td style="text-align:left;">
-Lvl
-</td>
-<td style="text-align:left;">
-AllPub
-</td>
-<td style="text-align:left;">
-Corner
-</td>
-<td style="text-align:left;">
-Gtl
-</td>
-<td style="text-align:left;">
-Crawfor
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-1Fam
-</td>
-<td style="text-align:left;">
-2Story
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-1915
-</td>
-<td style="text-align:right;">
-1970
-</td>
-<td style="text-align:left;">
-Gable
-</td>
-<td style="text-align:left;">
-CompShg
-</td>
-<td style="text-align:left;">
-Wd Sdng
-</td>
-<td style="text-align:left;">
-Wd Shng
-</td>
-<td style="text-align:left;">
-None
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-BrkTil
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-ALQ
-</td>
-<td style="text-align:right;">
-216
-</td>
-<td style="text-align:left;">
-Unf
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-540
-</td>
-<td style="text-align:right;">
-756
-</td>
-<td style="text-align:left;">
-GasA
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:left;">
-SBrkr
-</td>
-<td style="text-align:right;">
-961
-</td>
-<td style="text-align:right;">
-756
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1717
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:left;">
-Typ
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-Detchd
-</td>
-<td style="text-align:right;">
-1998
-</td>
-<td style="text-align:left;">
-Unf
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-642
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-35
-</td>
-<td style="text-align:right;">
-272
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2006
-</td>
-<td style="text-align:left;">
-WD
-</td>
-<td style="text-align:left;">
-Abnorml
-</td>
-<td style="text-align:right;">
-140000
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-60
-</td>
-<td style="text-align:left;">
-RL
-</td>
-<td style="text-align:right;">
-84
-</td>
-<td style="text-align:right;">
-14260
-</td>
-<td style="text-align:left;">
-Pave
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-IR1
-</td>
-<td style="text-align:left;">
-Lvl
-</td>
-<td style="text-align:left;">
-AllPub
-</td>
-<td style="text-align:left;">
-FR2
-</td>
-<td style="text-align:left;">
-Gtl
-</td>
-<td style="text-align:left;">
-NoRidge
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-1Fam
-</td>
-<td style="text-align:left;">
-2Story
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-2000
-</td>
-<td style="text-align:right;">
-2000
-</td>
-<td style="text-align:left;">
-Gable
-</td>
-<td style="text-align:left;">
-CompShg
-</td>
-<td style="text-align:left;">
-VinylSd
-</td>
-<td style="text-align:left;">
-VinylSd
-</td>
-<td style="text-align:left;">
-BrkFace
-</td>
-<td style="text-align:right;">
-350
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-PConc
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Av
-</td>
-<td style="text-align:left;">
-GLQ
-</td>
-<td style="text-align:right;">
-655
-</td>
-<td style="text-align:left;">
-Unf
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-490
-</td>
-<td style="text-align:right;">
-1145
-</td>
-<td style="text-align:left;">
-GasA
-</td>
-<td style="text-align:left;">
-Ex
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:left;">
-SBrkr
-</td>
-<td style="text-align:right;">
-1145
-</td>
-<td style="text-align:right;">
-1053
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2198
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:left;">
-Typ
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Attchd
-</td>
-<td style="text-align:right;">
-2000
-</td>
-<td style="text-align:left;">
-RFn
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-836
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:right;">
-192
-</td>
-<td style="text-align:right;">
-84
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:right;">
-2008
-</td>
-<td style="text-align:left;">
-WD
-</td>
-<td style="text-align:left;">
-Normal
-</td>
-<td style="text-align:right;">
-250000
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-50
-</td>
-<td style="text-align:left;">
-RL
-</td>
-<td style="text-align:right;">
-85
-</td>
-<td style="text-align:right;">
-14115
-</td>
-<td style="text-align:left;">
-Pave
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-IR1
-</td>
-<td style="text-align:left;">
-Lvl
-</td>
-<td style="text-align:left;">
-AllPub
-</td>
-<td style="text-align:left;">
-Inside
-</td>
-<td style="text-align:left;">
-Gtl
-</td>
-<td style="text-align:left;">
-Mitchel
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-1Fam
-</td>
-<td style="text-align:left;">
-1.5Fin
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-1993
-</td>
-<td style="text-align:right;">
-1995
-</td>
-<td style="text-align:left;">
-Gable
-</td>
-<td style="text-align:left;">
-CompShg
-</td>
-<td style="text-align:left;">
-VinylSd
-</td>
-<td style="text-align:left;">
-VinylSd
-</td>
-<td style="text-align:left;">
-None
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Wood
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-GLQ
-</td>
-<td style="text-align:right;">
-732
-</td>
-<td style="text-align:left;">
-Unf
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-64
-</td>
-<td style="text-align:right;">
-796
-</td>
-<td style="text-align:left;">
-GasA
-</td>
-<td style="text-align:left;">
-Ex
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:left;">
-SBrkr
-</td>
-<td style="text-align:right;">
-796
-</td>
-<td style="text-align:right;">
-566
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1362
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:left;">
-Typ
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Attchd
-</td>
-<td style="text-align:right;">
-1993
-</td>
-<td style="text-align:left;">
-Unf
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-480
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:right;">
-40
-</td>
-<td style="text-align:right;">
-30
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-320
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-MnPrv
-</td>
-<td style="text-align:left;">
-Shed
-</td>
-<td style="text-align:right;">
-700
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-2009
-</td>
-<td style="text-align:left;">
-WD
-</td>
-<td style="text-align:left;">
-Normal
-</td>
-<td style="text-align:right;">
-143000
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:left;">
-RL
-</td>
-<td style="text-align:right;">
-75
-</td>
-<td style="text-align:right;">
-10084
-</td>
-<td style="text-align:left;">
-Pave
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Reg
-</td>
-<td style="text-align:left;">
-Lvl
-</td>
-<td style="text-align:left;">
-AllPub
-</td>
-<td style="text-align:left;">
-Inside
-</td>
-<td style="text-align:left;">
-Gtl
-</td>
-<td style="text-align:left;">
-Somerst
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-1Fam
-</td>
-<td style="text-align:left;">
-1Story
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-2004
-</td>
-<td style="text-align:right;">
-2005
-</td>
-<td style="text-align:left;">
-Gable
-</td>
-<td style="text-align:left;">
-CompShg
-</td>
-<td style="text-align:left;">
-VinylSd
-</td>
-<td style="text-align:left;">
-VinylSd
-</td>
-<td style="text-align:left;">
-Stone
-</td>
-<td style="text-align:right;">
-186
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-PConc
-</td>
-<td style="text-align:left;">
-Ex
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Av
-</td>
-<td style="text-align:left;">
-GLQ
-</td>
-<td style="text-align:right;">
-1369
-</td>
-<td style="text-align:left;">
-Unf
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-317
-</td>
-<td style="text-align:right;">
-1686
-</td>
-<td style="text-align:left;">
-GasA
-</td>
-<td style="text-align:left;">
-Ex
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:left;">
-SBrkr
-</td>
-<td style="text-align:right;">
-1694
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1694
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:left;">
-Typ
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-Attchd
-</td>
-<td style="text-align:right;">
-2004
-</td>
-<td style="text-align:left;">
-RFn
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-636
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:right;">
-255
-</td>
-<td style="text-align:right;">
-57
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-2007
-</td>
-<td style="text-align:left;">
-WD
-</td>
-<td style="text-align:left;">
-Normal
-</td>
-<td style="text-align:right;">
-307000
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-60
-</td>
-<td style="text-align:left;">
-RL
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-10382
-</td>
-<td style="text-align:left;">
-Pave
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-IR1
-</td>
-<td style="text-align:left;">
-Lvl
-</td>
-<td style="text-align:left;">
-AllPub
-</td>
-<td style="text-align:left;">
-Corner
-</td>
-<td style="text-align:left;">
-Gtl
-</td>
-<td style="text-align:left;">
-NWAmes
-</td>
-<td style="text-align:left;">
-PosN
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-1Fam
-</td>
-<td style="text-align:left;">
-2Story
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-1973
-</td>
-<td style="text-align:right;">
-1973
-</td>
-<td style="text-align:left;">
-Gable
-</td>
-<td style="text-align:left;">
-CompShg
-</td>
-<td style="text-align:left;">
-HdBoard
-</td>
-<td style="text-align:left;">
-HdBoard
-</td>
-<td style="text-align:left;">
-Stone
-</td>
-<td style="text-align:right;">
-240
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-CBlock
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Mn
-</td>
-<td style="text-align:left;">
-ALQ
-</td>
-<td style="text-align:right;">
-859
-</td>
-<td style="text-align:left;">
-BLQ
-</td>
-<td style="text-align:right;">
-32
-</td>
-<td style="text-align:right;">
-216
-</td>
-<td style="text-align:right;">
-1107
-</td>
-<td style="text-align:left;">
-GasA
-</td>
-<td style="text-align:left;">
-Ex
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:left;">
-SBrkr
-</td>
-<td style="text-align:right;">
-1107
-</td>
-<td style="text-align:right;">
-983
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2090
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:left;">
-Typ
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Attchd
-</td>
-<td style="text-align:right;">
-1973
-</td>
-<td style="text-align:left;">
-RFn
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-484
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:right;">
-235
-</td>
-<td style="text-align:right;">
-204
-</td>
-<td style="text-align:right;">
-228
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Shed
-</td>
-<td style="text-align:right;">
-350
-</td>
-<td style="text-align:right;">
-11
-</td>
-<td style="text-align:right;">
-2009
-</td>
-<td style="text-align:left;">
-WD
-</td>
-<td style="text-align:left;">
-Normal
-</td>
-<td style="text-align:right;">
-200000
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-50
-</td>
-<td style="text-align:left;">
-RM
-</td>
-<td style="text-align:right;">
-51
-</td>
-<td style="text-align:right;">
-6120
-</td>
-<td style="text-align:left;">
-Pave
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Reg
-</td>
-<td style="text-align:left;">
-Lvl
-</td>
-<td style="text-align:left;">
-AllPub
-</td>
-<td style="text-align:left;">
-Inside
-</td>
-<td style="text-align:left;">
-Gtl
-</td>
-<td style="text-align:left;">
-OldTown
-</td>
-<td style="text-align:left;">
-Artery
-</td>
-<td style="text-align:left;">
-Norm
-</td>
-<td style="text-align:left;">
-1Fam
-</td>
-<td style="text-align:left;">
-1.5Fin
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-1931
-</td>
-<td style="text-align:right;">
-1950
-</td>
-<td style="text-align:left;">
-Gable
-</td>
-<td style="text-align:left;">
-CompShg
-</td>
-<td style="text-align:left;">
-BrkFace
-</td>
-<td style="text-align:left;">
-Wd Shng
-</td>
-<td style="text-align:left;">
-None
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-BrkTil
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Unf
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-Unf
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-952
-</td>
-<td style="text-align:right;">
-952
-</td>
-<td style="text-align:left;">
-GasA
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:left;">
-FuseF
-</td>
-<td style="text-align:right;">
-1022
-</td>
-<td style="text-align:right;">
-752
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1774
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-Min1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Detchd
-</td>
-<td style="text-align:right;">
-1931
-</td>
-<td style="text-align:left;">
-Unf
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-468
-</td>
-<td style="text-align:left;">
-Fa
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:right;">
-90
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-205
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-2008
-</td>
-<td style="text-align:left;">
-WD
-</td>
-<td style="text-align:left;">
-Abnorml
-</td>
-<td style="text-align:right;">
-129900
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-190
-</td>
-<td style="text-align:left;">
-RL
-</td>
-<td style="text-align:right;">
-50
-</td>
-<td style="text-align:right;">
-7420
-</td>
-<td style="text-align:left;">
-Pave
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-Reg
-</td>
-<td style="text-align:left;">
-Lvl
-</td>
-<td style="text-align:left;">
-AllPub
-</td>
-<td style="text-align:left;">
-Corner
-</td>
-<td style="text-align:left;">
-Gtl
-</td>
-<td style="text-align:left;">
-BrkSide
-</td>
-<td style="text-align:left;">
-Artery
-</td>
-<td style="text-align:left;">
-Artery
-</td>
-<td style="text-align:left;">
-2fmCon
-</td>
-<td style="text-align:left;">
-1.5Unf
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-1939
-</td>
-<td style="text-align:right;">
-1950
-</td>
-<td style="text-align:left;">
-Gable
-</td>
-<td style="text-align:left;">
-CompShg
-</td>
-<td style="text-align:left;">
-MetalSd
-</td>
-<td style="text-align:left;">
-MetalSd
-</td>
-<td style="text-align:left;">
-None
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-BrkTil
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-GLQ
-</td>
-<td style="text-align:right;">
-851
-</td>
-<td style="text-align:left;">
-Unf
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-140
-</td>
-<td style="text-align:right;">
-991
-</td>
-<td style="text-align:left;">
-GasA
-</td>
-<td style="text-align:left;">
-Ex
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:left;">
-SBrkr
-</td>
-<td style="text-align:right;">
-1077
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1077
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:left;">
-Typ
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Attchd
-</td>
-<td style="text-align:right;">
-1939
-</td>
-<td style="text-align:left;">
-RFn
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-205
-</td>
-<td style="text-align:left;">
-Gd
-</td>
-<td style="text-align:left;">
-TA
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2008
-</td>
-<td style="text-align:left;">
-WD
-</td>
-<td style="text-align:left;">
-Normal
-</td>
-<td style="text-align:right;">
-118000
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw">head</span>(reg_train)
+<span class="co">#&gt;    Id MSSubClass MSZoning LotFrontage LotArea Street Alley LotShape</span>
+<span class="co">#&gt; 1:  1         60       RL          65    8450   Pave  &lt;NA&gt;      Reg</span>
+<span class="co">#&gt; 2:  2         20       RL          80    9600   Pave  &lt;NA&gt;      Reg</span>
+<span class="co">#&gt; 3:  3         60       RL          68   11250   Pave  &lt;NA&gt;      IR1</span>
+<span class="co">#&gt; 4:  4         70       RL          60    9550   Pave  &lt;NA&gt;      IR1</span>
+<span class="co">#&gt; 5:  5         60       RL          84   14260   Pave  &lt;NA&gt;      IR1</span>
+<span class="co">#&gt; 6:  6         50       RL          85   14115   Pave  &lt;NA&gt;      IR1</span>
+<span class="co">#&gt;    LandContour Utilities LotConfig LandSlope Neighborhood Condition1</span>
+<span class="co">#&gt; 1:         Lvl    AllPub    Inside       Gtl      CollgCr       Norm</span>
+<span class="co">#&gt; 2:         Lvl    AllPub       FR2       Gtl      Veenker      Feedr</span>
+<span class="co">#&gt; 3:         Lvl    AllPub    Inside       Gtl      CollgCr       Norm</span>
+<span class="co">#&gt; 4:         Lvl    AllPub    Corner       Gtl      Crawfor       Norm</span>
+<span class="co">#&gt; 5:         Lvl    AllPub       FR2       Gtl      NoRidge       Norm</span>
+<span class="co">#&gt; 6:         Lvl    AllPub    Inside       Gtl      Mitchel       Norm</span>
+<span class="co">#&gt;    Condition2 BldgType HouseStyle OverallQual OverallCond YearBuilt</span>
+<span class="co">#&gt; 1:       Norm     1Fam     2Story           7           5      2003</span>
+<span class="co">#&gt; 2:       Norm     1Fam     1Story           6           8      1976</span>
+<span class="co">#&gt; 3:       Norm     1Fam     2Story           7           5      2001</span>
+<span class="co">#&gt; 4:       Norm     1Fam     2Story           7           5      1915</span>
+<span class="co">#&gt; 5:       Norm     1Fam     2Story           8           5      2000</span>
+<span class="co">#&gt; 6:       Norm     1Fam     1.5Fin           5           5      1993</span>
+<span class="co">#&gt;    YearRemodAdd RoofStyle RoofMatl Exterior1st Exterior2nd MasVnrType</span>
+<span class="co">#&gt; 1:         2003     Gable  CompShg     VinylSd     VinylSd    BrkFace</span>
+<span class="co">#&gt; 2:         1976     Gable  CompShg     MetalSd     MetalSd       None</span>
+<span class="co">#&gt; 3:         2002     Gable  CompShg     VinylSd     VinylSd    BrkFace</span>
+<span class="co">#&gt; 4:         1970     Gable  CompShg     Wd Sdng     Wd Shng       None</span>
+<span class="co">#&gt; 5:         2000     Gable  CompShg     VinylSd     VinylSd    BrkFace</span>
+<span class="co">#&gt; 6:         1995     Gable  CompShg     VinylSd     VinylSd       None</span>
+<span class="co">#&gt;    MasVnrArea ExterQual ExterCond Foundation BsmtQual BsmtCond</span>
+<span class="co">#&gt; 1:        196        Gd        TA      PConc       Gd       TA</span>
+<span class="co">#&gt; 2:          0        TA        TA     CBlock       Gd       TA</span>
+<span class="co">#&gt; 3:        162        Gd        TA      PConc       Gd       TA</span>
+<span class="co">#&gt; 4:          0        TA        TA     BrkTil       TA       Gd</span>
+<span class="co">#&gt; 5:        350        Gd        TA      PConc       Gd       TA</span>
+<span class="co">#&gt; 6:          0        TA        TA       Wood       Gd       TA</span>
+<span class="co">#&gt;    BsmtExposure BsmtFinType1 BsmtFinSF1 BsmtFinType2 BsmtFinSF2 BsmtUnfSF</span>
+<span class="co">#&gt; 1:           No          GLQ        706          Unf          0       150</span>
+<span class="co">#&gt; 2:           Gd          ALQ        978          Unf          0       284</span>
+<span class="co">#&gt; 3:           Mn          GLQ        486          Unf          0       434</span>
+<span class="co">#&gt; 4:           No          ALQ        216          Unf          0       540</span>
+<span class="co">#&gt; 5:           Av          GLQ        655          Unf          0       490</span>
+<span class="co">#&gt; 6:           No          GLQ        732          Unf          0        64</span>
+<span class="co">#&gt;    TotalBsmtSF Heating HeatingQC CentralAir Electrical 1stFlrSF 2ndFlrSF</span>
+<span class="co">#&gt; 1:         856    GasA        Ex          Y      SBrkr      856      854</span>
+<span class="co">#&gt; 2:        1262    GasA        Ex          Y      SBrkr     1262        0</span>
+<span class="co">#&gt; 3:         920    GasA        Ex          Y      SBrkr      920      866</span>
+<span class="co">#&gt; 4:         756    GasA        Gd          Y      SBrkr      961      756</span>
+<span class="co">#&gt; 5:        1145    GasA        Ex          Y      SBrkr     1145     1053</span>
+<span class="co">#&gt; 6:         796    GasA        Ex          Y      SBrkr      796      566</span>
+<span class="co">#&gt;    LowQualFinSF GrLivArea BsmtFullBath BsmtHalfBath FullBath HalfBath</span>
+<span class="co">#&gt; 1:            0      1710            1            0        2        1</span>
+<span class="co">#&gt; 2:            0      1262            0            1        2        0</span>
+<span class="co">#&gt; 3:            0      1786            1            0        2        1</span>
+<span class="co">#&gt; 4:            0      1717            1            0        1        0</span>
+<span class="co">#&gt; 5:            0      2198            1            0        2        1</span>
+<span class="co">#&gt; 6:            0      1362            1            0        1        1</span>
+<span class="co">#&gt;    BedroomAbvGr KitchenAbvGr KitchenQual TotRmsAbvGrd Functional</span>
+<span class="co">#&gt; 1:            3            1          Gd            8        Typ</span>
+<span class="co">#&gt; 2:            3            1          TA            6        Typ</span>
+<span class="co">#&gt; 3:            3            1          Gd            6        Typ</span>
+<span class="co">#&gt; 4:            3            1          Gd            7        Typ</span>
+<span class="co">#&gt; 5:            4            1          Gd            9        Typ</span>
+<span class="co">#&gt; 6:            1            1          TA            5        Typ</span>
+<span class="co">#&gt;    Fireplaces FireplaceQu GarageType GarageYrBlt GarageFinish GarageCars</span>
+<span class="co">#&gt; 1:          0        &lt;NA&gt;     Attchd        2003          RFn          2</span>
+<span class="co">#&gt; 2:          1          TA     Attchd        1976          RFn          2</span>
+<span class="co">#&gt; 3:          1          TA     Attchd        2001          RFn          2</span>
+<span class="co">#&gt; 4:          1          Gd     Detchd        1998          Unf          3</span>
+<span class="co">#&gt; 5:          1          TA     Attchd        2000          RFn          3</span>
+<span class="co">#&gt; 6:          0        &lt;NA&gt;     Attchd        1993          Unf          2</span>
+<span class="co">#&gt;    GarageArea GarageQual GarageCond PavedDrive WoodDeckSF OpenPorchSF</span>
+<span class="co">#&gt; 1:        548         TA         TA          Y          0          61</span>
+<span class="co">#&gt; 2:        460         TA         TA          Y        298           0</span>
+<span class="co">#&gt; 3:        608         TA         TA          Y          0          42</span>
+<span class="co">#&gt; 4:        642         TA         TA          Y          0          35</span>
+<span class="co">#&gt; 5:        836         TA         TA          Y        192          84</span>
+<span class="co">#&gt; 6:        480         TA         TA          Y         40          30</span>
+<span class="co">#&gt;    EnclosedPorch 3SsnPorch ScreenPorch PoolArea PoolQC Fence MiscFeature</span>
+<span class="co">#&gt; 1:             0         0           0        0   &lt;NA&gt;  &lt;NA&gt;        &lt;NA&gt;</span>
+<span class="co">#&gt; 2:             0         0           0        0   &lt;NA&gt;  &lt;NA&gt;        &lt;NA&gt;</span>
+<span class="co">#&gt; 3:             0         0           0        0   &lt;NA&gt;  &lt;NA&gt;        &lt;NA&gt;</span>
+<span class="co">#&gt; 4:           272         0           0        0   &lt;NA&gt;  &lt;NA&gt;        &lt;NA&gt;</span>
+<span class="co">#&gt; 5:             0         0           0        0   &lt;NA&gt;  &lt;NA&gt;        &lt;NA&gt;</span>
+<span class="co">#&gt; 6:             0       320           0        0   &lt;NA&gt; MnPrv        Shed</span>
+<span class="co">#&gt;    MiscVal MoSold YrSold SaleType SaleCondition SalePrice</span>
+<span class="co">#&gt; 1:       0      2   2008       WD        Normal    208500</span>
+<span class="co">#&gt; 2:       0      5   2007       WD        Normal    181500</span>
+<span class="co">#&gt; 3:       0      9   2008       WD        Normal    223500</span>
+<span class="co">#&gt; 4:       0      2   2006       WD       Abnorml    140000</span>
+<span class="co">#&gt; 5:       0     12   2008       WD        Normal    250000</span>
+<span class="co">#&gt; 6:     700     10   2009       WD        Normal    143000</span>
+
 split &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y =</span> reg_train<span class="op">$</span>SalePrice, <span class="dt">p =</span> <span class="fl">0.7</span>)
 xtrain &lt;-<span class="st"> </span>reg_train[split<span class="op">$</span>Resample1]
 xtest &lt;-<span class="st"> </span>reg_train[<span class="op">!</span>split<span class="op">$</span>Resample1]</code></pre></div>
@@ -2889,7 +275,7 @@ knn<span class="op">$</span><span class="kw">fit</span>(<span class="dt">train =
 probs &lt;-<span class="st"> </span>knn<span class="op">$</span><span class="kw">predict</span>(<span class="dt">type =</span> <span class="st">'prob'</span>)
 labels &lt;-<span class="st"> </span>knn<span class="op">$</span><span class="kw">predict</span>(<span class="dt">type=</span><span class="st">'raw'</span>)
 <span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted=</span>labels)
-<span class="co">#&gt; [1] 5517.411</span></code></pre></div>
+<span class="co">#&gt; [1] 7955.711</span></code></pre></div>
 <p><strong>SVM Regression</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#predicts probabilities - must specify mc_type (&quot;OvA_hinge&quot;, &quot;AvA_hinge&quot;)</span>
 svm &lt;-<span class="st"> </span>SVMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">type=</span><span class="st">&quot;ls&quot;</span>)
@@ -2897,7 +283,7 @@ svm<span class="op">$</span><span class="kw">fit</span>(xtrain, <span class="st"
 <span class="co">#&gt; Removing invalid columns.  The names should not start with anumber: 1stFlrSF,2ndFlrSF,3SsnPorch</span>
 pred &lt;-<span class="st"> </span>svm<span class="op">$</span><span class="kw">predict</span>(xtest)
 <span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> pred)
-<span class="co">#&gt; [1] 34516.13</span></code></pre></div>
+<span class="co">#&gt; [1] 39150.87</span></code></pre></div>
 <p><strong>Simple Regresison</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lf &lt;-<span class="st"> </span>LMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">family=</span><span class="st">&quot;gaussian&quot;</span>)
 lf<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;SalePrice&quot;</span>)
@@ -2908,110 +294,110 @@ lf<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</spa
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Deviance Residuals: </span>
 <span class="co">#&gt;     Min       1Q   Median       3Q      Max  </span>
-<span class="co">#&gt; -348560   -14786     -618    12638   217495  </span>
+<span class="co">#&gt; -351050   -13393     -520    12385   231188  </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Coefficients:</span>
 <span class="co">#&gt;                 Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="co">#&gt; (Intercept)   -2.284e+06  1.547e+06  -1.477 0.140123    </span>
-<span class="co">#&gt; MSSubClass    -8.554e+01  6.572e+01  -1.301 0.193421    </span>
-<span class="co">#&gt; MSZoning       2.818e+02  1.411e+03   0.200 0.841784    </span>
-<span class="co">#&gt; LotFrontage   -2.791e+01  3.368e+01  -0.829 0.407503    </span>
-<span class="co">#&gt; LotArea        2.761e-01  1.509e-01   1.830 0.067623 .  </span>
-<span class="co">#&gt; Street        -5.565e+04  2.055e+04  -2.708 0.006892 ** </span>
-<span class="co">#&gt; LotShape      -1.492e+03  2.002e+03  -0.745 0.456236    </span>
-<span class="co">#&gt; LandContour    2.793e+03  2.143e+03   1.304 0.192665    </span>
-<span class="co">#&gt; Utilities     -6.427e+04  3.343e+04  -1.923 0.054806 .  </span>
-<span class="co">#&gt; LotConfig      1.502e+03  1.063e+03   1.413 0.158130    </span>
-<span class="co">#&gt; LandSlope      5.832e+03  5.571e+03   1.047 0.295470    </span>
-<span class="co">#&gt; Neighborhood  -2.862e+02  2.020e+02  -1.416 0.156957    </span>
-<span class="co">#&gt; Condition1    -2.634e+03  8.796e+02  -2.994 0.002824 ** </span>
-<span class="co">#&gt; Condition2    -2.429e+03  4.164e+03  -0.583 0.559909    </span>
-<span class="co">#&gt; BldgType      -2.294e+03  2.764e+03  -0.830 0.406867    </span>
-<span class="co">#&gt; HouseStyle     2.063e+02  9.941e+02   0.208 0.835639    </span>
-<span class="co">#&gt; OverallQual    1.456e+04  1.378e+03  10.564  &lt; 2e-16 ***</span>
-<span class="co">#&gt; OverallCond    6.761e+03  1.201e+03   5.630 2.38e-08 ***</span>
-<span class="co">#&gt; YearBuilt      5.409e+02  7.887e+01   6.858 1.26e-11 ***</span>
-<span class="co">#&gt; YearRemodAdd   8.737e+01  7.926e+01   1.102 0.270629    </span>
-<span class="co">#&gt; RoofStyle      6.421e+03  1.949e+03   3.294 0.001023 ** </span>
-<span class="co">#&gt; RoofMatl      -3.760e+04  3.973e+03  -9.464  &lt; 2e-16 ***</span>
-<span class="co">#&gt; Exterior1st   -1.720e+03  6.438e+02  -2.672 0.007668 ** </span>
-<span class="co">#&gt; Exterior2nd    1.869e+03  6.179e+02   3.024 0.002562 ** </span>
-<span class="co">#&gt; MasVnrType     4.639e+03  1.612e+03   2.879 0.004082 ** </span>
-<span class="co">#&gt; MasVnrArea     2.500e+01  7.432e+00   3.364 0.000798 ***</span>
-<span class="co">#&gt; ExterQual      1.575e+03  2.342e+03   0.673 0.501381    </span>
-<span class="co">#&gt; ExterCond      1.249e+03  2.355e+03   0.530 0.596122    </span>
-<span class="co">#&gt; Foundation    -2.028e+03  1.744e+03  -1.163 0.245210    </span>
-<span class="co">#&gt; BsmtQual       6.699e+03  1.530e+03   4.379 1.33e-05 ***</span>
-<span class="co">#&gt; BsmtCond      -3.194e+03  1.849e+03  -1.728 0.084363 .  </span>
-<span class="co">#&gt; BsmtExposure   1.133e+03  8.694e+02   1.304 0.192677    </span>
-<span class="co">#&gt; BsmtFinType1  -1.473e+03  7.050e+02  -2.090 0.036911 *  </span>
-<span class="co">#&gt; BsmtFinSF1     1.929e+01  5.932e+00   3.251 0.001190 ** </span>
-<span class="co">#&gt; BsmtFinType2   1.788e+02  1.373e+03   0.130 0.896396    </span>
-<span class="co">#&gt; BsmtFinSF2     1.196e+01  1.145e+01   1.044 0.296809    </span>
-<span class="co">#&gt; BsmtUnfSF      7.807e+00  5.589e+00   1.397 0.162741    </span>
-<span class="co">#&gt; Heating       -7.083e+02  3.262e+03  -0.217 0.828160    </span>
-<span class="co">#&gt; HeatingQC     -1.448e+03  1.390e+03  -1.042 0.297795    </span>
-<span class="co">#&gt; CentralAir     7.169e+03  5.572e+03   1.287 0.198490    </span>
-<span class="co">#&gt; Electrical     2.958e+03  1.978e+03   1.496 0.135019    </span>
-<span class="co">#&gt; `1stFlrSF`     5.727e+01  7.244e+00   7.906 7.36e-15 ***</span>
-<span class="co">#&gt; `2ndFlrSF`     5.095e+01  6.095e+00   8.360 2.22e-16 ***</span>
-<span class="co">#&gt; LowQualFinSF   3.968e+00  2.178e+01   0.182 0.855466    </span>
-<span class="co">#&gt; BsmtFullBath   8.272e+03  2.946e+03   2.808 0.005083 ** </span>
-<span class="co">#&gt; BsmtHalfBath  -2.294e+03  4.444e+03  -0.516 0.605775    </span>
-<span class="co">#&gt; FullBath       8.174e+03  3.218e+03   2.540 0.011231 *  </span>
-<span class="co">#&gt; HalfBath      -6.042e+02  2.993e+03  -0.202 0.840077    </span>
-<span class="co">#&gt; BedroomAbvGr  -7.474e+03  1.921e+03  -3.891 0.000107 ***</span>
-<span class="co">#&gt; KitchenAbvGr  -2.916e+04  5.940e+03  -4.909 1.08e-06 ***</span>
-<span class="co">#&gt; KitchenQual    9.395e+03  1.784e+03   5.267 1.71e-07 ***</span>
-<span class="co">#&gt; TotRmsAbvGrd   4.822e+03  1.383e+03   3.487 0.000511 ***</span>
-<span class="co">#&gt; Functional    -4.269e+03  1.419e+03  -3.007 0.002704 ** </span>
-<span class="co">#&gt; Fireplaces    -4.591e+03  2.727e+03  -1.684 0.092581 .  </span>
-<span class="co">#&gt; FireplaceQu    3.733e+03  1.390e+03   2.686 0.007352 ** </span>
-<span class="co">#&gt; GarageType     1.801e+03  1.308e+03   1.376 0.169025    </span>
-<span class="co">#&gt; GarageYrBlt   -1.002e+00  4.676e+00  -0.214 0.830379    </span>
-<span class="co">#&gt; GarageFinish   1.446e+03  1.470e+03   0.983 0.325648    </span>
-<span class="co">#&gt; GarageCars     1.411e+04  3.395e+03   4.155 3.54e-05 ***</span>
-<span class="co">#&gt; GarageArea    -6.969e+00  1.137e+01  -0.613 0.540048    </span>
-<span class="co">#&gt; GarageQual     2.293e+03  2.931e+03   0.782 0.434192    </span>
-<span class="co">#&gt; GarageCond    -7.950e+02  2.957e+03  -0.269 0.788099    </span>
-<span class="co">#&gt; PavedDrive    -1.471e+03  3.072e+03  -0.479 0.632228    </span>
-<span class="co">#&gt; WoodDeckSF     3.517e+01  8.970e+00   3.921 9.44e-05 ***</span>
-<span class="co">#&gt; OpenPorchSF    1.330e+01  1.682e+01   0.791 0.429295    </span>
-<span class="co">#&gt; EnclosedPorch  1.675e+01  1.782e+01   0.940 0.347490    </span>
-<span class="co">#&gt; `3SsnPorch`    1.839e+01  3.125e+01   0.588 0.556421    </span>
-<span class="co">#&gt; ScreenPorch    8.479e+01  1.971e+01   4.302 1.87e-05 ***</span>
-<span class="co">#&gt; PoolArea       1.273e+01  2.728e+01   0.467 0.640909    </span>
-<span class="co">#&gt; Fence         -1.434e+03  1.355e+03  -1.058 0.290293    </span>
-<span class="co">#&gt; MiscVal       -5.677e-01  1.815e+00  -0.313 0.754468    </span>
-<span class="co">#&gt; MoSold         2.421e+02  3.779e+02   0.640 0.522020    </span>
-<span class="co">#&gt; YrSold         4.812e+02  7.699e+02   0.625 0.532145    </span>
-<span class="co">#&gt; SaleType       2.692e+03  1.213e+03   2.220 0.026647 *  </span>
-<span class="co">#&gt; SaleCondition  6.574e+02  1.317e+03   0.499 0.617920    </span>
+<span class="co">#&gt; (Intercept)   -3.571e+05  1.459e+06  -0.245 0.806689    </span>
+<span class="co">#&gt; MSSubClass    -1.225e+02  5.848e+01  -2.094 0.036525 *  </span>
+<span class="co">#&gt; MSZoning      -6.997e+02  1.388e+03  -0.504 0.614194    </span>
+<span class="co">#&gt; LotFrontage   -3.533e+01  3.029e+01  -1.166 0.243709    </span>
+<span class="co">#&gt; LotArea        4.195e-01  1.668e-01   2.515 0.012056 *  </span>
+<span class="co">#&gt; Street        -3.691e+04  1.501e+04  -2.459 0.014112 *  </span>
+<span class="co">#&gt; LotShape       8.612e+02  1.910e+03   0.451 0.652093    </span>
+<span class="co">#&gt; LandContour    2.841e+03  2.087e+03   1.361 0.173735    </span>
+<span class="co">#&gt; Utilities     -4.209e+04  3.170e+04  -1.328 0.184562    </span>
+<span class="co">#&gt; LotConfig      8.873e+02  9.951e+02   0.892 0.372844    </span>
+<span class="co">#&gt; LandSlope      4.966e+03  4.621e+03   1.075 0.282831    </span>
+<span class="co">#&gt; Neighborhood  -5.274e+02  1.859e+02  -2.836 0.004663 ** </span>
+<span class="co">#&gt; Condition1    -1.622e+03  7.264e+02  -2.233 0.025806 *  </span>
+<span class="co">#&gt; Condition2     6.318e+02  3.276e+03   0.193 0.847129    </span>
+<span class="co">#&gt; BldgType      -1.858e+02  2.465e+03  -0.075 0.939921    </span>
+<span class="co">#&gt; HouseStyle     5.996e+02  1.019e+03   0.588 0.556394    </span>
+<span class="co">#&gt; OverallQual    1.343e+04  1.297e+03  10.358  &lt; 2e-16 ***</span>
+<span class="co">#&gt; OverallCond    6.020e+03  1.144e+03   5.264 1.75e-07 ***</span>
+<span class="co">#&gt; YearBuilt      4.250e+02  7.589e+01   5.600 2.80e-08 ***</span>
+<span class="co">#&gt; YearRemodAdd   7.071e+01  7.514e+01   0.941 0.346926    </span>
+<span class="co">#&gt; RoofStyle      1.013e+04  1.900e+03   5.334 1.20e-07 ***</span>
+<span class="co">#&gt; RoofMatl      -2.592e+04  3.029e+03  -8.556  &lt; 2e-16 ***</span>
+<span class="co">#&gt; Exterior1st   -1.345e+03  5.966e+02  -2.255 0.024342 *  </span>
+<span class="co">#&gt; Exterior2nd    1.954e+03  5.661e+02   3.452 0.000581 ***</span>
+<span class="co">#&gt; MasVnrType     2.468e+03  1.487e+03   1.660 0.097338 .  </span>
+<span class="co">#&gt; MasVnrArea     1.114e+01  6.720e+00   1.657 0.097805 .  </span>
+<span class="co">#&gt; ExterQual     -5.931e+02  2.301e+03  -0.258 0.796675    </span>
+<span class="co">#&gt; ExterCond     -7.290e+02  2.224e+03  -0.328 0.743166    </span>
+<span class="co">#&gt; Foundation    -4.696e+03  1.860e+03  -2.525 0.011720 *  </span>
+<span class="co">#&gt; BsmtQual       4.516e+03  1.360e+03   3.321 0.000931 ***</span>
+<span class="co">#&gt; BsmtCond      -1.300e+03  1.736e+03  -0.749 0.454250    </span>
+<span class="co">#&gt; BsmtExposure   1.575e+03  8.701e+02   1.810 0.070630 .  </span>
+<span class="co">#&gt; BsmtFinType1  -7.787e+02  7.434e+02  -1.048 0.295112    </span>
+<span class="co">#&gt; BsmtFinSF1     8.919e+00  5.293e+00   1.685 0.092332 .  </span>
+<span class="co">#&gt; BsmtFinType2  -1.191e+03  1.009e+03  -1.180 0.238130    </span>
+<span class="co">#&gt; BsmtFinSF2     1.285e+01  1.015e+01   1.266 0.205791    </span>
+<span class="co">#&gt; BsmtUnfSF      4.192e+00  5.054e+00   0.829 0.407067    </span>
+<span class="co">#&gt; Heating       -1.614e+03  3.663e+03  -0.441 0.659529    </span>
+<span class="co">#&gt; HeatingQC     -1.787e+03  1.298e+03  -1.377 0.168929    </span>
+<span class="co">#&gt; CentralAir     3.371e+03  4.932e+03   0.684 0.494407    </span>
+<span class="co">#&gt; Electrical     2.062e+03  2.084e+03   0.989 0.322800    </span>
+<span class="co">#&gt; `1stFlrSF`     5.752e+01  6.736e+00   8.539  &lt; 2e-16 ***</span>
+<span class="co">#&gt; `2ndFlrSF`     4.945e+01  5.640e+00   8.767  &lt; 2e-16 ***</span>
+<span class="co">#&gt; LowQualFinSF  -3.087e+00  1.976e+01  -0.156 0.875908    </span>
+<span class="co">#&gt; BsmtFullBath   1.325e+04  2.731e+03   4.852 1.43e-06 ***</span>
+<span class="co">#&gt; BsmtHalfBath  -1.603e+03  4.276e+03  -0.375 0.707892    </span>
+<span class="co">#&gt; FullBath       6.742e+03  2.975e+03   2.266 0.023648 *  </span>
+<span class="co">#&gt; HalfBath       2.320e+03  2.809e+03   0.826 0.409101    </span>
+<span class="co">#&gt; BedroomAbvGr  -5.218e+03  1.788e+03  -2.918 0.003605 ** </span>
+<span class="co">#&gt; KitchenAbvGr  -2.552e+04  5.774e+03  -4.420 1.10e-05 ***</span>
+<span class="co">#&gt; KitchenQual    8.469e+03  1.746e+03   4.850 1.44e-06 ***</span>
+<span class="co">#&gt; TotRmsAbvGrd   2.146e+03  1.321e+03   1.624 0.104603    </span>
+<span class="co">#&gt; Functional    -3.791e+03  1.268e+03  -2.989 0.002872 ** </span>
+<span class="co">#&gt; Fireplaces    -1.359e+03  2.459e+03  -0.553 0.580623    </span>
+<span class="co">#&gt; FireplaceQu    4.760e+03  1.297e+03   3.670 0.000256 ***</span>
+<span class="co">#&gt; GarageType     7.107e+02  1.226e+03   0.580 0.562353    </span>
+<span class="co">#&gt; GarageYrBlt   -7.794e+00  5.285e+00  -1.475 0.140601    </span>
+<span class="co">#&gt; GarageFinish   2.052e+03  1.380e+03   1.487 0.137271    </span>
+<span class="co">#&gt; GarageCars     1.682e+04  3.248e+03   5.178 2.73e-07 ***</span>
+<span class="co">#&gt; GarageArea    -7.396e+00  1.081e+01  -0.684 0.493923    </span>
+<span class="co">#&gt; GarageQual     5.489e+03  3.239e+03   1.694 0.090500 .  </span>
+<span class="co">#&gt; GarageCond    -3.802e+03  3.339e+03  -1.139 0.255111    </span>
+<span class="co">#&gt; PavedDrive    -1.461e+03  3.024e+03  -0.483 0.629067    </span>
+<span class="co">#&gt; WoodDeckSF     2.576e+01  8.695e+00   2.963 0.003122 ** </span>
+<span class="co">#&gt; OpenPorchSF    3.569e+01  1.689e+01   2.113 0.034826 *  </span>
+<span class="co">#&gt; EnclosedPorch  2.951e+01  1.828e+01   1.615 0.106748    </span>
+<span class="co">#&gt; `3SsnPorch`    6.283e+00  3.208e+01   0.196 0.844766    </span>
+<span class="co">#&gt; ScreenPorch    3.986e+01  1.824e+01   2.186 0.029062 *  </span>
+<span class="co">#&gt; PoolArea       1.795e+01  2.450e+01   0.732 0.464072    </span>
+<span class="co">#&gt; Fence         -1.996e+03  1.139e+03  -1.752 0.080135 .  </span>
+<span class="co">#&gt; MiscVal       -3.626e+00  4.957e+00  -0.732 0.464592    </span>
+<span class="co">#&gt; MoSold         5.242e+02  3.587e+02   1.461 0.144317    </span>
+<span class="co">#&gt; YrSold        -3.306e+02  7.279e+02  -0.454 0.649811    </span>
+<span class="co">#&gt; SaleType       2.217e+03  1.140e+03   1.944 0.052215 .  </span>
+<span class="co">#&gt; SaleCondition  3.923e+02  1.278e+03   0.307 0.759016    </span>
 <span class="co">#&gt; ---</span>
 <span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; (Dispersion parameter for gaussian family taken to be 961763883)</span>
+<span class="co">#&gt; (Dispersion parameter for gaussian family taken to be 857045073)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;     Null deviance: 6.7644e+12  on 1023  degrees of freedom</span>
-<span class="co">#&gt; Residual deviance: 9.1271e+11  on  949  degrees of freedom</span>
-<span class="co">#&gt; AIC: 24161</span>
+<span class="co">#&gt;     Null deviance: 5.8961e+12  on 1023  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 8.1334e+11  on  949  degrees of freedom</span>
+<span class="co">#&gt; AIC: 24043</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Number of Fisher Scoring iterations: 2</span>
 predictions &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)
 <span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> predictions)
-<span class="co">#&gt; [1] 42085.83</span></code></pre></div>
+<span class="co">#&gt; [1] 42543.57</span></code></pre></div>
 <p><strong>Lasso Regression</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lf &lt;-<span class="st"> </span>LMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">family =</span> <span class="st">&quot;gaussian&quot;</span>, <span class="dt">alpha=</span><span class="dv">1</span>, <span class="dt">lambda =</span> <span class="dv">1000</span>)
 lf<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;SalePrice&quot;</span>)
 predictions &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)
 <span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> predictions)
-<span class="co">#&gt; [1] 39251.53</span></code></pre></div>
+<span class="co">#&gt; [1] 44811.36</span></code></pre></div>
 <p><strong>Ridge Regression</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lf &lt;-<span class="st"> </span>LMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">family =</span> <span class="st">&quot;gaussian&quot;</span>, <span class="dt">alpha=</span><span class="dv">0</span>)
 lf<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;SalePrice&quot;</span>)
 predictions &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)
 <span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> predictions)
-<span class="co">#&gt; [1] 39048.85</span></code></pre></div>
+<span class="co">#&gt; [1] 45068.47</span></code></pre></div>
 <p><strong>Logistic Regression with CV</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lf &lt;-<span class="st"> </span>LMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">family =</span> <span class="st">&quot;gaussian&quot;</span>)
 lf<span class="op">$</span><span class="kw">cv_model</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">'SalePrice'</span>, <span class="dt">nfolds =</span> <span class="dv">5</span>, <span class="dt">parallel =</span> <span class="ot">FALSE</span>)
@@ -3019,89 +405,89 @@ lf<span class="op">$</span><span class="kw">cv_model</span>(<span class="dt">X =
 predictions &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">cv_predict</span>(<span class="dt">df =</span> xtest)
 coefs &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">get_importance</span>()
 <span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> predictions)
-<span class="co">#&gt; [1] 39868.51</span></code></pre></div>
+<span class="co">#&gt; [1] 52081.12</span></code></pre></div>
 <p><strong>Random Forest</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rf &lt;-<span class="st"> </span>RFTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">n_estimators =</span> <span class="dv">500</span>,<span class="dt">classification =</span> <span class="dv">0</span>)
 rf<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;SalePrice&quot;</span>)
 pred &lt;-<span class="st"> </span>rf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)
 rf<span class="op">$</span><span class="kw">get_importance</span>()
 <span class="co">#&gt;               tmp.order.tmp..decreasing...TRUE..</span>
-<span class="co">#&gt; OverallQual                         853779674918</span>
-<span class="co">#&gt; GarageCars                          540979092620</span>
-<span class="co">#&gt; 1stFlrSF                            524075273991</span>
-<span class="co">#&gt; GarageArea                          470339867542</span>
-<span class="co">#&gt; YearBuilt                           389244470841</span>
-<span class="co">#&gt; FullBath                            316880539159</span>
-<span class="co">#&gt; BsmtFinSF1                          302814894689</span>
-<span class="co">#&gt; GarageYrBlt                         299711687944</span>
-<span class="co">#&gt; TotRmsAbvGrd                        222563877576</span>
-<span class="co">#&gt; 2ndFlrSF                            195898795460</span>
-<span class="co">#&gt; ExterQual                           191977400578</span>
-<span class="co">#&gt; LotArea                             187452249182</span>
-<span class="co">#&gt; YearRemodAdd                        174720881654</span>
-<span class="co">#&gt; KitchenQual                         153588077672</span>
-<span class="co">#&gt; Fireplaces                          139497407084</span>
-<span class="co">#&gt; FireplaceQu                         135849726989</span>
-<span class="co">#&gt; BsmtQual                            130356448141</span>
-<span class="co">#&gt; MasVnrArea                          116484015593</span>
-<span class="co">#&gt; Foundation                          111896573727</span>
-<span class="co">#&gt; LotFrontage                         102110064822</span>
-<span class="co">#&gt; OpenPorchSF                          95971655823</span>
-<span class="co">#&gt; BsmtFinType1                         91272652787</span>
-<span class="co">#&gt; BsmtUnfSF                            72496983186</span>
-<span class="co">#&gt; WoodDeckSF                           60744463856</span>
-<span class="co">#&gt; BedroomAbvGr                         47606931429</span>
-<span class="co">#&gt; HeatingQC                            46648901825</span>
-<span class="co">#&gt; GarageType                           46294317752</span>
-<span class="co">#&gt; RoofStyle                            46232079711</span>
-<span class="co">#&gt; Neighborhood                         45190484978</span>
-<span class="co">#&gt; Exterior2nd                          37110890894</span>
-<span class="co">#&gt; HalfBath                             36835880001</span>
-<span class="co">#&gt; MoSold                               36165618613</span>
-<span class="co">#&gt; MSSubClass                           35471695037</span>
-<span class="co">#&gt; OverallCond                          34034719437</span>
-<span class="co">#&gt; HouseStyle                           32011515205</span>
-<span class="co">#&gt; GarageFinish                         28439661504</span>
-<span class="co">#&gt; Exterior1st                          27414958735</span>
-<span class="co">#&gt; BsmtFullBath                         23095348746</span>
-<span class="co">#&gt; YrSold                               23032533124</span>
-<span class="co">#&gt; SaleCondition                        21796081615</span>
-<span class="co">#&gt; LotShape                             20844040940</span>
-<span class="co">#&gt; BsmtExposure                         20493537059</span>
-<span class="co">#&gt; PoolArea                             18153017479</span>
-<span class="co">#&gt; MasVnrType                           16526542389</span>
-<span class="co">#&gt; LotConfig                            16440419662</span>
-<span class="co">#&gt; MSZoning                             15354466600</span>
-<span class="co">#&gt; ScreenPorch                          14894425924</span>
-<span class="co">#&gt; CentralAir                           14083855484</span>
-<span class="co">#&gt; SaleType                             13252524029</span>
-<span class="co">#&gt; LandContour                          12787679270</span>
-<span class="co">#&gt; BldgType                             11920439520</span>
-<span class="co">#&gt; EnclosedPorch                        11833958367</span>
-<span class="co">#&gt; GarageCond                           11496596053</span>
-<span class="co">#&gt; BsmtCond                             10602907496</span>
-<span class="co">#&gt; Condition1                            9880847832</span>
-<span class="co">#&gt; KitchenAbvGr                          9506013503</span>
-<span class="co">#&gt; GarageQual                            9468060341</span>
-<span class="co">#&gt; Fence                                 9028409858</span>
-<span class="co">#&gt; LandSlope                             8876637237</span>
-<span class="co">#&gt; ExterCond                             8784784300</span>
-<span class="co">#&gt; BsmtFinType2                          6324964125</span>
-<span class="co">#&gt; PavedDrive                            5700637874</span>
-<span class="co">#&gt; BsmtFinSF2                            5460122633</span>
-<span class="co">#&gt; Functional                            4918683792</span>
-<span class="co">#&gt; RoofMatl                              2946224767</span>
-<span class="co">#&gt; Electrical                            2909961298</span>
-<span class="co">#&gt; MiscVal                               2600616431</span>
-<span class="co">#&gt; 3SsnPorch                             1714230264</span>
-<span class="co">#&gt; BsmtHalfBath                          1462471611</span>
-<span class="co">#&gt; LowQualFinSF                          1332849288</span>
-<span class="co">#&gt; Heating                               1219512331</span>
-<span class="co">#&gt; Street                                 883151232</span>
-<span class="co">#&gt; Condition2                             525051591</span>
-<span class="co">#&gt; Utilities                               21047446</span>
+<span class="co">#&gt; OverallQual                         777029590539</span>
+<span class="co">#&gt; GarageCars                          486924551594</span>
+<span class="co">#&gt; GarageArea                          437459061046</span>
+<span class="co">#&gt; 1stFlrSF                            398940884465</span>
+<span class="co">#&gt; YearBuilt                           353217593164</span>
+<span class="co">#&gt; GarageYrBlt                         287282305565</span>
+<span class="co">#&gt; FullBath                            242838168546</span>
+<span class="co">#&gt; BsmtFinSF1                          197903119378</span>
+<span class="co">#&gt; ExterQual                           188930354367</span>
+<span class="co">#&gt; LotArea                             169167289090</span>
+<span class="co">#&gt; TotRmsAbvGrd                        166392646455</span>
+<span class="co">#&gt; YearRemodAdd                        162960595639</span>
+<span class="co">#&gt; 2ndFlrSF                            155896350979</span>
+<span class="co">#&gt; FireplaceQu                         147383561214</span>
+<span class="co">#&gt; Fireplaces                          145202320673</span>
+<span class="co">#&gt; KitchenQual                         115559879535</span>
+<span class="co">#&gt; MasVnrArea                          101114402440</span>
+<span class="co">#&gt; Foundation                           99595523763</span>
+<span class="co">#&gt; LotFrontage                          84714106948</span>
+<span class="co">#&gt; BsmtQual                             79228168082</span>
+<span class="co">#&gt; BsmtFinType1                         77848264383</span>
+<span class="co">#&gt; OpenPorchSF                          76173477125</span>
+<span class="co">#&gt; BsmtUnfSF                            68860075715</span>
+<span class="co">#&gt; WoodDeckSF                           65289339515</span>
+<span class="co">#&gt; Neighborhood                         59822232929</span>
+<span class="co">#&gt; Exterior2nd                          55097837654</span>
+<span class="co">#&gt; HeatingQC                            47003957553</span>
+<span class="co">#&gt; BedroomAbvGr                         42464358029</span>
+<span class="co">#&gt; GarageType                           41329502292</span>
+<span class="co">#&gt; MSSubClass                           37310483254</span>
+<span class="co">#&gt; MoSold                               31551115648</span>
+<span class="co">#&gt; OverallCond                          31098731619</span>
+<span class="co">#&gt; Exterior1st                          30844200956</span>
+<span class="co">#&gt; RoofStyle                            29970236311</span>
+<span class="co">#&gt; HouseStyle                           27073576461</span>
+<span class="co">#&gt; HalfBath                             26493076533</span>
+<span class="co">#&gt; BsmtFullBath                         26482006341</span>
+<span class="co">#&gt; PoolArea                             24130791765</span>
+<span class="co">#&gt; GarageFinish                         23069021802</span>
+<span class="co">#&gt; Fence                                22608569549</span>
+<span class="co">#&gt; SaleCondition                        18240876259</span>
+<span class="co">#&gt; MSZoning                             17807035283</span>
+<span class="co">#&gt; BsmtExposure                         17705393977</span>
+<span class="co">#&gt; YrSold                               17582196103</span>
+<span class="co">#&gt; LotShape                             16550764236</span>
+<span class="co">#&gt; MasVnrType                           13828215184</span>
+<span class="co">#&gt; SaleType                             13786715152</span>
+<span class="co">#&gt; LotConfig                            13237342187</span>
+<span class="co">#&gt; BldgType                             11577780865</span>
+<span class="co">#&gt; LandContour                           9669210656</span>
+<span class="co">#&gt; GarageCond                            9307415911</span>
+<span class="co">#&gt; EnclosedPorch                         8611668023</span>
+<span class="co">#&gt; CentralAir                            8434865017</span>
+<span class="co">#&gt; GarageQual                            8018729456</span>
+<span class="co">#&gt; KitchenAbvGr                          7992065587</span>
+<span class="co">#&gt; RoofMatl                              7827604887</span>
+<span class="co">#&gt; ScreenPorch                           7430499029</span>
+<span class="co">#&gt; BsmtCond                              7069996004</span>
+<span class="co">#&gt; ExterCond                             6973108572</span>
+<span class="co">#&gt; Condition1                            6772402174</span>
+<span class="co">#&gt; BsmtFinSF2                            5980274444</span>
+<span class="co">#&gt; PavedDrive                            5451808841</span>
+<span class="co">#&gt; LandSlope                             5375662363</span>
+<span class="co">#&gt; Functional                            4847109814</span>
+<span class="co">#&gt; BsmtFinType2                          4668972871</span>
+<span class="co">#&gt; Electrical                            3598993357</span>
+<span class="co">#&gt; BsmtHalfBath                          2507052661</span>
+<span class="co">#&gt; MiscVal                               2140035430</span>
+<span class="co">#&gt; 3SsnPorch                             1013149382</span>
+<span class="co">#&gt; Condition2                             939211208</span>
+<span class="co">#&gt; Street                                 869266473</span>
+<span class="co">#&gt; Heating                                757126794</span>
+<span class="co">#&gt; LowQualFinSF                           742371337</span>
+<span class="co">#&gt; Utilities                               21079527</span>
 <span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> pred)
-<span class="co">#&gt; [1] 32191.64</span></code></pre></div>
+<span class="co">#&gt; [1] 38137.25</span></code></pre></div>
 <p><strong>Xgboost</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xgb &lt;-<span class="st"> </span>XGBTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">objective =</span> <span class="st">&quot;reg:linear&quot;</span>
                       , <span class="dt">n_estimators =</span> <span class="dv">500</span>
@@ -3112,20 +498,20 @@ rf<span class="op">$</span><span class="kw">get_importance</span>()
 xgb<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;SalePrice&quot;</span>, <span class="dt">valid =</span> xtest)
 <span class="co">#&gt; converting the data into xgboost format..</span>
 <span class="co">#&gt; starting with training...</span>
-<span class="co">#&gt; [1]  train-rmse:180448.046875    val-rmse:175184.421875 </span>
-<span class="co">#&gt; [51] train-rmse:8857.614258  val-rmse:32693.087891 </span>
-<span class="co">#&gt; [101]    train-rmse:4940.895020  val-rmse:32328.214844 </span>
-<span class="co">#&gt; [151]    train-rmse:3089.641357  val-rmse:32272.939453 </span>
-<span class="co">#&gt; [201]    train-rmse:1999.938965  val-rmse:32301.414062 </span>
-<span class="co">#&gt; [251]    train-rmse:1348.789185  val-rmse:32299.994141 </span>
-<span class="co">#&gt; [301]    train-rmse:918.838562   val-rmse:32285.113281 </span>
-<span class="co">#&gt; [351]    train-rmse:624.947327   val-rmse:32284.828125 </span>
-<span class="co">#&gt; [401]    train-rmse:413.633789   val-rmse:32282.865234 </span>
-<span class="co">#&gt; [451]    train-rmse:297.058624   val-rmse:32280.492188 </span>
-<span class="co">#&gt; [500]    train-rmse:208.659836   val-rmse:32278.873047</span>
+<span class="co">#&gt; [1]  train-rmse:176829.937500    val-rmse:184763.828125 </span>
+<span class="co">#&gt; [51] train-rmse:8563.614258  val-rmse:37722.960938 </span>
+<span class="co">#&gt; [101]    train-rmse:5134.214844  val-rmse:36804.046875 </span>
+<span class="co">#&gt; [151]    train-rmse:3201.090332  val-rmse:36658.128906 </span>
+<span class="co">#&gt; [201]    train-rmse:2054.285645  val-rmse:36623.574219 </span>
+<span class="co">#&gt; [251]    train-rmse:1384.464966  val-rmse:36616.812500 </span>
+<span class="co">#&gt; [301]    train-rmse:963.443542   val-rmse:36598.050781 </span>
+<span class="co">#&gt; [351]    train-rmse:640.461548   val-rmse:36606.914062 </span>
+<span class="co">#&gt; [401]    train-rmse:444.808289   val-rmse:36604.488281 </span>
+<span class="co">#&gt; [451]    train-rmse:304.764740   val-rmse:36612.445312 </span>
+<span class="co">#&gt; [500]    train-rmse:214.617828   val-rmse:36608.250000</span>
 pred &lt;-<span class="st"> </span>xgb<span class="op">$</span><span class="kw">predict</span>(xtest)
 <span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> pred)
-<span class="co">#&gt; [1] 32278.87</span></code></pre></div>
+<span class="co">#&gt; [1] 36608.25</span></code></pre></div>
 <p><strong>Grid Search</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xgb &lt;-<span class="st"> </span>XGBTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">objective=</span><span class="st">&quot;reg:linear&quot;</span>)
 
@@ -3138,52 +524,52 @@ gst<span class="op">$</span><span class="kw">fit</span>(xtrain, <span class="st"
 <span class="co">#&gt; [1] &quot;In total, 4 models will be trained&quot;</span>
 <span class="co">#&gt; converting the data into xgboost format..</span>
 <span class="co">#&gt; starting with training...</span>
-<span class="co">#&gt; [1]  train-rmse:142583.875000 </span>
-<span class="co">#&gt; [10] train-rmse:14989.334961</span>
+<span class="co">#&gt; [1]  train-rmse:139353.812500 </span>
+<span class="co">#&gt; [10] train-rmse:14108.108398</span>
 <span class="co">#&gt; converting the data into xgboost format..</span>
 <span class="co">#&gt; starting with training...</span>
-<span class="co">#&gt; [1]  train-rmse:144377.453125 </span>
-<span class="co">#&gt; [10] train-rmse:15865.090820</span>
+<span class="co">#&gt; [1]  train-rmse:139829.421875 </span>
+<span class="co">#&gt; [10] train-rmse:16228.581055</span>
 <span class="co">#&gt; converting the data into xgboost format..</span>
 <span class="co">#&gt; starting with training...</span>
-<span class="co">#&gt; [1]  train-rmse:143024.562500 </span>
-<span class="co">#&gt; [10] train-rmse:16595.208984</span>
+<span class="co">#&gt; [1]  train-rmse:141289.140625 </span>
+<span class="co">#&gt; [10] train-rmse:15962.292969</span>
 <span class="co">#&gt; converting the data into xgboost format..</span>
 <span class="co">#&gt; starting with training...</span>
-<span class="co">#&gt; [1]  train-rmse:142583.875000 </span>
-<span class="co">#&gt; [50] train-rmse:3297.738525</span>
+<span class="co">#&gt; [1]  train-rmse:139353.812500 </span>
+<span class="co">#&gt; [50] train-rmse:3111.119385</span>
 <span class="co">#&gt; converting the data into xgboost format..</span>
 <span class="co">#&gt; starting with training...</span>
-<span class="co">#&gt; [1]  train-rmse:144377.453125 </span>
-<span class="co">#&gt; [50] train-rmse:4253.146973</span>
+<span class="co">#&gt; [1]  train-rmse:139829.421875 </span>
+<span class="co">#&gt; [50] train-rmse:4170.987305</span>
 <span class="co">#&gt; converting the data into xgboost format..</span>
 <span class="co">#&gt; starting with training...</span>
-<span class="co">#&gt; [1]  train-rmse:143024.562500 </span>
-<span class="co">#&gt; [50] train-rmse:4584.068848</span>
+<span class="co">#&gt; [1]  train-rmse:141289.140625 </span>
+<span class="co">#&gt; [50] train-rmse:3926.346924</span>
 <span class="co">#&gt; converting the data into xgboost format..</span>
 <span class="co">#&gt; starting with training...</span>
-<span class="co">#&gt; [1]  train-rmse:143632.109375 </span>
-<span class="co">#&gt; [10] train-rmse:30646.046875</span>
+<span class="co">#&gt; [1]  train-rmse:139886.109375 </span>
+<span class="co">#&gt; [10] train-rmse:27032.160156</span>
 <span class="co">#&gt; converting the data into xgboost format..</span>
 <span class="co">#&gt; starting with training...</span>
-<span class="co">#&gt; [1]  train-rmse:145269.359375 </span>
-<span class="co">#&gt; [10] train-rmse:30542.128906</span>
+<span class="co">#&gt; [1]  train-rmse:140684.515625 </span>
+<span class="co">#&gt; [10] train-rmse:29519.238281</span>
 <span class="co">#&gt; converting the data into xgboost format..</span>
 <span class="co">#&gt; starting with training...</span>
-<span class="co">#&gt; [1]  train-rmse:143839.015625 </span>
-<span class="co">#&gt; [10] train-rmse:27930.759766</span>
+<span class="co">#&gt; [1]  train-rmse:142074.062500 </span>
+<span class="co">#&gt; [10] train-rmse:30981.111328</span>
 <span class="co">#&gt; converting the data into xgboost format..</span>
 <span class="co">#&gt; starting with training...</span>
-<span class="co">#&gt; [1]  train-rmse:143632.109375 </span>
-<span class="co">#&gt; [50] train-rmse:17434.611328</span>
+<span class="co">#&gt; [1]  train-rmse:139886.109375 </span>
+<span class="co">#&gt; [50] train-rmse:16118.603516</span>
 <span class="co">#&gt; converting the data into xgboost format..</span>
 <span class="co">#&gt; starting with training...</span>
-<span class="co">#&gt; [1]  train-rmse:145269.359375 </span>
-<span class="co">#&gt; [50] train-rmse:16815.578125</span>
+<span class="co">#&gt; [1]  train-rmse:140684.515625 </span>
+<span class="co">#&gt; [50] train-rmse:17320.564453</span>
 <span class="co">#&gt; converting the data into xgboost format..</span>
 <span class="co">#&gt; starting with training...</span>
-<span class="co">#&gt; [1]  train-rmse:143839.015625 </span>
-<span class="co">#&gt; [50] train-rmse:15829.471680</span>
+<span class="co">#&gt; [1]  train-rmse:142074.062500 </span>
+<span class="co">#&gt; [50] train-rmse:16859.873047</span>
 gst<span class="op">$</span><span class="kw">best_iteration</span>()
 <span class="co">#&gt; $n_estimators</span>
 <span class="co">#&gt; [1] 10</span>
@@ -3220,10 +606,10 @@ rst<span class="op">$</span><span class="kw">best_iteration</span>()
 <span class="co">#&gt; [1] 2</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $accuracy_avg</span>
-<span class="co">#&gt; [1] 0.0127107</span>
+<span class="co">#&gt; [1] 0.01756106</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $accuracy_sd</span>
-<span class="co">#&gt; [1] 0.006822147</span>
+<span class="co">#&gt; [1] 0.01272758</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $auc_avg</span>
 <span class="co">#&gt; [1] NaN</span>
@@ -3239,428 +625,29 @@ rst<span class="op">$</span><span class="kw">best_iteration</span>()
 <span class="kw">load</span>(<span class="st">'../data/cla_train.rda'</span>)
 <span class="co"># if the above doesn't work, you can try: load(&quot;cla_train.rda&quot;)</span>
 
-<span class="kw">kable</span>(<span class="kw">head</span>(cla_train, <span class="dv">10</span>)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">scroll_box</span>(<span class="dt">width =</span> <span class="st">&quot;100%&quot;</span>, <span class="dt">height =</span> <span class="st">&quot;300px&quot;</span>)</code></pre></div>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
-<table>
-<thead>
-<tr>
-<th style="text-align:right;">
-PassengerId
-</th>
-<th style="text-align:right;">
-Survived
-</th>
-<th style="text-align:right;">
-Pclass
-</th>
-<th style="text-align:left;">
-Name
-</th>
-<th style="text-align:left;">
-Sex
-</th>
-<th style="text-align:right;">
-Age
-</th>
-<th style="text-align:right;">
-SibSp
-</th>
-<th style="text-align:right;">
-Parch
-</th>
-<th style="text-align:left;">
-Ticket
-</th>
-<th style="text-align:right;">
-Fare
-</th>
-<th style="text-align:left;">
-Cabin
-</th>
-<th style="text-align:left;">
-Embarked
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Braund, Mr. Owen Harris
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:right;">
-22
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-A/5 21171
-</td>
-<td style="text-align:right;">
-7.2500
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-S
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Cumings, Mrs. John Bradley (Florence Briggs Thayer)
-</td>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:right;">
-38
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-PC 17599
-</td>
-<td style="text-align:right;">
-71.2833
-</td>
-<td style="text-align:left;">
-C85
-</td>
-<td style="text-align:left;">
-C
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Heikkinen, Miss. Laina
-</td>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:right;">
-26
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-STON/O2. 3101282
-</td>
-<td style="text-align:right;">
-7.9250
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-S
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Futrelle, Mrs. Jacques Heath (Lily May Peel)
-</td>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:right;">
-35
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-113803
-</td>
-<td style="text-align:right;">
-53.1000
-</td>
-<td style="text-align:left;">
-C123
-</td>
-<td style="text-align:left;">
-S
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Allen, Mr. William Henry
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:right;">
-35
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-373450
-</td>
-<td style="text-align:right;">
-8.0500
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-S
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Moran, Mr. James
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-330877
-</td>
-<td style="text-align:right;">
-8.4583
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Q
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-McCarthy, Mr. Timothy J
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:right;">
-54
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-17463
-</td>
-<td style="text-align:right;">
-51.8625
-</td>
-<td style="text-align:left;">
-E46
-</td>
-<td style="text-align:left;">
-S
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Palsson, Master. Gosta Leonard
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-349909
-</td>
-<td style="text-align:right;">
-21.0750
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-S
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg)
-</td>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:right;">
-27
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-347742
-</td>
-<td style="text-align:right;">
-11.1333
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-S
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Nasser, Mrs. Nicholas (Adele Achem)
-</td>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:right;">
-14
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-237736
-</td>
-<td style="text-align:right;">
-30.0708
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-C
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw">head</span>(cla_train)
+<span class="co">#&gt;    PassengerId Survived Pclass</span>
+<span class="co">#&gt; 1:           1        0      3</span>
+<span class="co">#&gt; 2:           2        1      1</span>
+<span class="co">#&gt; 3:           3        1      3</span>
+<span class="co">#&gt; 4:           4        1      1</span>
+<span class="co">#&gt; 5:           5        0      3</span>
+<span class="co">#&gt; 6:           6        0      3</span>
+<span class="co">#&gt;                                                   Name    Sex Age SibSp</span>
+<span class="co">#&gt; 1:                             Braund, Mr. Owen Harris   male  22     1</span>
+<span class="co">#&gt; 2: Cumings, Mrs. John Bradley (Florence Briggs Thayer) female  38     1</span>
+<span class="co">#&gt; 3:                              Heikkinen, Miss. Laina female  26     0</span>
+<span class="co">#&gt; 4:        Futrelle, Mrs. Jacques Heath (Lily May Peel) female  35     1</span>
+<span class="co">#&gt; 5:                            Allen, Mr. William Henry   male  35     0</span>
+<span class="co">#&gt; 6:                                    Moran, Mr. James   male  NA     0</span>
+<span class="co">#&gt;    Parch           Ticket    Fare Cabin Embarked</span>
+<span class="co">#&gt; 1:     0        A/5 21171  7.2500              S</span>
+<span class="co">#&gt; 2:     0         PC 17599 71.2833   C85        C</span>
+<span class="co">#&gt; 3:     0 STON/O2. 3101282  7.9250              S</span>
+<span class="co">#&gt; 4:     0           113803 53.1000  C123        S</span>
+<span class="co">#&gt; 5:     0           373450  8.0500              S</span>
+<span class="co">#&gt; 6:     0           330877  8.4583              Q</span>
+
 <span class="co"># split the data</span>
 split &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y =</span> cla_train<span class="op">$</span>Survived,<span class="dt">p =</span> <span class="fl">0.7</span>)
 xtrain &lt;-<span class="st"> </span>cla_train[split<span class="op">$</span>Resample1]

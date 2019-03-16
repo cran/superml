@@ -17,11 +17,10 @@ load("../data/reg_train.rda")
 library(data.table)
 library(caret)
 library(superml)
-library(kableExtra)
+
 library(Metrics)
 
-kable(head(reg_train, 10)) %>%
-  scroll_box(width = "100%", height = "300px")
+head(reg_train)
 
 split <- createDataPartition(y = reg_train$SalePrice, p = 0.7)
 xtrain <- reg_train[split$Resample1]
@@ -141,8 +140,7 @@ rst$best_iteration()
 load('../data/cla_train.rda')
 # if the above doesn't work, you can try: load("cla_train.rda")
 
-kable(head(cla_train, 10)) %>%
-  scroll_box(width = "100%", height = "300px")
+head(cla_train)
 
 # split the data
 split <- createDataPartition(y = cla_train$Survived,p = 0.7)
