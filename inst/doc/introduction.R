@@ -64,8 +64,7 @@ labels <- knn$predict(type='raw')
 rmse(actual = xtest$SalePrice, predicted=labels)
 
 ## ------------------------------------------------------------------------
-#predicts probabilities - must specify mc_type ("OvA_hinge", "AvA_hinge")
-svm <- SVMTrainer$new(type="ls")
+svm <- SVMTrainer$new()
 svm$fit(xtrain, 'SalePrice')
 pred <- svm$predict(xtest)
 rmse(actual = xtest$SalePrice, predicted = pred)
@@ -179,14 +178,8 @@ pred <- nb$predict(xtest)
 auc(actual = xtest$Survived, predicted=pred)
 
 ## ------------------------------------------------------------------------
-#predicts probabilities - must specify mc_type ("OvA_hinge", "AvA_hinge")
-svm <- SVMTrainer$new(predict.prob = T, type="bc", mc_type="OvA_hinge")
-svm$fit(xtrain, 'Survived')
-pred <- svm$predict(xtest)
-auc(actual = xtest$Survived, predicted=pred[,2])
-
 #predicts labels
-svm <- SVMTrainer$new(predict.prob = F, type="bc")
+svm <- SVMTrainer$new()
 svm$fit(xtrain, 'Survived')
 pred <- svm$predict(xtest)
 auc(actual = xtest$Survived, predicted=pred)
