@@ -61,13 +61,13 @@ cv_count_matrix <- cv$transform(new_sents)
 
 \item{\code{split}}{splitting criteria for strings, default: " "}
 
-\item{\code{regex}}{regex expression to use for text cleaning.}
+\item{\code{lowercase}}{convert all characters to lowercase before tokenizing}
 
-\item{\code{model}}{internal attribute which stores the count model}
+\item{\code{regex}}{regex expression to use for text cleaning.}
 
 \item{\code{remove_stopwords}}{a list of stopwords to use, by default it uses its inbuilt list of standard stopwords}
 
-\item{\code{parallel}}{speeds up ngrams computation using n-1 cores, defaults: TRUE}
+\item{\code{model}}{internal attribute which stores the count model}
 }
 \if{html}{\out{</div>}}
 }
@@ -93,7 +93,7 @@ cv_count_matrix <- cv$transform(new_sents)
   regex,
   remove_stopwords,
   split,
-  parallel
+  lowercase
 )}\if{html}{\out{</div>}}
 }
 
@@ -114,7 +114,7 @@ cv_count_matrix <- cv$transform(new_sents)
 
 \item{\code{split}}{character, splitting criteria for strings, default: " "}
 
-\item{\code{parallel}}{logical,  speeds up ngrams computation using n-1 cores, defaults: TRUE}
+\item{\code{lowercase}}{logical, convert all characters to lowercase before tokenizing, default: TRUE}
 }
 \if{html}{\out{</div>}}
 }

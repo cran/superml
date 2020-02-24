@@ -10,6 +10,9 @@ knitr::opts_chunk$set(
 ## ---- eval=FALSE--------------------------------------------------------------
 #  devtools::install_github("saraswatmks/superml")
 
+## ---- eval=FALSE--------------------------------------------------------------
+#  install.packages("superml", dependencies=TRUE)
+
 ## -----------------------------------------------------------------------------
 library(superml)
 
@@ -26,8 +29,8 @@ sents <- rep(sents, n)
 length(sents)
 
 ## -----------------------------------------------------------------------------
-# initialise the class, set parallel to TRUE for fast computation
-tfv <- TfIdfVectorizer$new(max_features = 10, remove_stopwords = FALSE, parallel = FALSE)
+# initialise the class
+tfv <- TfIdfVectorizer$new(max_features = 10, remove_stopwords = FALSE)
 
 # generate the matrix
 tf_mat <- tfv$fit_transform(sents)
@@ -36,8 +39,8 @@ head(tf_mat, 3)
 
 
 ## -----------------------------------------------------------------------------
-# initialise the class, set parallel to TRUE for fast computation
-tfv <- TfIdfVectorizer$new(min_df = 0.4, remove_stopwords = FALSE, ngram_range = c(1, 3), parallel = FALSE)
+# initialise the class
+tfv <- TfIdfVectorizer$new(min_df = 0.4, remove_stopwords = FALSE, ngram_range = c(1, 3))
 
 # generate the matrix
 tf_mat <- tfv$fit_transform(sents)
@@ -70,8 +73,8 @@ head(train, 3)
 head(test, 3)
 
 ## -----------------------------------------------------------------------------
-# initialise the class, set parallel to TRUE for fast computation
-tfv <- TfIdfVectorizer$new(min_df = 0.3, remove_stopwords = FALSE, ngram_range = c(1,3), parallel = FALSE)
+# initialise the class
+tfv <- TfIdfVectorizer$new(min_df = 0.3, remove_stopwords = FALSE, ngram_range = c(1,3))
 
 # we fit on train data
 tfv$fit(train$text)

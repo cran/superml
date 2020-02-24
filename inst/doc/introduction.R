@@ -10,6 +10,9 @@ knitr::opts_chunk$set(
 ## ---- eval=FALSE--------------------------------------------------------------
 #  devtools::install_github("saraswatmks/superml")
 
+## ---- eval=FALSE--------------------------------------------------------------
+#  install.packages("superml", dependencies=TRUE)
+
 ## -----------------------------------------------------------------------------
 load("../data/reg_train.rda")
 # if the above doesn't work, you can try: load("reg_train.rda")
