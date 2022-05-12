@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta name="author" content="Manish Saraswat" />
 
-<meta name="date" content="2020-04-27" />
+<meta name="date" content="2022-05-10" />
 
 <title>How to use TfidfVectorizer in R ?</title>
 
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
-<style type="text/css">code{white-space: pre;}</style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
@@ -108,6 +124,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+
 <style type="text/css">body {
 background-color: #fff;
 margin: 1em auto;
@@ -118,9 +135,6 @@ padding-right: 2em;
 font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 line-height: 1.35;
-}
-#header {
-text-align: center;
 }
 #TOC {
 clear: both;
@@ -289,7 +303,8 @@ code > span.st { color: #d14; }
 code > span.co { color: #888888; font-style: italic; } 
 code > span.ot { color: #007020; } 
 code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
 
@@ -304,7 +319,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">How to use TfidfVectorizer in R ?</h1>
 <h4 class="author">Manish Saraswat</h4>
-<h4 class="date">2020-04-27</h4>
+<h4 class="date">2022-05-10</h4>
 
 
 
@@ -346,14 +361,14 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb5-5" data-line-number="5">tf_mat &lt;-<span class="st"> </span>tfv<span class="op">$</span><span class="kw">fit_transform</span>(sents)</a>
 <a class="sourceLine" id="cb5-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb5-7" data-line-number="7"><span class="kw">head</span>(tf_mat, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;      work      home       and go     going     where       you again       am</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; [1,]    0 0.7159943 0.3579971  0 0.3579971 0.0000000 0.0000000     0 0.480654</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; [2,]    0 0.0000000 0.0000000  0 0.4563106 0.4563106 0.4563106     0 0.000000</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; [3,]    1 0.0000000 0.0000000  0 0.0000000 0.0000000 0.0000000     0 0.000000</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;            are</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; [1,] 0.0000000</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; [2,] 0.6126516</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; [3,] 0.0000000</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;      work      home       you     where     going go       and your transform</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; [1,]    0 0.8164966 0.0000000 0.0000000 0.4082483  0 0.4082483    0         0</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; [2,]    0 0.0000000 0.5773503 0.5773503 0.5773503  0 0.0000000    0         0</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; [3,]    1 0.0000000 0.0000000 0.0000000 0.0000000  0 0.0000000    0         0</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;      to</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; [1,]  0</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; [2,]  0</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; [3,]  0</span></a></code></pre></div>
 <p><strong>Few observations:</strong></p>
 <ul>
 <li><code>remove_stopwords = FALSE</code> defaults to <code>TRUE</code>. We set it to <code>FALSE</code> since most of the words in our dummy <code>sents</code> are stopwords.</li>
@@ -368,10 +383,10 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb6-5" data-line-number="5">tf_mat &lt;-<span class="st"> </span>tfv<span class="op">$</span><span class="kw">fit_transform</span>(sents)</a>
 <a class="sourceLine" id="cb6-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb6-7" data-line-number="7"><span class="kw">head</span>(tf_mat, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;      work      home       and go     going     where       you</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; [1,]    0 0.8164966 0.4082483  0 0.4082483 0.0000000 0.0000000</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; [2,]    0 0.0000000 0.0000000  0 0.5773503 0.5773503 0.5773503</span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; [3,]    1 0.0000000 0.0000000  0 0.0000000 0.0000000 0.0000000</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;      work      home       you     where     going go       and</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; [1,]    0 0.8164966 0.0000000 0.0000000 0.4082483  0 0.4082483</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; [2,]    0 0.0000000 0.5773503 0.5773503 0.5773503  0 0.0000000</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; [3,]    1 0.0000000 0.0000000 0.0000000 0.0000000  0 0.0000000</span></a></code></pre></div>
 <p><strong>Few observations:</strong></p>
 <ul>
 <li><code>ngram_range = c(1,3)</code> set the lower and higher range respectively of the resulting ngram tokens.</li>
@@ -403,10 +418,10 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; 2: where are you going.? ////       1</span></a>
 <a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 3:            how does it work      0</span></a></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">head</span>(test, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt;                                 text target</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; 1: home is where you go from to work      0</span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt; 2:                  how does it work      1</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; 3:                  how does it work      0</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt;                                     text target</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; 1:              i am going home and home      0</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt; 2:           where are you going.? ////       1</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; 3: transform your work and go work again      0</span></a></code></pre></div>
 <p>Now, we generate features for train-test data:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># initialise the class</span></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">tfv &lt;-<span class="st"> </span>TfIdfVectorizer<span class="op">$</span><span class="kw">new</span>(<span class="dt">min_df =</span> <span class="fl">0.3</span>, <span class="dt">remove_stopwords =</span> <span class="ot">FALSE</span>, <span class="dt">ngram_range =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</a>
@@ -423,27 +438,27 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co">#&gt; [1]  6 15</span></a></code></pre></div>
 <p>We generate 15 features for each of the given data. Let’s see how they look:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">head</span>(train_tf_features, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt;           work      home       and      does   does it does it work go</span></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#&gt; [1,] 0.0000000 0.8164966 0.4082483 0.0000000 0.0000000    0.0000000  0</span></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt; [2,] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000    0.0000000  0</span></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">#&gt; [3,] 0.2478085 0.0000000 0.0000000 0.3425257 0.3425257    0.3425257  0</span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">#&gt;          going       how  how does how does it        it   it work     where</span></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt; [1,] 0.4082483 0.0000000 0.0000000   0.0000000 0.0000000 0.0000000 0.0000000</span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; [2,] 0.5773503 0.0000000 0.0000000   0.0000000 0.0000000 0.0000000 0.5773503</span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; [3,] 0.0000000 0.3425257 0.3425257   0.3425257 0.3425257 0.3425257 0.0000000</span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt;            you</span></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; [1,] 0.0000000</span></a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; [2,] 0.5773503</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt;           work      home       you     where   it work        it how does it</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#&gt; [1,] 0.0000000 0.8164966 0.0000000 0.0000000 0.0000000 0.0000000   0.0000000</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt; [2,] 0.0000000 0.0000000 0.5773503 0.5773503 0.0000000 0.0000000   0.0000000</span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">#&gt; [3,] 0.2478085 0.0000000 0.0000000 0.0000000 0.3425257 0.3425257   0.3425257</span></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">#&gt;       how does       how     going go does it work   does it      does</span></a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt; [1,] 0.0000000 0.0000000 0.4082483  0    0.0000000 0.0000000 0.0000000</span></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; [2,] 0.0000000 0.0000000 0.5773503  0    0.0000000 0.0000000 0.0000000</span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; [3,] 0.3425257 0.3425257 0.0000000  0    0.3425257 0.3425257 0.3425257</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt;            and</span></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; [1,] 0.4082483</span></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; [2,] 0.0000000</span></a>
 <a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt; [3,] 0.0000000</span></a></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">head</span>(test_tf_features, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">#&gt;           work      home and      does   does it does it work        go going</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">#&gt; [1,] 0.3401651 0.4701829   0 0.0000000 0.0000000    0.0000000 0.4701829     0</span></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">#&gt; [2,] 0.2478085 0.0000000   0 0.3425257 0.3425257    0.3425257 0.0000000     0</span></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt; [3,] 0.2478085 0.0000000   0 0.3425257 0.3425257    0.3425257 0.0000000     0</span></a>
-<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt;            how  how does how does it        it   it work     where       you</span></a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; [1,] 0.0000000 0.0000000   0.0000000 0.0000000 0.0000000 0.4701829 0.4701829</span></a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; [2,] 0.3425257 0.3425257   0.3425257 0.3425257 0.3425257 0.0000000 0.0000000</span></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; [3,] 0.3425257 0.3425257   0.3425257 0.3425257 0.3425257 0.0000000 0.0000000</span></a></code></pre></div>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">#&gt;         work      home       you     where it work it how does it how does how</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">#&gt; [1,] 0.00000 0.8164966 0.0000000 0.0000000       0  0           0        0   0</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">#&gt; [2,] 0.00000 0.0000000 0.5773503 0.5773503       0  0           0        0   0</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt; [3,] 0.71515 0.0000000 0.0000000 0.0000000       0  0           0        0   0</span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt;          going        go does it work does it does       and</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; [1,] 0.4082483 0.0000000            0       0    0 0.4082483</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; [2,] 0.5773503 0.0000000            0       0    0 0.0000000</span></a>
+<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; [3,] 0.0000000 0.4942471            0       0    0 0.4942471</span></a></code></pre></div>
 <p>Finally, to train a machine learning model on this, you can simply do:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co"># ensure the input to classifier is a data.table or data.frame object</span></a>
@@ -455,14 +470,22 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb13-8" data-line-number="8">xgb<span class="op">$</span><span class="kw">fit</span>(x_train, <span class="st">&quot;target&quot;</span>)</a>
 <a class="sourceLine" id="cb13-9" data-line-number="9"><span class="co">#&gt; converting the data into xgboost format..</span></a>
 <a class="sourceLine" id="cb13-10" data-line-number="10"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="co">#&gt; [1]  train-error:0.500000 </span></a>
-<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="co">#&gt; Will train until train_error hasn't improved in 50 rounds.</span></a>
+<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="co">#&gt; [12:05:53] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
+<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
 <a class="sourceLine" id="cb13-13" data-line-number="13"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-14" data-line-number="14"><span class="co">#&gt; [10] train-error:0.500000</span></a>
-<a class="sourceLine" id="cb13-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb13-16" data-line-number="16">predictions &lt;-<span class="st"> </span>xgb<span class="op">$</span><span class="kw">predict</span>(x_test)</a>
-<a class="sourceLine" id="cb13-17" data-line-number="17">predictions</a>
-<a class="sourceLine" id="cb13-18" data-line-number="18"><span class="co">#&gt; [1] 0.5 0.5 0.5 0.5 0.5 0.5</span></a></code></pre></div>
+<a class="sourceLine" id="cb13-14" data-line-number="14"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
+<a class="sourceLine" id="cb13-15" data-line-number="15"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
+<a class="sourceLine" id="cb13-16" data-line-number="16"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
+<a class="sourceLine" id="cb13-17" data-line-number="17"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb13-18" data-line-number="18"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb13-19" data-line-number="19"><span class="co">#&gt; [1]  train-logloss:0.693147 </span></a>
+<a class="sourceLine" id="cb13-20" data-line-number="20"><span class="co">#&gt; Will train until train_logloss hasn't improved in 50 rounds.</span></a>
+<a class="sourceLine" id="cb13-21" data-line-number="21"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb13-22" data-line-number="22"><span class="co">#&gt; [10] train-logloss:0.693147</span></a>
+<a class="sourceLine" id="cb13-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb13-24" data-line-number="24">predictions &lt;-<span class="st"> </span>xgb<span class="op">$</span><span class="kw">predict</span>(x_test)</a>
+<a class="sourceLine" id="cb13-25" data-line-number="25">predictions</a>
+<a class="sourceLine" id="cb13-26" data-line-number="26"><span class="co">#&gt; [1] 0.5 0.5 0.5 0.5 0.5 0.5</span></a></code></pre></div>
 </div>
 <div id="summary" class="section level2">
 <h2>Summary</h2>

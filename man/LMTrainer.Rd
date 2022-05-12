@@ -16,7 +16,7 @@ This class provides fit, predict, cross valdidation functions.
 ## Method `LMTrainer$new`
 ## ------------------------------------------------
 
-\donttest{
+\dontrun{
 LINK <- "http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data"
 housing <- read.table(LINK)
 names <- c("CRIM","ZN","INDUS","CHAS","NOX","RM","AGE","DIS",
@@ -29,7 +29,7 @@ lf <- LMTrainer$new(family = 'gaussian', alpha=1)
 ## Method `LMTrainer$fit`
 ## ------------------------------------------------
 
-\donttest{
+\dontrun{
 LINK <- "http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data"
 housing <- read.table(LINK)
 names <- c("CRIM","ZN","INDUS","CHAS","NOX","RM","AGE","DIS",
@@ -43,7 +43,7 @@ lf$fit(X = housing, y = 'MEDV')
 ## Method `LMTrainer$predict`
 ## ------------------------------------------------
 
-\donttest{
+\dontrun{
 LINK <- "http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data"
 housing <- read.table(LINK)
 names <- c("CRIM","ZN","INDUS","CHAS","NOX","RM","AGE","DIS",
@@ -58,7 +58,7 @@ predictions <- lf$cv_predict(df = housing)
 ## Method `LMTrainer$cv_model`
 ## ------------------------------------------------
 
-\donttest{
+\dontrun{
 LINK <- "http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data"
 housing <- read.table(LINK)
 names <- c("CRIM","ZN","INDUS","CHAS","NOX","RM","AGE","DIS",
@@ -72,7 +72,7 @@ lf$cv_model(X = housing, y = 'MEDV', nfolds = 5, parallel = FALSE)
 ## Method `LMTrainer$cv_predict`
 ## ------------------------------------------------
 
-\donttest{
+\dontrun{
 LINK <- "http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data"
 housing <- read.table(LINK)
 names <- c("CRIM","ZN","INDUS","CHAS","NOX","RM","AGE","DIS",
@@ -87,7 +87,7 @@ predictions <- lf$cv_predict(df = housing)
 ## Method `LMTrainer$get_importance`
 ## ------------------------------------------------
 
-\donttest{
+\dontrun{
 LINK <- "http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data"
 housing <- read.table(LINK)
 names <- c("CRIM","ZN","INDUS","CHAS","NOX","RM","AGE","DIS",
@@ -140,6 +140,7 @@ coefs <- lf$get_importance()
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LMTrainer$new(family, weights, alpha, lambda, standardize.response)}\if{html}{\out{</div>}}
@@ -169,7 +170,7 @@ A `LMTrainer` object.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{\donttest{
+\preformatted{\dontrun{
 LINK <- "http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data"
 housing <- read.table(LINK)
 names <- c("CRIM","ZN","INDUS","CHAS","NOX","RM","AGE","DIS",
@@ -185,6 +186,7 @@ lf <- LMTrainer$new(family = 'gaussian', alpha=1)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-fit}{}}}
 \subsection{Method \code{fit()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LMTrainer$fit(X, y)}\if{html}{\out{</div>}}
@@ -208,7 +210,7 @@ NULL, train the model and saves internally
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{\donttest{
+\preformatted{\dontrun{
 LINK <- "http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data"
 housing <- read.table(LINK)
 names <- c("CRIM","ZN","INDUS","CHAS","NOX","RM","AGE","DIS",
@@ -225,6 +227,7 @@ lf$fit(X = housing, y = 'MEDV')
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-predict"></a>}}
+\if{latex}{\out{\hypertarget{method-predict}{}}}
 \subsection{Method \code{predict()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LMTrainer$predict(df, lambda = NULL)}\if{html}{\out{</div>}}
@@ -248,7 +251,7 @@ vector, a vector containing predictions
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{\donttest{
+\preformatted{\dontrun{
 LINK <- "http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data"
 housing <- read.table(LINK)
 names <- c("CRIM","ZN","INDUS","CHAS","NOX","RM","AGE","DIS",
@@ -266,6 +269,7 @@ predictions <- lf$cv_predict(df = housing)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-cv_model"></a>}}
+\if{latex}{\out{\hypertarget{method-cv_model}{}}}
 \subsection{Method \code{cv_model()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LMTrainer$cv_model(X, y, nfolds, parallel, type.measure = "deviance")}\if{html}{\out{</div>}}
@@ -295,7 +299,7 @@ NULL, trains the model and saves it in memory
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{\donttest{
+\preformatted{\dontrun{
 LINK <- "http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data"
 housing <- read.table(LINK)
 names <- c("CRIM","ZN","INDUS","CHAS","NOX","RM","AGE","DIS",
@@ -312,6 +316,7 @@ lf$cv_model(X = housing, y = 'MEDV', nfolds = 5, parallel = FALSE)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-cv_predict"></a>}}
+\if{latex}{\out{\hypertarget{method-cv_predict}{}}}
 \subsection{Method \code{cv_predict()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LMTrainer$cv_predict(df, lambda = NULL)}\if{html}{\out{</div>}}
@@ -335,7 +340,7 @@ vector a vector containing predicted values
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{\donttest{
+\preformatted{\dontrun{
 LINK <- "http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data"
 housing <- read.table(LINK)
 names <- c("CRIM","ZN","INDUS","CHAS","NOX","RM","AGE","DIS",
@@ -353,6 +358,7 @@ predictions <- lf$cv_predict(df = housing)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-get_importance"></a>}}
+\if{latex}{\out{\hypertarget{method-get_importance}{}}}
 \subsection{Method \code{get_importance()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LMTrainer$get_importance()}\if{html}{\out{</div>}}
@@ -367,7 +373,7 @@ a matrix containing feature coefficients
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{\donttest{
+\preformatted{\dontrun{
 LINK <- "http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data"
 housing <- read.table(LINK)
 names <- c("CRIM","ZN","INDUS","CHAS","NOX","RM","AGE","DIS",
@@ -386,6 +392,7 @@ coefs <- lf$get_importance()
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -123,7 +123,7 @@ TfIdfVectorizer <- R6Class("TfIdfVectorizer",
     #' @return a sparse matrix containing tf-idf score for tokens in each given sentence
     #'
     #' @examples
-    #' \donttest{
+    #' \dontrun{
     #' sents <- c('i am alone in dark.','mother_mary a lot',
     #'          'alone in the dark?', 'many mothers in the lot....')
     #' tf <- TfIdfVectorizer$new(smooth_idf = TRUE, min_df = 0.1)
@@ -146,7 +146,7 @@ TfIdfVectorizer <- R6Class("TfIdfVectorizer",
     #' @return a sparse matrix containing tf-idf score for tokens in each given sentence
     #'
     #' @examples
-    #' \donttest{
+    #' \dontrun{
     #' sents = c('i am alone in dark.','mother_mary a lot',
     #'           'alone in the dark?', 'many mothers in the lot....')
     #' new_sents <- c("dark at night",'mothers day')
@@ -188,10 +188,13 @@ TfIdfVectorizer <- R6Class("TfIdfVectorizer",
             if (isTRUE(norm)) {
                 # normalize rows
                 # tfidf = Matrix::Diagonal(x = 1 / sqrt(Matrix::rowSums(tfidf^2))) %*% tfidf
-                tfidf = diag(x = 1 / sqrt(rowSums(tfidf^2))) %*% tfidf
-                if (any(is.na(tfidf))) {
-                    tfidf[is.na(tfidf)] <- 0
-                }
+                # tfidf = diag(x = 1 / sqrt(rowSums(tfidf^2))) %*% tfidf
+                # if (any(is.na(tfidf))) {
+                #     tfidf[is.na(tfidf)] <- 0
+                # }
+                tfnames <- colnames(tfidf)
+                tfidf = superml:::normalise2d(tfidf)
+                colnames(tfidf) <- tfnames
 
                 return(tfidf)
             }

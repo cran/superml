@@ -117,9 +117,9 @@ pred <- xgb$predict(xtest)
 rmse(actual = xtest$SalePrice, predicted = pred)
 
 ## -----------------------------------------------------------------------------
-xgb <- XGBTrainer$new(objective ="reg:linear")
+xgb <- XGBTrainer$new(objective = "reg:linear")
 
-gst <-GridSearchCV$new(trainer = xgb,
+gst <- GridSearchCV$new(trainer = xgb,
                              parameters = list(n_estimators = c(10,50), max_depth = c(5,2)),
                              n_folds = 3,
                              scoring = c('accuracy','auc'))
@@ -150,7 +150,7 @@ xtrain <- cla_train[split$Resample1]
 xtest <- cla_train[!split$Resample1]
 
 # encode categorical variables - shorter way
-for(c in c('Embarked','Sex','Cabin')){
+for(c in c('Embarked','Sex','Cabin')) {
     lbl <- LabelEncoder$new()
     lbl$fit(c(xtrain[[c]], xtest[[c]]))
     xtrain[[c]] <- lbl$transform(xtrain[[c]])
@@ -171,14 +171,14 @@ xtest <- xtest[,-c(to_drop), with=F]
 knn <- KNNTrainer$new(k = 2,prob = T,type = 'class')
 knn$fit(train = xtrain, test = xtest, y = 'Survived')
 probs <- knn$predict(type = 'prob')
-labels <- knn$predict(type='raw')
-auc(actual = xtest$Survived, predicted=labels)
+labels <- knn$predict(type = 'raw')
+auc(actual = xtest$Survived, predicted = labels)
 
 ## -----------------------------------------------------------------------------
 nb <- NBTrainer$new()
 nb$fit(xtrain, 'Survived')
 pred <- nb$predict(xtest)
-auc(actual = xtest$Survived, predicted=pred)
+auc(actual = xtest$Survived, predicted = pred)
 
 ## ---- eval=FALSE--------------------------------------------------------------
 #  #predicts labels
@@ -188,7 +188,7 @@ auc(actual = xtest$Survived, predicted=pred)
 #  auc(actual = xtest$Survived, predicted=pred)
 
 ## -----------------------------------------------------------------------------
-lf <- LMTrainer$new(family="binomial")
+lf <- LMTrainer$new(family = "binomial")
 lf$fit(X = xtrain, y = "Survived")
 summary(lf$model)
 predictions <- lf$predict(df = xtest)

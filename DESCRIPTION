@@ -2,7 +2,7 @@ Package: superml
 Type: Package
 Title: Build Machine Learning Models Like Using Python's Scikit-Learn
         Library in R
-Version: 0.5.3
+Version: 0.5.4
 Authors@R: person("Manish", "Saraswat", email = "manish06saraswat@gmail.com",
           role = c("aut", "cre"))
 Maintainer: Manish Saraswat <manish06saraswat@gmail.com>
@@ -22,10 +22,10 @@ LinkingTo: Rcpp, BH, RcppArmadillo
 Suggests: knitr, rlang, testthat, rmarkdown, naivebayes(>= 0.9),
         ClusterR(>= 1.1), FNN(>= 1.1), ranger(>= 0.10), caret(>= 6.0),
         xgboost(>= 0.6), glmnet(>= 2.0), e1071(>= 1.7)
-RoxygenNote: 7.0.1
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2020-04-27 18:56:51 UTC; m.saraswat
+Packaged: 2022-05-10 10:06:00 UTC; m.saraswat
 Author: Manish Saraswat [aut, cre]
 Repository: CRAN
-Date/Publication: 2020-04-28 07:40:02 UTC
+Date/Publication: 2022-05-12 14:10:02 UTC

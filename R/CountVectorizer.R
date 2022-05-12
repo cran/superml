@@ -150,6 +150,14 @@ CountVectorizer <- R6::R6Class(
             if (is.null(self$sentences))
                 stop("Please run fit before applying transformation.")
 
+            # apply the same transformation on test
+            sentences <- private$preprocess(
+                sentences,
+                regex = self$regex,
+                lowercase = self$lowercase,
+                remove_stopwords = self$remove_stopwords
+            )
+
             # use the same column names from self$model
             return(
                 private$get_bow_df(
@@ -219,9 +227,10 @@ CountVectorizer <- R6::R6Class(
             }
 
             # sort the tokens by frequency
-            tokens_counter <- data.table(col = unlist(tokens_counter, use.names = FALSE))
+            # tokens_counter <- data.table(col = unlist(tokens_counter, use.names = FALSE))
             # radix sorting is faster
-            tokens_counter <- tokens_counter[,.N,keyby = col][order(N, decreasing = T)]$col
+            # tokens_counter <- tokens_counter[,.N,keyby = col][order(N, decreasing = T)]$col
+            tokens_counter <- superml:::SortOccurence(unlist(tokens_counter, use.names = FALSE))
 
             # check for default features
             if (is.null(max_features) & (max_df == 1) & (min_df == 1)) {
