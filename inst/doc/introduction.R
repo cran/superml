@@ -105,26 +105,26 @@ pred <- rf$predict(df = xtest)
 rf$get_importance()
 rmse(actual = xtest$SalePrice, predicted = pred)
 
-## -----------------------------------------------------------------------------
-xgb <- XGBTrainer$new(objective = "reg:linear"
-                      , n_estimators = 500
-                      , eval_metric = "rmse"
-                      , maximize = F
-                      , learning_rate = 0.1
-                      ,max_depth = 6)
-xgb$fit(X = xtrain, y = "SalePrice", valid = xtest)
-pred <- xgb$predict(xtest)
-rmse(actual = xtest$SalePrice, predicted = pred)
+## ---- eval=FALSE--------------------------------------------------------------
+#  xgb <- XGBTrainer$new(objective = "reg:linear"
+#                        , n_estimators = 500
+#                        , eval_metric = "rmse"
+#                        , maximize = F
+#                        , learning_rate = 0.1
+#                        ,max_depth = 6)
+#  xgb$fit(X = xtrain, y = "SalePrice", valid = xtest)
+#  pred <- xgb$predict(xtest)
+#  rmse(actual = xtest$SalePrice, predicted = pred)
 
-## -----------------------------------------------------------------------------
-xgb <- XGBTrainer$new(objective = "reg:linear")
-
-gst <- GridSearchCV$new(trainer = xgb,
-                             parameters = list(n_estimators = c(10,50), max_depth = c(5,2)),
-                             n_folds = 3,
-                             scoring = c('accuracy','auc'))
-gst$fit(xtrain, "SalePrice")
-gst$best_iteration()
+## ---- eval=FALSE--------------------------------------------------------------
+#  xgb <- XGBTrainer$new(objective = "reg:linear")
+#  
+#  gst <- GridSearchCV$new(trainer = xgb,
+#                               parameters = list(n_estimators = c(10,50), max_depth = c(5,2)),
+#                               n_folds = 3,
+#                               scoring = c('accuracy','auc'))
+#  gst$fit(xtrain, "SalePrice")
+#  gst$best_iteration()
 
 ## -----------------------------------------------------------------------------
 rf <- RFTrainer$new()
@@ -217,27 +217,27 @@ rf$get_importance()
 
 auc(actual = xtest$Survived, predicted = pred)
 
-## -----------------------------------------------------------------------------
-xgb <- XGBTrainer$new(objective = "binary:logistic"
-                      , n_estimators = 500
-                      , eval_metric = "auc"
-                      , maximize = T
-                      , learning_rate = 0.1
-                      ,max_depth = 6)
-xgb$fit(X = xtrain, y = "Survived", valid = xtest)
+## ---- eval=FALSE--------------------------------------------------------------
+#  xgb <- XGBTrainer$new(objective = "binary:logistic"
+#                        , n_estimators = 500
+#                        , eval_metric = "auc"
+#                        , maximize = T
+#                        , learning_rate = 0.1
+#                        ,max_depth = 6)
+#  xgb$fit(X = xtrain, y = "Survived", valid = xtest)
+#  
+#  pred <- xgb$predict(xtest)
+#  auc(actual = xtest$Survived, predicted = pred)
 
-pred <- xgb$predict(xtest)
-auc(actual = xtest$Survived, predicted = pred)
-
-## -----------------------------------------------------------------------------
-xgb <- XGBTrainer$new(objective="binary:logistic")
-gst <-GridSearchCV$new(trainer = xgb,
-                             parameters = list(n_estimators = c(10,50),
-                             max_depth = c(5,2)),
-                             n_folds = 3,
-                             scoring = c('accuracy','auc'))
-gst$fit(xtrain, "Survived")
-gst$best_iteration()
+## ---- eval=FALSE--------------------------------------------------------------
+#  xgb <- XGBTrainer$new(objective="binary:logistic")
+#  gst <-GridSearchCV$new(trainer = xgb,
+#                               parameters = list(n_estimators = c(10,50),
+#                               max_depth = c(5,2)),
+#                               n_folds = 3,
+#                               scoring = c('accuracy','auc'))
+#  gst$fit(xtrain, "Survived")
+#  gst$best_iteration()
 
 ## -----------------------------------------------------------------------------
 rf <- RFTrainer$new()

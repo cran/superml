@@ -2,7 +2,7 @@ Package: superml
 Type: Package
 Title: Build Machine Learning Models Like Using Python's Scikit-Learn
         Library in R
-Version: 0.5.4
+Version: 0.5.5
 Authors@R: person("Manish", "Saraswat", email = "manish06saraswat@gmail.com",
           role = c("aut", "cre"))
 Maintainer: Manish Saraswat <manish06saraswat@gmail.com>
@@ -25,7 +25,7 @@ Suggests: knitr, rlang, testthat, rmarkdown, naivebayes(>= 0.9),
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2022-05-10 10:06:00 UTC; m.saraswat
+Packaged: 2022-05-23 14:52:07 UTC; m.saraswat
 Author: Manish Saraswat [aut, cre]
 Repository: CRAN
-Date/Publication: 2022-05-12 14:10:02 UTC
+Date/Publication: 2022-05-23 23:20:02 UTC

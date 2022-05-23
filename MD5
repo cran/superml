@@ -1,7 +1,7 @@
-74bb89d440a817269f9e524ad40889e1 *DESCRIPTION
+8a3927d723d62ede87a2928b616b9d63 *DESCRIPTION
 1ebbd3e34237af26da5dc08a4e440464 *LICENSE
 635902b6c7a95d81c1581339d7dc7597 *NAMESPACE
-677f28571a908a3f4ad6bb0784bb629d *NEWS.md
+d759e435b22849b6c70ec10786f2d5dc *NEWS.md
 9ed1878d88d9ada6608a13b535a0a690 *R/CountVectorizer.R
 78f10fbf7a269107b6136b72dfb8b2c0 *R/GridSearch.R
 cb74ad841a53c13491a595ab361bf0cf *R/KMeansTrainer.R
@@ -25,13 +25,13 @@ c2fc651f460a110efae1c4c25277110e *data/cla_train.rda
 589a48c9265b93f655b64589b4bafa3f *data/reg_train.rda
 fc6202a4f95bec2076483ac69918718e *inst/doc/Guide-to-CountVectorizer.R
 55b1a3bd527278f434f3d92a7fec1b5d *inst/doc/Guide-to-CountVectorizer.Rmd
-3287f0c6064e8b2cd9132875186e222b *inst/doc/Guide-to-CountVectorizer.html
+e10e8941b420cb992c8c2fbdebfb8375 *inst/doc/Guide-to-CountVectorizer.html
 67580b908114dd724deda3da21880fac *inst/doc/Guide-to-TfidfVectorizer.R
 83928267cda9fbfb47288f02a2548f4c *inst/doc/Guide-to-TfidfVectorizer.Rmd
-f953e778e015b514249dd3adef9ce37f *inst/doc/Guide-to-TfidfVectorizer.html
-9d8e0cab1a387abdeaf4b6326c974d1e *inst/doc/introduction.R
-1d921525f42752a68cca12222eec55e4 *inst/doc/introduction.Rmd
-617d925322bdecc7e056d6109d50a47a *inst/doc/introduction.html
+3ba599ce4b7c58099ebf66a775dbb0b5 *inst/doc/Guide-to-TfidfVectorizer.html
+301803a6acff9dfe56d03e2bf7f41741 *inst/doc/introduction.R
+ec43b3eaa54b1985be7fc77a02cccbf9 *inst/doc/introduction.Rmd
+d36ab8b1647aa1168386849738e78a13 *inst/doc/introduction.html
 e181651a30ec45694b7fafc787f357dc *inst/stopwords/english.txt
 9be466ea4d7cc616dffe19cb99836157 *man/CountVectorizer.Rd
 6e8c4bdab56e319c0a107023e94a31e2 *man/Counter.Rd
@@ -67,4 +67,4 @@ d057b6625f3a2c0900653972180ac348 *tests/testthat.R
 5e687af56ddd7b0ce13e4759eef02407 *tests/testthat/test-text_functions.R
 55b1a3bd527278f434f3d92a7fec1b5d *vignettes/Guide-to-CountVectorizer.Rmd
 83928267cda9fbfb47288f02a2548f4c *vignettes/Guide-to-TfidfVectorizer.Rmd
-1d921525f42752a68cca12222eec55e4 *vignettes/introduction.Rmd
+ec43b3eaa54b1985be7fc77a02cccbf9 *vignettes/introduction.Rmd

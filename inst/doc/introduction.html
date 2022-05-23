@@ -12,7 +12,7 @@
 
 <meta name="author" content="Manish Saraswat" />
 
-<meta name="date" content="2022-05-10" />
+<meta name="date" content="2022-05-23" />
 
 <title>Introduction to SuperML</title>
 
@@ -319,7 +319,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Introduction to SuperML</h1>
 <h4 class="author">Manish Saraswat</h4>
-<h4 class="date">2022-05-10</h4>
+<h4 class="date">2022-05-23</h4>
 
 
 
@@ -521,7 +521,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb6-3" data-line-number="3">probs &lt;-<span class="st"> </span>knn<span class="op">$</span><span class="kw">predict</span>(<span class="dt">type =</span> <span class="st">'prob'</span>)</a>
 <a class="sourceLine" id="cb6-4" data-line-number="4">labels &lt;-<span class="st"> </span>knn<span class="op">$</span><span class="kw">predict</span>(<span class="dt">type=</span><span class="st">'raw'</span>)</a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted=</span>labels)</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; [1] 48662.52</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; [1] 50794.05</span></a></code></pre></div>
 <p><strong>SVM Regression</strong></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">svm &lt;-<span class="st"> </span>SVMTrainer<span class="op">$</span><span class="kw">new</span>()</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">svm<span class="op">$</span><span class="kw">fit</span>(xtrain, <span class="st">'SalePrice'</span>)</a>
@@ -537,110 +537,110 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; Deviance Residuals: </span></a>
 <a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt;     Min       1Q   Median       3Q      Max  </span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; -338327   -14806    -1357    13406   264149  </span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; -139243   -13025     -186    12472   158743  </span></a>
 <a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; Coefficients:</span></a>
 <a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt;                 Estimate Std. Error t value Pr(&gt;|t|)    </span></a>
-<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt; (Intercept)   -8.403e+05  1.649e+06  -0.510 0.610463    </span></a>
-<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; MSSubClass    -7.887e+01  5.723e+01  -1.378 0.168466    </span></a>
-<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; MSZoning      -2.326e+03  1.835e+03  -1.267 0.205386    </span></a>
-<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt; LotFrontage   -2.105e+01  3.450e+01  -0.610 0.542000    </span></a>
-<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="co">#&gt; LotArea        3.100e-01  1.683e-01   1.843 0.065696 .  </span></a>
-<a class="sourceLine" id="cb8-19" data-line-number="19"><span class="co">#&gt; Street        -2.802e+04  1.772e+04  -1.581 0.114197    </span></a>
-<a class="sourceLine" id="cb8-20" data-line-number="20"><span class="co">#&gt; LotShape      -3.803e+02  2.185e+03  -0.174 0.861871    </span></a>
-<a class="sourceLine" id="cb8-21" data-line-number="21"><span class="co">#&gt; LandContour   -1.749e+03  1.815e+03  -0.964 0.335394    </span></a>
-<a class="sourceLine" id="cb8-22" data-line-number="22"><span class="co">#&gt; Utilities     -6.236e+04  3.511e+04  -1.776 0.076056 .  </span></a>
-<a class="sourceLine" id="cb8-23" data-line-number="23"><span class="co">#&gt; LotConfig      2.268e+03  1.135e+03   1.998 0.046028 *  </span></a>
-<a class="sourceLine" id="cb8-24" data-line-number="24"><span class="co">#&gt; LandSlope      1.197e+04  4.634e+03   2.582 0.009960 ** </span></a>
-<a class="sourceLine" id="cb8-25" data-line-number="25"><span class="co">#&gt; Neighborhood  -5.439e+02  2.210e+02  -2.461 0.014023 *  </span></a>
-<a class="sourceLine" id="cb8-26" data-line-number="26"><span class="co">#&gt; Condition1    -3.171e+03  1.012e+03  -3.134 0.001778 ** </span></a>
-<a class="sourceLine" id="cb8-27" data-line-number="27"><span class="co">#&gt; Condition2    -1.546e+04  3.517e+03  -4.395 1.23e-05 ***</span></a>
-<a class="sourceLine" id="cb8-28" data-line-number="28"><span class="co">#&gt; BldgType      -2.900e+03  2.196e+03  -1.320 0.186987    </span></a>
-<a class="sourceLine" id="cb8-29" data-line-number="29"><span class="co">#&gt; HouseStyle    -6.204e+02  1.010e+03  -0.615 0.539028    </span></a>
-<a class="sourceLine" id="cb8-30" data-line-number="30"><span class="co">#&gt; OverallQual    1.531e+04  1.439e+03  10.643  &lt; 2e-16 ***</span></a>
-<a class="sourceLine" id="cb8-31" data-line-number="31"><span class="co">#&gt; OverallCond    6.264e+03  1.281e+03   4.889 1.19e-06 ***</span></a>
-<a class="sourceLine" id="cb8-32" data-line-number="32"><span class="co">#&gt; YearBuilt      3.986e+02  8.696e+01   4.584 5.16e-06 ***</span></a>
-<a class="sourceLine" id="cb8-33" data-line-number="33"><span class="co">#&gt; YearRemodAdd   9.653e+01  8.274e+01   1.167 0.243654    </span></a>
-<a class="sourceLine" id="cb8-34" data-line-number="34"><span class="co">#&gt; RoofStyle      5.483e+03  2.175e+03   2.521 0.011880 *  </span></a>
-<a class="sourceLine" id="cb8-35" data-line-number="35"><span class="co">#&gt; RoofMatl      -1.585e+04  2.299e+03  -6.893 9.95e-12 ***</span></a>
-<a class="sourceLine" id="cb8-36" data-line-number="36"><span class="co">#&gt; Exterior1st   -1.023e+03  7.264e+02  -1.408 0.159511    </span></a>
-<a class="sourceLine" id="cb8-37" data-line-number="37"><span class="co">#&gt; Exterior2nd    8.290e+02  6.596e+02   1.257 0.209115    </span></a>
-<a class="sourceLine" id="cb8-38" data-line-number="38"><span class="co">#&gt; MasVnrType     2.483e+03  1.725e+03   1.439 0.150353    </span></a>
-<a class="sourceLine" id="cb8-39" data-line-number="39"><span class="co">#&gt; MasVnrArea     2.922e+01  7.096e+00   4.118 4.15e-05 ***</span></a>
-<a class="sourceLine" id="cb8-40" data-line-number="40"><span class="co">#&gt; ExterQual     -5.428e+02  2.547e+03  -0.213 0.831317    </span></a>
-<a class="sourceLine" id="cb8-41" data-line-number="41"><span class="co">#&gt; ExterCond      1.057e+03  2.615e+03   0.404 0.686263    </span></a>
-<a class="sourceLine" id="cb8-42" data-line-number="42"><span class="co">#&gt; Foundation    -3.088e+03  2.012e+03  -1.534 0.125270    </span></a>
-<a class="sourceLine" id="cb8-43" data-line-number="43"><span class="co">#&gt; BsmtQual       6.577e+03  1.581e+03   4.159 3.48e-05 ***</span></a>
-<a class="sourceLine" id="cb8-44" data-line-number="44"><span class="co">#&gt; BsmtCond      -2.711e+03  2.021e+03  -1.341 0.180111    </span></a>
-<a class="sourceLine" id="cb8-45" data-line-number="45"><span class="co">#&gt; BsmtExposure   1.313e+03  1.064e+03   1.234 0.217481    </span></a>
-<a class="sourceLine" id="cb8-46" data-line-number="46"><span class="co">#&gt; BsmtFinType1  -1.137e+03  8.413e+02  -1.352 0.176684    </span></a>
-<a class="sourceLine" id="cb8-47" data-line-number="47"><span class="co">#&gt; BsmtFinSF1     5.771e+00  6.016e+00   0.959 0.337663    </span></a>
-<a class="sourceLine" id="cb8-48" data-line-number="48"><span class="co">#&gt; BsmtFinType2  -1.152e+03  1.091e+03  -1.056 0.291114    </span></a>
-<a class="sourceLine" id="cb8-49" data-line-number="49"><span class="co">#&gt; BsmtFinSF2     1.731e+01  1.105e+01   1.567 0.117433    </span></a>
-<a class="sourceLine" id="cb8-50" data-line-number="50"><span class="co">#&gt; BsmtUnfSF      1.516e+00  5.735e+00   0.264 0.791534    </span></a>
-<a class="sourceLine" id="cb8-51" data-line-number="51"><span class="co">#&gt; Heating       -1.409e+03  3.400e+03  -0.414 0.678660    </span></a>
-<a class="sourceLine" id="cb8-52" data-line-number="52"><span class="co">#&gt; HeatingQC     -1.390e+03  1.433e+03  -0.970 0.332129    </span></a>
-<a class="sourceLine" id="cb8-53" data-line-number="53"><span class="co">#&gt; CentralAir     2.728e+03  5.508e+03   0.495 0.620461    </span></a>
-<a class="sourceLine" id="cb8-54" data-line-number="54"><span class="co">#&gt; Electrical     3.957e+03  2.241e+03   1.766 0.077773 .  </span></a>
-<a class="sourceLine" id="cb8-55" data-line-number="55"><span class="co">#&gt; `1stFlrSF`     5.947e+01  7.274e+00   8.176 9.36e-16 ***</span></a>
-<a class="sourceLine" id="cb8-56" data-line-number="56"><span class="co">#&gt; `2ndFlrSF`     5.111e+01  6.069e+00   8.422  &lt; 2e-16 ***</span></a>
-<a class="sourceLine" id="cb8-57" data-line-number="57"><span class="co">#&gt; LowQualFinSF  -1.606e+00  2.944e+01  -0.055 0.956526    </span></a>
-<a class="sourceLine" id="cb8-58" data-line-number="58"><span class="co">#&gt; BsmtFullBath   1.121e+04  3.063e+03   3.659 0.000267 ***</span></a>
-<a class="sourceLine" id="cb8-59" data-line-number="59"><span class="co">#&gt; BsmtHalfBath   4.686e+03  4.621e+03   1.014 0.310817    </span></a>
-<a class="sourceLine" id="cb8-60" data-line-number="60"><span class="co">#&gt; FullBath       6.199e+03  3.298e+03   1.879 0.060511 .  </span></a>
-<a class="sourceLine" id="cb8-61" data-line-number="61"><span class="co">#&gt; HalfBath      -1.834e+03  3.089e+03  -0.594 0.552889    </span></a>
-<a class="sourceLine" id="cb8-62" data-line-number="62"><span class="co">#&gt; BedroomAbvGr  -7.087e+03  1.972e+03  -3.594 0.000343 ***</span></a>
-<a class="sourceLine" id="cb8-63" data-line-number="63"><span class="co">#&gt; KitchenAbvGr  -1.891e+04  5.937e+03  -3.185 0.001494 ** </span></a>
-<a class="sourceLine" id="cb8-64" data-line-number="64"><span class="co">#&gt; KitchenQual    9.122e+03  1.595e+03   5.719 1.44e-08 ***</span></a>
-<a class="sourceLine" id="cb8-65" data-line-number="65"><span class="co">#&gt; TotRmsAbvGrd   2.779e+03  1.452e+03   1.914 0.055896 .  </span></a>
-<a class="sourceLine" id="cb8-66" data-line-number="66"><span class="co">#&gt; Functional    -4.440e+03  1.601e+03  -2.774 0.005647 ** </span></a>
-<a class="sourceLine" id="cb8-67" data-line-number="67"><span class="co">#&gt; Fireplaces    -1.103e+03  2.680e+03  -0.412 0.680682    </span></a>
-<a class="sourceLine" id="cb8-68" data-line-number="68"><span class="co">#&gt; FireplaceQu    3.605e+03  1.440e+03   2.504 0.012460 *  </span></a>
-<a class="sourceLine" id="cb8-69" data-line-number="69"><span class="co">#&gt; GarageType    -3.729e+01  1.167e+03  -0.032 0.974509    </span></a>
-<a class="sourceLine" id="cb8-70" data-line-number="70"><span class="co">#&gt; GarageYrBlt   -1.006e+01  6.902e+00  -1.458 0.145093    </span></a>
-<a class="sourceLine" id="cb8-71" data-line-number="71"><span class="co">#&gt; GarageFinish   6.266e+02  1.560e+03   0.402 0.688096    </span></a>
-<a class="sourceLine" id="cb8-72" data-line-number="72"><span class="co">#&gt; GarageCars     1.598e+04  3.539e+03   4.516 7.10e-06 ***</span></a>
-<a class="sourceLine" id="cb8-73" data-line-number="73"><span class="co">#&gt; GarageArea    -5.789e+00  1.199e+01  -0.483 0.629460    </span></a>
-<a class="sourceLine" id="cb8-74" data-line-number="74"><span class="co">#&gt; GarageQual     1.132e+03  4.160e+03   0.272 0.785537    </span></a>
-<a class="sourceLine" id="cb8-75" data-line-number="75"><span class="co">#&gt; GarageCond    -1.720e+03  2.300e+03  -0.748 0.454730    </span></a>
-<a class="sourceLine" id="cb8-76" data-line-number="76"><span class="co">#&gt; PavedDrive    -7.645e+02  3.137e+03  -0.244 0.807503    </span></a>
-<a class="sourceLine" id="cb8-77" data-line-number="77"><span class="co">#&gt; WoodDeckSF     2.180e+01  9.438e+00   2.310 0.021095 *  </span></a>
-<a class="sourceLine" id="cb8-78" data-line-number="78"><span class="co">#&gt; OpenPorchSF   -9.759e+00  1.843e+01  -0.529 0.596665    </span></a>
-<a class="sourceLine" id="cb8-79" data-line-number="79"><span class="co">#&gt; EnclosedPorch  1.735e+01  1.979e+01   0.877 0.380947    </span></a>
-<a class="sourceLine" id="cb8-80" data-line-number="80"><span class="co">#&gt; `3SsnPorch`    2.172e+00  3.562e+01   0.061 0.951392    </span></a>
-<a class="sourceLine" id="cb8-81" data-line-number="81"><span class="co">#&gt; ScreenPorch    5.565e+01  2.067e+01   2.692 0.007234 ** </span></a>
-<a class="sourceLine" id="cb8-82" data-line-number="82"><span class="co">#&gt; PoolArea      -3.991e+01  3.487e+01  -1.144 0.252723    </span></a>
-<a class="sourceLine" id="cb8-83" data-line-number="83"><span class="co">#&gt; Fence         -2.484e+03  1.490e+03  -1.667 0.095834 .  </span></a>
-<a class="sourceLine" id="cb8-84" data-line-number="84"><span class="co">#&gt; MiscVal        6.502e+00  4.441e+00   1.464 0.143447    </span></a>
-<a class="sourceLine" id="cb8-85" data-line-number="85"><span class="co">#&gt; MoSold        -3.681e+01  3.896e+02  -0.094 0.924751    </span></a>
-<a class="sourceLine" id="cb8-86" data-line-number="86"><span class="co">#&gt; YrSold        -9.048e+01  8.216e+02  -0.110 0.912340    </span></a>
-<a class="sourceLine" id="cb8-87" data-line-number="87"><span class="co">#&gt; SaleType       3.043e+03  1.341e+03   2.269 0.023488 *  </span></a>
-<a class="sourceLine" id="cb8-88" data-line-number="88"><span class="co">#&gt; SaleCondition -1.317e+03  1.400e+03  -0.941 0.347007    </span></a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt; (Intercept)   -2.008e+06  1.260e+06  -1.593 0.111462    </span></a>
+<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; MSSubClass    -3.830e+01  4.350e+01  -0.880 0.378829    </span></a>
+<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; MSZoning      -1.445e+02  1.162e+03  -0.124 0.901098    </span></a>
+<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt; LotFrontage    6.473e+01  2.697e+01   2.400 0.016598 *  </span></a>
+<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="co">#&gt; LotArea        4.401e-01  1.168e-01   3.767 0.000176 ***</span></a>
+<a class="sourceLine" id="cb8-19" data-line-number="19"><span class="co">#&gt; Street        -3.784e+04  1.182e+04  -3.201 0.001414 ** </span></a>
+<a class="sourceLine" id="cb8-20" data-line-number="20"><span class="co">#&gt; LotShape       3.651e+03  1.641e+03   2.225 0.026301 *  </span></a>
+<a class="sourceLine" id="cb8-21" data-line-number="21"><span class="co">#&gt; LandContour    2.807e+03  1.842e+03   1.524 0.127719    </span></a>
+<a class="sourceLine" id="cb8-22" data-line-number="22"><span class="co">#&gt; Utilities     -2.701e+04  2.727e+04  -0.991 0.322180    </span></a>
+<a class="sourceLine" id="cb8-23" data-line-number="23"><span class="co">#&gt; LotConfig      3.069e+02  8.777e+02   0.350 0.726639    </span></a>
+<a class="sourceLine" id="cb8-24" data-line-number="24"><span class="co">#&gt; LandSlope      1.813e+03  4.229e+03   0.429 0.668286    </span></a>
+<a class="sourceLine" id="cb8-25" data-line-number="25"><span class="co">#&gt; Neighborhood  -3.361e+02  1.538e+02  -2.186 0.029074 *  </span></a>
+<a class="sourceLine" id="cb8-26" data-line-number="26"><span class="co">#&gt; Condition1    -1.932e+03  6.913e+02  -2.795 0.005297 ** </span></a>
+<a class="sourceLine" id="cb8-27" data-line-number="27"><span class="co">#&gt; Condition2    -4.259e+03  3.532e+03  -1.206 0.228200    </span></a>
+<a class="sourceLine" id="cb8-28" data-line-number="28"><span class="co">#&gt; BldgType      -2.483e+03  1.668e+03  -1.488 0.136958    </span></a>
+<a class="sourceLine" id="cb8-29" data-line-number="29"><span class="co">#&gt; HouseStyle     2.632e+02  8.262e+02   0.319 0.750084    </span></a>
+<a class="sourceLine" id="cb8-30" data-line-number="30"><span class="co">#&gt; OverallQual    1.336e+04  1.120e+03  11.930  &lt; 2e-16 ***</span></a>
+<a class="sourceLine" id="cb8-31" data-line-number="31"><span class="co">#&gt; OverallCond    6.068e+03  9.974e+02   6.084 1.70e-09 ***</span></a>
+<a class="sourceLine" id="cb8-32" data-line-number="32"><span class="co">#&gt; YearBuilt      4.657e+02  6.701e+01   6.950 6.80e-12 ***</span></a>
+<a class="sourceLine" id="cb8-33" data-line-number="33"><span class="co">#&gt; YearRemodAdd   1.766e+02  6.343e+01   2.784 0.005477 ** </span></a>
+<a class="sourceLine" id="cb8-34" data-line-number="34"><span class="co">#&gt; RoofStyle     -1.631e+02  1.564e+03  -0.104 0.916996    </span></a>
+<a class="sourceLine" id="cb8-35" data-line-number="35"><span class="co">#&gt; RoofMatl      -9.933e+02  2.137e+03  -0.465 0.642230    </span></a>
+<a class="sourceLine" id="cb8-36" data-line-number="36"><span class="co">#&gt; Exterior1st   -4.735e+02  5.755e+02  -0.823 0.410843    </span></a>
+<a class="sourceLine" id="cb8-37" data-line-number="37"><span class="co">#&gt; Exterior2nd    9.892e+02  5.221e+02   1.895 0.058425 .  </span></a>
+<a class="sourceLine" id="cb8-38" data-line-number="38"><span class="co">#&gt; MasVnrType     4.333e+03  1.360e+03   3.186 0.001489 ** </span></a>
+<a class="sourceLine" id="cb8-39" data-line-number="39"><span class="co">#&gt; MasVnrArea     1.631e+01  5.720e+00   2.852 0.004438 ** </span></a>
+<a class="sourceLine" id="cb8-40" data-line-number="40"><span class="co">#&gt; ExterQual      3.787e+03  1.960e+03   1.932 0.053642 .  </span></a>
+<a class="sourceLine" id="cb8-41" data-line-number="41"><span class="co">#&gt; ExterCond      1.081e+03  1.979e+03   0.547 0.584829    </span></a>
+<a class="sourceLine" id="cb8-42" data-line-number="42"><span class="co">#&gt; Foundation     3.883e+02  1.450e+03   0.268 0.788846    </span></a>
+<a class="sourceLine" id="cb8-43" data-line-number="43"><span class="co">#&gt; BsmtQual       7.885e+03  1.226e+03   6.429 2.03e-10 ***</span></a>
+<a class="sourceLine" id="cb8-44" data-line-number="44"><span class="co">#&gt; BsmtCond      -1.370e+03  1.557e+03  -0.880 0.379040    </span></a>
+<a class="sourceLine" id="cb8-45" data-line-number="45"><span class="co">#&gt; BsmtExposure   2.390e+03  8.087e+02   2.956 0.003198 ** </span></a>
+<a class="sourceLine" id="cb8-46" data-line-number="46"><span class="co">#&gt; BsmtFinType1  -2.546e+02  6.252e+02  -0.407 0.683943    </span></a>
+<a class="sourceLine" id="cb8-47" data-line-number="47"><span class="co">#&gt; BsmtFinSF1     5.254e+01  4.982e+00  10.544  &lt; 2e-16 ***</span></a>
+<a class="sourceLine" id="cb8-48" data-line-number="48"><span class="co">#&gt; BsmtFinType2  -9.432e+02  9.958e+02  -0.947 0.343782    </span></a>
+<a class="sourceLine" id="cb8-49" data-line-number="49"><span class="co">#&gt; BsmtFinSF2     4.247e+01  8.402e+00   5.055 5.16e-07 ***</span></a>
+<a class="sourceLine" id="cb8-50" data-line-number="50"><span class="co">#&gt; BsmtUnfSF      3.213e+01  4.503e+00   7.136 1.90e-12 ***</span></a>
+<a class="sourceLine" id="cb8-51" data-line-number="51"><span class="co">#&gt; Heating        1.569e+03  3.627e+03   0.433 0.665359    </span></a>
+<a class="sourceLine" id="cb8-52" data-line-number="52"><span class="co">#&gt; HeatingQC     -2.590e+03  1.113e+03  -2.326 0.020214 *  </span></a>
+<a class="sourceLine" id="cb8-53" data-line-number="53"><span class="co">#&gt; CentralAir     4.251e+03  4.370e+03   0.973 0.330970    </span></a>
+<a class="sourceLine" id="cb8-54" data-line-number="54"><span class="co">#&gt; Electrical     2.337e+03  1.815e+03   1.287 0.198278    </span></a>
+<a class="sourceLine" id="cb8-55" data-line-number="55"><span class="co">#&gt; `1stFlrSF`     5.243e+01  5.824e+00   9.002  &lt; 2e-16 ***</span></a>
+<a class="sourceLine" id="cb8-56" data-line-number="56"><span class="co">#&gt; `2ndFlrSF`     6.578e+01  5.045e+00  13.038  &lt; 2e-16 ***</span></a>
+<a class="sourceLine" id="cb8-57" data-line-number="57"><span class="co">#&gt; LowQualFinSF   2.598e+00  1.859e+01   0.140 0.888898    </span></a>
+<a class="sourceLine" id="cb8-58" data-line-number="58"><span class="co">#&gt; BsmtFullBath   1.516e+03  2.452e+03   0.618 0.536538    </span></a>
+<a class="sourceLine" id="cb8-59" data-line-number="59"><span class="co">#&gt; BsmtHalfBath  -8.169e+03  3.729e+03  -2.191 0.028694 *  </span></a>
+<a class="sourceLine" id="cb8-60" data-line-number="60"><span class="co">#&gt; FullBath       3.146e+03  2.583e+03   1.218 0.223441    </span></a>
+<a class="sourceLine" id="cb8-61" data-line-number="61"><span class="co">#&gt; HalfBath      -1.372e+03  2.416e+03  -0.568 0.570139    </span></a>
+<a class="sourceLine" id="cb8-62" data-line-number="62"><span class="co">#&gt; BedroomAbvGr  -1.173e+04  1.594e+03  -7.358 4.05e-13 ***</span></a>
+<a class="sourceLine" id="cb8-63" data-line-number="63"><span class="co">#&gt; KitchenAbvGr  -2.394e+04  4.839e+03  -4.948 8.89e-07 ***</span></a>
+<a class="sourceLine" id="cb8-64" data-line-number="64"><span class="co">#&gt; KitchenQual    7.690e+03  1.521e+03   5.057 5.11e-07 ***</span></a>
+<a class="sourceLine" id="cb8-65" data-line-number="65"><span class="co">#&gt; TotRmsAbvGrd   3.323e+03  1.160e+03   2.865 0.004266 ** </span></a>
+<a class="sourceLine" id="cb8-66" data-line-number="66"><span class="co">#&gt; Functional    -8.284e+03  1.356e+03  -6.110 1.45e-09 ***</span></a>
+<a class="sourceLine" id="cb8-67" data-line-number="67"><span class="co">#&gt; Fireplaces     8.055e+02  2.159e+03   0.373 0.709194    </span></a>
+<a class="sourceLine" id="cb8-68" data-line-number="68"><span class="co">#&gt; FireplaceQu    1.473e+03  1.181e+03   1.248 0.212406    </span></a>
+<a class="sourceLine" id="cb8-69" data-line-number="69"><span class="co">#&gt; GarageType     1.958e+03  1.083e+03   1.808 0.070876 .  </span></a>
+<a class="sourceLine" id="cb8-70" data-line-number="70"><span class="co">#&gt; GarageYrBlt    1.195e+00  4.366e+00   0.274 0.784395    </span></a>
+<a class="sourceLine" id="cb8-71" data-line-number="71"><span class="co">#&gt; GarageFinish   2.291e+03  1.200e+03   1.910 0.056460 .  </span></a>
+<a class="sourceLine" id="cb8-72" data-line-number="72"><span class="co">#&gt; GarageCars     4.727e+03  2.887e+03   1.637 0.101914    </span></a>
+<a class="sourceLine" id="cb8-73" data-line-number="73"><span class="co">#&gt; GarageArea     1.305e+01  9.440e+00   1.383 0.167042    </span></a>
+<a class="sourceLine" id="cb8-74" data-line-number="74"><span class="co">#&gt; GarageQual     4.180e+03  2.532e+03   1.651 0.099071 .  </span></a>
+<a class="sourceLine" id="cb8-75" data-line-number="75"><span class="co">#&gt; GarageCond    -3.997e+03  2.491e+03  -1.604 0.108970    </span></a>
+<a class="sourceLine" id="cb8-76" data-line-number="76"><span class="co">#&gt; PavedDrive    -3.272e+03  2.625e+03  -1.246 0.212904    </span></a>
+<a class="sourceLine" id="cb8-77" data-line-number="77"><span class="co">#&gt; WoodDeckSF     1.629e+01  7.618e+00   2.138 0.032734 *  </span></a>
+<a class="sourceLine" id="cb8-78" data-line-number="78"><span class="co">#&gt; OpenPorchSF    2.127e+01  1.437e+01   1.479 0.139374    </span></a>
+<a class="sourceLine" id="cb8-79" data-line-number="79"><span class="co">#&gt; EnclosedPorch  3.056e+00  1.515e+01   0.202 0.840151    </span></a>
+<a class="sourceLine" id="cb8-80" data-line-number="80"><span class="co">#&gt; `3SsnPorch`    1.704e+01  3.440e+01   0.495 0.620553    </span></a>
+<a class="sourceLine" id="cb8-81" data-line-number="81"><span class="co">#&gt; ScreenPorch    3.825e+01  1.530e+01   2.500 0.012578 *  </span></a>
+<a class="sourceLine" id="cb8-82" data-line-number="82"><span class="co">#&gt; PoolArea       1.092e+02  2.295e+01   4.758 2.26e-06 ***</span></a>
+<a class="sourceLine" id="cb8-83" data-line-number="83"><span class="co">#&gt; Fence         -1.986e+03  1.152e+03  -1.724 0.085018 .  </span></a>
+<a class="sourceLine" id="cb8-84" data-line-number="84"><span class="co">#&gt; MiscVal       -1.095e+00  4.416e+00  -0.248 0.804163    </span></a>
+<a class="sourceLine" id="cb8-85" data-line-number="85"><span class="co">#&gt; MoSold        -2.236e+02  3.141e+02  -0.712 0.476744    </span></a>
+<a class="sourceLine" id="cb8-86" data-line-number="86"><span class="co">#&gt; YrSold         3.308e+02  6.273e+02   0.527 0.598066    </span></a>
+<a class="sourceLine" id="cb8-87" data-line-number="87"><span class="co">#&gt; SaleType       1.091e+03  1.100e+03   0.992 0.321271    </span></a>
+<a class="sourceLine" id="cb8-88" data-line-number="88"><span class="co">#&gt; SaleCondition  1.645e+03  9.888e+02   1.663 0.096558 .  </span></a>
 <a class="sourceLine" id="cb8-89" data-line-number="89"><span class="co">#&gt; ---</span></a>
 <a class="sourceLine" id="cb8-90" data-line-number="90"><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></a>
 <a class="sourceLine" id="cb8-91" data-line-number="91"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb8-92" data-line-number="92"><span class="co">#&gt; (Dispersion parameter for gaussian family taken to be 1064227128)</span></a>
+<a class="sourceLine" id="cb8-92" data-line-number="92"><span class="co">#&gt; (Dispersion parameter for gaussian family taken to be 648612116)</span></a>
 <a class="sourceLine" id="cb8-93" data-line-number="93"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb8-94" data-line-number="94"><span class="co">#&gt;     Null deviance: 6.6216e+12  on 1023  degrees of freedom</span></a>
-<a class="sourceLine" id="cb8-95" data-line-number="95"><span class="co">#&gt; Residual deviance: 1.0100e+12  on  949  degrees of freedom</span></a>
-<a class="sourceLine" id="cb8-96" data-line-number="96"><span class="co">#&gt; AIC: 24264</span></a>
+<a class="sourceLine" id="cb8-94" data-line-number="94"><span class="co">#&gt;     Null deviance: 6.2335e+12  on 1023  degrees of freedom</span></a>
+<a class="sourceLine" id="cb8-95" data-line-number="95"><span class="co">#&gt; Residual deviance: 6.1553e+11  on  949  degrees of freedom</span></a>
+<a class="sourceLine" id="cb8-96" data-line-number="96"><span class="co">#&gt; AIC: 23757</span></a>
 <a class="sourceLine" id="cb8-97" data-line-number="97"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-98" data-line-number="98"><span class="co">#&gt; Number of Fisher Scoring iterations: 2</span></a>
 <a class="sourceLine" id="cb8-99" data-line-number="99">predictions &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)</a>
 <a class="sourceLine" id="cb8-100" data-line-number="100"><span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> predictions)</a>
-<a class="sourceLine" id="cb8-101" data-line-number="101"><span class="co">#&gt; [1] 32211.9</span></a></code></pre></div>
+<a class="sourceLine" id="cb8-101" data-line-number="101"><span class="co">#&gt; [1] 51530.25</span></a></code></pre></div>
 <p><strong>Lasso Regression</strong></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">lf &lt;-<span class="st"> </span>LMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">family =</span> <span class="st">&quot;gaussian&quot;</span>, <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">lambda =</span> <span class="dv">1000</span>)</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">lf<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;SalePrice&quot;</span>)</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3">predictions &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)</a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> predictions)</a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; [1] 37490.75</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; [1] 55911.69</span></a></code></pre></div>
 <p><strong>Ridge Regression</strong></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">lf &lt;-<span class="st"> </span>LMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">family =</span> <span class="st">&quot;gaussian&quot;</span>, <span class="dt">alpha=</span><span class="dv">0</span>)</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">lf<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;SalePrice&quot;</span>)</a>
 <a class="sourceLine" id="cb10-3" data-line-number="3">predictions &lt;-<span class="st"> </span>lf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)</a>
 <a class="sourceLine" id="cb10-4" data-line-number="4"><span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> predictions)</a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; [1] 37519.78</span></a></code></pre></div>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; [1] 56556.61</span></a></code></pre></div>
 <p><strong>Logistic Regression with CV</strong></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">lf &lt;-<span class="st"> </span>LMTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">family =</span> <span class="st">&quot;gaussian&quot;</span>)</a>
 <a class="sourceLine" id="cb11-2" data-line-number="2">lf<span class="op">$</span><span class="kw">cv_model</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">'SalePrice'</span>, <span class="dt">nfolds =</span> <span class="dv">5</span>, <span class="dt">parallel =</span> <span class="ot">FALSE</span>)</a>
@@ -653,82 +653,82 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb12-3" data-line-number="3">pred &lt;-<span class="st"> </span>rf<span class="op">$</span><span class="kw">predict</span>(<span class="dt">df =</span> xtest)</a>
 <a class="sourceLine" id="cb12-4" data-line-number="4">rf<span class="op">$</span><span class="kw">get_importance</span>()</a>
 <a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt;               tmp.order.tmp..decreasing...TRUE..</span></a>
-<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt; OverallQual                         843528867996</span></a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; GarageCars                          541332222299</span></a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; 1stFlrSF                            483318749419</span></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; GarageArea                          473506726377</span></a>
-<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">#&gt; YearBuilt                           383509412736</span></a>
-<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">#&gt; GarageYrBlt                         292494440939</span></a>
-<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="co">#&gt; 2ndFlrSF                            245273696373</span></a>
-<a class="sourceLine" id="cb12-13" data-line-number="13"><span class="co">#&gt; BsmtFinSF1                          236385559010</span></a>
-<a class="sourceLine" id="cb12-14" data-line-number="14"><span class="co">#&gt; FullBath                            235657120093</span></a>
-<a class="sourceLine" id="cb12-15" data-line-number="15"><span class="co">#&gt; TotRmsAbvGrd                        204160296183</span></a>
-<a class="sourceLine" id="cb12-16" data-line-number="16"><span class="co">#&gt; YearRemodAdd                        199854187618</span></a>
-<a class="sourceLine" id="cb12-17" data-line-number="17"><span class="co">#&gt; KitchenQual                         192826779801</span></a>
-<a class="sourceLine" id="cb12-18" data-line-number="18"><span class="co">#&gt; LotArea                             167638537104</span></a>
-<a class="sourceLine" id="cb12-19" data-line-number="19"><span class="co">#&gt; ExterQual                           165651128526</span></a>
-<a class="sourceLine" id="cb12-20" data-line-number="20"><span class="co">#&gt; MasVnrArea                          164778221394</span></a>
-<a class="sourceLine" id="cb12-21" data-line-number="21"><span class="co">#&gt; Fireplaces                          157096715586</span></a>
-<a class="sourceLine" id="cb12-22" data-line-number="22"><span class="co">#&gt; FireplaceQu                         137297641709</span></a>
-<a class="sourceLine" id="cb12-23" data-line-number="23"><span class="co">#&gt; BsmtQual                            121920438920</span></a>
-<a class="sourceLine" id="cb12-24" data-line-number="24"><span class="co">#&gt; OpenPorchSF                         120841460753</span></a>
-<a class="sourceLine" id="cb12-25" data-line-number="25"><span class="co">#&gt; LotFrontage                         118101178039</span></a>
-<a class="sourceLine" id="cb12-26" data-line-number="26"><span class="co">#&gt; Foundation                          103990733529</span></a>
-<a class="sourceLine" id="cb12-27" data-line-number="27"><span class="co">#&gt; WoodDeckSF                           69848765508</span></a>
-<a class="sourceLine" id="cb12-28" data-line-number="28"><span class="co">#&gt; Neighborhood                         67261100945</span></a>
-<a class="sourceLine" id="cb12-29" data-line-number="29"><span class="co">#&gt; BsmtUnfSF                            62919521322</span></a>
-<a class="sourceLine" id="cb12-30" data-line-number="30"><span class="co">#&gt; BedroomAbvGr                         52860306010</span></a>
-<a class="sourceLine" id="cb12-31" data-line-number="31"><span class="co">#&gt; BsmtFinType1                         51982234371</span></a>
-<a class="sourceLine" id="cb12-32" data-line-number="32"><span class="co">#&gt; HeatingQC                            50189063151</span></a>
-<a class="sourceLine" id="cb12-33" data-line-number="33"><span class="co">#&gt; GarageType                           48044355273</span></a>
-<a class="sourceLine" id="cb12-34" data-line-number="34"><span class="co">#&gt; Exterior2nd                          42596379941</span></a>
-<a class="sourceLine" id="cb12-35" data-line-number="35"><span class="co">#&gt; MoSold                               40062903329</span></a>
-<a class="sourceLine" id="cb12-36" data-line-number="36"><span class="co">#&gt; MSSubClass                           39564307015</span></a>
-<a class="sourceLine" id="cb12-37" data-line-number="37"><span class="co">#&gt; OverallCond                          32754782066</span></a>
-<a class="sourceLine" id="cb12-38" data-line-number="38"><span class="co">#&gt; Exterior1st                          31737713942</span></a>
-<a class="sourceLine" id="cb12-39" data-line-number="39"><span class="co">#&gt; RoofStyle                            29179553505</span></a>
-<a class="sourceLine" id="cb12-40" data-line-number="40"><span class="co">#&gt; HalfBath                             25624426339</span></a>
-<a class="sourceLine" id="cb12-41" data-line-number="41"><span class="co">#&gt; PoolArea                             24774423758</span></a>
-<a class="sourceLine" id="cb12-42" data-line-number="42"><span class="co">#&gt; HouseStyle                           23762558236</span></a>
-<a class="sourceLine" id="cb12-43" data-line-number="43"><span class="co">#&gt; YrSold                               22444732721</span></a>
-<a class="sourceLine" id="cb12-44" data-line-number="44"><span class="co">#&gt; BsmtFullBath                         22260611232</span></a>
-<a class="sourceLine" id="cb12-45" data-line-number="45"><span class="co">#&gt; GarageFinish                         22137108912</span></a>
-<a class="sourceLine" id="cb12-46" data-line-number="46"><span class="co">#&gt; LotShape                             20767075998</span></a>
-<a class="sourceLine" id="cb12-47" data-line-number="47"><span class="co">#&gt; BsmtExposure                         17364314649</span></a>
-<a class="sourceLine" id="cb12-48" data-line-number="48"><span class="co">#&gt; SaleCondition                        16866276843</span></a>
-<a class="sourceLine" id="cb12-49" data-line-number="49"><span class="co">#&gt; RoofMatl                             15874497235</span></a>
-<a class="sourceLine" id="cb12-50" data-line-number="50"><span class="co">#&gt; MasVnrType                           15852982148</span></a>
-<a class="sourceLine" id="cb12-51" data-line-number="51"><span class="co">#&gt; Fence                                15453138099</span></a>
-<a class="sourceLine" id="cb12-52" data-line-number="52"><span class="co">#&gt; CentralAir                           14327658513</span></a>
-<a class="sourceLine" id="cb12-53" data-line-number="53"><span class="co">#&gt; LotConfig                            13549635384</span></a>
-<a class="sourceLine" id="cb12-54" data-line-number="54"><span class="co">#&gt; SaleType                             13508654676</span></a>
-<a class="sourceLine" id="cb12-55" data-line-number="55"><span class="co">#&gt; MSZoning                             13498853944</span></a>
-<a class="sourceLine" id="cb12-56" data-line-number="56"><span class="co">#&gt; ScreenPorch                          13397400798</span></a>
-<a class="sourceLine" id="cb12-57" data-line-number="57"><span class="co">#&gt; LandContour                          13319110213</span></a>
-<a class="sourceLine" id="cb12-58" data-line-number="58"><span class="co">#&gt; BldgType                             12867140545</span></a>
-<a class="sourceLine" id="cb12-59" data-line-number="59"><span class="co">#&gt; EnclosedPorch                        11296479669</span></a>
-<a class="sourceLine" id="cb12-60" data-line-number="60"><span class="co">#&gt; BsmtHalfBath                          9688039829</span></a>
-<a class="sourceLine" id="cb12-61" data-line-number="61"><span class="co">#&gt; KitchenAbvGr                          9584674634</span></a>
-<a class="sourceLine" id="cb12-62" data-line-number="62"><span class="co">#&gt; Condition1                            8747947235</span></a>
-<a class="sourceLine" id="cb12-63" data-line-number="63"><span class="co">#&gt; ExterCond                             8169124003</span></a>
-<a class="sourceLine" id="cb12-64" data-line-number="64"><span class="co">#&gt; BsmtFinSF2                            7683805820</span></a>
-<a class="sourceLine" id="cb12-65" data-line-number="65"><span class="co">#&gt; BsmtCond                              7619078071</span></a>
-<a class="sourceLine" id="cb12-66" data-line-number="66"><span class="co">#&gt; GarageQual                            7562150192</span></a>
-<a class="sourceLine" id="cb12-67" data-line-number="67"><span class="co">#&gt; BsmtFinType2                          6735314538</span></a>
-<a class="sourceLine" id="cb12-68" data-line-number="68"><span class="co">#&gt; GarageCond                            6672057801</span></a>
-<a class="sourceLine" id="cb12-69" data-line-number="69"><span class="co">#&gt; LandSlope                             6584672331</span></a>
-<a class="sourceLine" id="cb12-70" data-line-number="70"><span class="co">#&gt; Electrical                            5399227197</span></a>
-<a class="sourceLine" id="cb12-71" data-line-number="71"><span class="co">#&gt; PavedDrive                            4501353384</span></a>
-<a class="sourceLine" id="cb12-72" data-line-number="72"><span class="co">#&gt; Functional                            4190006815</span></a>
-<a class="sourceLine" id="cb12-73" data-line-number="73"><span class="co">#&gt; Condition2                            2195681528</span></a>
-<a class="sourceLine" id="cb12-74" data-line-number="74"><span class="co">#&gt; MiscVal                               1928894547</span></a>
-<a class="sourceLine" id="cb12-75" data-line-number="75"><span class="co">#&gt; Heating                               1569086808</span></a>
-<a class="sourceLine" id="cb12-76" data-line-number="76"><span class="co">#&gt; 3SsnPorch                             1480581688</span></a>
-<a class="sourceLine" id="cb12-77" data-line-number="77"><span class="co">#&gt; LowQualFinSF                          1056659610</span></a>
-<a class="sourceLine" id="cb12-78" data-line-number="78"><span class="co">#&gt; Street                                 438834513</span></a>
-<a class="sourceLine" id="cb12-79" data-line-number="79"><span class="co">#&gt; Utilities                               88330013</span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt; OverallQual                         833350284068</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; GarageCars                          465479127916</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; 1stFlrSF                            445606600578</span></a>
+<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; GarageArea                          396242047750</span></a>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">#&gt; YearBuilt                           364988991992</span></a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">#&gt; FullBath                            286370539079</span></a>
+<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="co">#&gt; BsmtFinSF1                          284612099870</span></a>
+<a class="sourceLine" id="cb12-13" data-line-number="13"><span class="co">#&gt; GarageYrBlt                         254491890949</span></a>
+<a class="sourceLine" id="cb12-14" data-line-number="14"><span class="co">#&gt; ExterQual                           223773978981</span></a>
+<a class="sourceLine" id="cb12-15" data-line-number="15"><span class="co">#&gt; TotRmsAbvGrd                        219141701180</span></a>
+<a class="sourceLine" id="cb12-16" data-line-number="16"><span class="co">#&gt; 2ndFlrSF                            189706505897</span></a>
+<a class="sourceLine" id="cb12-17" data-line-number="17"><span class="co">#&gt; LotArea                             169461096779</span></a>
+<a class="sourceLine" id="cb12-18" data-line-number="18"><span class="co">#&gt; Fireplaces                          141235914606</span></a>
+<a class="sourceLine" id="cb12-19" data-line-number="19"><span class="co">#&gt; YearRemodAdd                        134142408678</span></a>
+<a class="sourceLine" id="cb12-20" data-line-number="20"><span class="co">#&gt; KitchenQual                         132732494284</span></a>
+<a class="sourceLine" id="cb12-21" data-line-number="21"><span class="co">#&gt; FireplaceQu                         131673516393</span></a>
+<a class="sourceLine" id="cb12-22" data-line-number="22"><span class="co">#&gt; MasVnrArea                          107853599183</span></a>
+<a class="sourceLine" id="cb12-23" data-line-number="23"><span class="co">#&gt; Foundation                          104223221462</span></a>
+<a class="sourceLine" id="cb12-24" data-line-number="24"><span class="co">#&gt; BsmtQual                             99876088175</span></a>
+<a class="sourceLine" id="cb12-25" data-line-number="25"><span class="co">#&gt; OpenPorchSF                          83642601447</span></a>
+<a class="sourceLine" id="cb12-26" data-line-number="26"><span class="co">#&gt; BsmtFinType1                         78327672652</span></a>
+<a class="sourceLine" id="cb12-27" data-line-number="27"><span class="co">#&gt; LotFrontage                          77809357818</span></a>
+<a class="sourceLine" id="cb12-28" data-line-number="28"><span class="co">#&gt; BsmtUnfSF                            63322066423</span></a>
+<a class="sourceLine" id="cb12-29" data-line-number="29"><span class="co">#&gt; Neighborhood                         61053253580</span></a>
+<a class="sourceLine" id="cb12-30" data-line-number="30"><span class="co">#&gt; WoodDeckSF                           59661913778</span></a>
+<a class="sourceLine" id="cb12-31" data-line-number="31"><span class="co">#&gt; HeatingQC                            51360521952</span></a>
+<a class="sourceLine" id="cb12-32" data-line-number="32"><span class="co">#&gt; GarageType                           47242624339</span></a>
+<a class="sourceLine" id="cb12-33" data-line-number="33"><span class="co">#&gt; BedroomAbvGr                         41064075573</span></a>
+<a class="sourceLine" id="cb12-34" data-line-number="34"><span class="co">#&gt; Exterior2nd                          38308339821</span></a>
+<a class="sourceLine" id="cb12-35" data-line-number="35"><span class="co">#&gt; Exterior1st                          35097827861</span></a>
+<a class="sourceLine" id="cb12-36" data-line-number="36"><span class="co">#&gt; MSSubClass                           34774064972</span></a>
+<a class="sourceLine" id="cb12-37" data-line-number="37"><span class="co">#&gt; OverallCond                          33679741152</span></a>
+<a class="sourceLine" id="cb12-38" data-line-number="38"><span class="co">#&gt; RoofStyle                            31494089946</span></a>
+<a class="sourceLine" id="cb12-39" data-line-number="39"><span class="co">#&gt; HalfBath                             30374947665</span></a>
+<a class="sourceLine" id="cb12-40" data-line-number="40"><span class="co">#&gt; MoSold                               30024831953</span></a>
+<a class="sourceLine" id="cb12-41" data-line-number="41"><span class="co">#&gt; GarageFinish                         29552460141</span></a>
+<a class="sourceLine" id="cb12-42" data-line-number="42"><span class="co">#&gt; HouseStyle                           26939781931</span></a>
+<a class="sourceLine" id="cb12-43" data-line-number="43"><span class="co">#&gt; BsmtExposure                         22214362388</span></a>
+<a class="sourceLine" id="cb12-44" data-line-number="44"><span class="co">#&gt; MSZoning                             21832228050</span></a>
+<a class="sourceLine" id="cb12-45" data-line-number="45"><span class="co">#&gt; BsmtFullBath                         21242098578</span></a>
+<a class="sourceLine" id="cb12-46" data-line-number="46"><span class="co">#&gt; LotShape                             20582280804</span></a>
+<a class="sourceLine" id="cb12-47" data-line-number="47"><span class="co">#&gt; YrSold                               18993656717</span></a>
+<a class="sourceLine" id="cb12-48" data-line-number="48"><span class="co">#&gt; MasVnrType                           16121832830</span></a>
+<a class="sourceLine" id="cb12-49" data-line-number="49"><span class="co">#&gt; LandContour                          15579897406</span></a>
+<a class="sourceLine" id="cb12-50" data-line-number="50"><span class="co">#&gt; LotConfig                            14240812890</span></a>
+<a class="sourceLine" id="cb12-51" data-line-number="51"><span class="co">#&gt; GarageQual                           14017925183</span></a>
+<a class="sourceLine" id="cb12-52" data-line-number="52"><span class="co">#&gt; SaleType                             13991450447</span></a>
+<a class="sourceLine" id="cb12-53" data-line-number="53"><span class="co">#&gt; SaleCondition                        13697063876</span></a>
+<a class="sourceLine" id="cb12-54" data-line-number="54"><span class="co">#&gt; GarageCond                           12968703189</span></a>
+<a class="sourceLine" id="cb12-55" data-line-number="55"><span class="co">#&gt; ScreenPorch                          12669353846</span></a>
+<a class="sourceLine" id="cb12-56" data-line-number="56"><span class="co">#&gt; CentralAir                           12257009224</span></a>
+<a class="sourceLine" id="cb12-57" data-line-number="57"><span class="co">#&gt; LandSlope                            11752540501</span></a>
+<a class="sourceLine" id="cb12-58" data-line-number="58"><span class="co">#&gt; BldgType                             10826146503</span></a>
+<a class="sourceLine" id="cb12-59" data-line-number="59"><span class="co">#&gt; PoolArea                              9881220379</span></a>
+<a class="sourceLine" id="cb12-60" data-line-number="60"><span class="co">#&gt; BsmtCond                              9136680119</span></a>
+<a class="sourceLine" id="cb12-61" data-line-number="61"><span class="co">#&gt; Fence                                 8706441341</span></a>
+<a class="sourceLine" id="cb12-62" data-line-number="62"><span class="co">#&gt; ExterCond                             8230230400</span></a>
+<a class="sourceLine" id="cb12-63" data-line-number="63"><span class="co">#&gt; EnclosedPorch                         8095663365</span></a>
+<a class="sourceLine" id="cb12-64" data-line-number="64"><span class="co">#&gt; BsmtFinSF2                            6653807222</span></a>
+<a class="sourceLine" id="cb12-65" data-line-number="65"><span class="co">#&gt; Functional                            6329620593</span></a>
+<a class="sourceLine" id="cb12-66" data-line-number="66"><span class="co">#&gt; KitchenAbvGr                          5895685275</span></a>
+<a class="sourceLine" id="cb12-67" data-line-number="67"><span class="co">#&gt; BsmtFinType2                          5833219898</span></a>
+<a class="sourceLine" id="cb12-68" data-line-number="68"><span class="co">#&gt; LowQualFinSF                          4879512060</span></a>
+<a class="sourceLine" id="cb12-69" data-line-number="69"><span class="co">#&gt; Condition1                            4860876751</span></a>
+<a class="sourceLine" id="cb12-70" data-line-number="70"><span class="co">#&gt; RoofMatl                              3785085428</span></a>
+<a class="sourceLine" id="cb12-71" data-line-number="71"><span class="co">#&gt; PavedDrive                            3709917158</span></a>
+<a class="sourceLine" id="cb12-72" data-line-number="72"><span class="co">#&gt; Electrical                            3491437439</span></a>
+<a class="sourceLine" id="cb12-73" data-line-number="73"><span class="co">#&gt; BsmtHalfBath                          3357275107</span></a>
+<a class="sourceLine" id="cb12-74" data-line-number="74"><span class="co">#&gt; MiscVal                               2143773519</span></a>
+<a class="sourceLine" id="cb12-75" data-line-number="75"><span class="co">#&gt; 3SsnPorch                             2123549514</span></a>
+<a class="sourceLine" id="cb12-76" data-line-number="76"><span class="co">#&gt; Heating                               1308976630</span></a>
+<a class="sourceLine" id="cb12-77" data-line-number="77"><span class="co">#&gt; Street                                 830618588</span></a>
+<a class="sourceLine" id="cb12-78" data-line-number="78"><span class="co">#&gt; Condition2                             201504146</span></a>
+<a class="sourceLine" id="cb12-79" data-line-number="79"><span class="co">#&gt; Utilities                               54630098</span></a>
 <a class="sourceLine" id="cb12-80" data-line-number="80"><span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> pred)</a>
-<a class="sourceLine" id="cb12-81" data-line-number="81"><span class="co">#&gt; [1] 30455</span></a></code></pre></div>
+<a class="sourceLine" id="cb12-81" data-line-number="81"><span class="co">#&gt; [1] 35475.5</span></a></code></pre></div>
 <p><strong>Xgboost</strong></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">xgb &lt;-<span class="st"> </span>XGBTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">objective =</span> <span class="st">&quot;reg:linear&quot;</span></a>
 <a class="sourceLine" id="cb13-2" data-line-number="2">                      , <span class="dt">n_estimators =</span> <span class="dv">500</span></a>
@@ -737,31 +737,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb13-5" data-line-number="5">                      , <span class="dt">learning_rate =</span> <span class="fl">0.1</span></a>
 <a class="sourceLine" id="cb13-6" data-line-number="6">                      ,<span class="dt">max_depth =</span> <span class="dv">6</span>)</a>
 <a class="sourceLine" id="cb13-7" data-line-number="7">xgb<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;SalePrice&quot;</span>, <span class="dt">valid =</span> xtest)</a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="co">#&gt; [12:05:55] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/objective/regression_obj.cu:203: reg:linear is now deprecated in favor of reg:squarederror.</span></a>
-<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="co">#&gt; [12:05:55] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb13-13" data-line-number="13"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-14" data-line-number="14"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb13-15" data-line-number="15"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb13-16" data-line-number="16"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb13-17" data-line-number="17"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-18" data-line-number="18"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-19" data-line-number="19"><span class="co">#&gt; [1]  train-rmse:179540.272230    val-rmse:177816.924029 </span></a>
-<a class="sourceLine" id="cb13-20" data-line-number="20"><span class="co">#&gt; Multiple eval metrics are present. Will use val_rmse for early stopping.</span></a>
-<a class="sourceLine" id="cb13-21" data-line-number="21"><span class="co">#&gt; Will train until val_rmse hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb13-22" data-line-number="22"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-23" data-line-number="23"><span class="co">#&gt; [51] train-rmse:8043.020532  val-rmse:29194.076697 </span></a>
-<a class="sourceLine" id="cb13-24" data-line-number="24"><span class="co">#&gt; [101]    train-rmse:4690.059726  val-rmse:28389.852039 </span></a>
-<a class="sourceLine" id="cb13-25" data-line-number="25"><span class="co">#&gt; [151]    train-rmse:3046.429187  val-rmse:28202.642311 </span></a>
-<a class="sourceLine" id="cb13-26" data-line-number="26"><span class="co">#&gt; [201]    train-rmse:2076.870140  val-rmse:28066.442911 </span></a>
-<a class="sourceLine" id="cb13-27" data-line-number="27"><span class="co">#&gt; [251]    train-rmse:1405.456004  val-rmse:27995.566795 </span></a>
-<a class="sourceLine" id="cb13-28" data-line-number="28"><span class="co">#&gt; Stopping. Best iteration:</span></a>
-<a class="sourceLine" id="cb13-29" data-line-number="29"><span class="co">#&gt; [237]    train-rmse:1561.653431  val-rmse:27994.376286</span></a>
-<a class="sourceLine" id="cb13-30" data-line-number="30">pred &lt;-<span class="st"> </span>xgb<span class="op">$</span><span class="kw">predict</span>(xtest)</a>
-<a class="sourceLine" id="cb13-31" data-line-number="31"><span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> pred)</a>
-<a class="sourceLine" id="cb13-32" data-line-number="32"><span class="co">#&gt; [1] 27994.38</span></a></code></pre></div>
+<a class="sourceLine" id="cb13-8" data-line-number="8">pred &lt;-<span class="st"> </span>xgb<span class="op">$</span><span class="kw">predict</span>(xtest)</a>
+<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="kw">rmse</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>SalePrice, <span class="dt">predicted =</span> pred)</a></code></pre></div>
 <p><strong>Grid Search</strong></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">xgb &lt;-<span class="st"> </span>XGBTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">objective =</span> <span class="st">&quot;reg:linear&quot;</span>)</a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"></a>
@@ -770,206 +747,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb14-5" data-line-number="5">                             <span class="dt">n_folds =</span> <span class="dv">3</span>,</a>
 <a class="sourceLine" id="cb14-6" data-line-number="6">                             <span class="dt">scoring =</span> <span class="kw">c</span>(<span class="st">'accuracy'</span>,<span class="st">'auc'</span>))</a>
 <a class="sourceLine" id="cb14-7" data-line-number="7">gst<span class="op">$</span><span class="kw">fit</span>(xtrain, <span class="st">&quot;SalePrice&quot;</span>)</a>
-<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="co">#&gt; [1] &quot;entering grid search&quot;</span></a>
-<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co">#&gt; [1] &quot;In total, 4 models will be trained&quot;</span></a>
-<a class="sourceLine" id="cb14-10" data-line-number="10"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb14-11" data-line-number="11"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="co">#&gt; [12:05:56] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/objective/regression_obj.cu:203: reg:linear is now deprecated in favor of reg:squarederror.</span></a>
-<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="co">#&gt; [12:05:56] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb14-15" data-line-number="15"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-16" data-line-number="16"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb14-17" data-line-number="17"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb14-18" data-line-number="18"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb14-19" data-line-number="19"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-20" data-line-number="20"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-21" data-line-number="21"><span class="co">#&gt; [1]  train-rmse:143834.662493 </span></a>
-<a class="sourceLine" id="cb14-22" data-line-number="22"><span class="co">#&gt; Will train until train_rmse hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb14-23" data-line-number="23"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-24" data-line-number="24"><span class="co">#&gt; [10] train-rmse:16183.222568</span></a>
-<a class="sourceLine" id="cb14-25" data-line-number="25"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb14-26" data-line-number="26"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb14-27" data-line-number="27"><span class="co">#&gt; [12:05:56] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/objective/regression_obj.cu:203: reg:linear is now deprecated in favor of reg:squarederror.</span></a>
-<a class="sourceLine" id="cb14-28" data-line-number="28"><span class="co">#&gt; [12:05:56] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb14-29" data-line-number="29"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb14-30" data-line-number="30"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-31" data-line-number="31"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb14-32" data-line-number="32"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb14-33" data-line-number="33"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb14-34" data-line-number="34"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-35" data-line-number="35"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-36" data-line-number="36"><span class="co">#&gt; [1]  train-rmse:140929.342988 </span></a>
-<a class="sourceLine" id="cb14-37" data-line-number="37"><span class="co">#&gt; Will train until train_rmse hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb14-38" data-line-number="38"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-39" data-line-number="39"><span class="co">#&gt; [10] train-rmse:15550.145000</span></a>
-<a class="sourceLine" id="cb14-40" data-line-number="40"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb14-41" data-line-number="41"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb14-42" data-line-number="42"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/objective/regression_obj.cu:203: reg:linear is now deprecated in favor of reg:squarederror.</span></a>
-<a class="sourceLine" id="cb14-43" data-line-number="43"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb14-44" data-line-number="44"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb14-45" data-line-number="45"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-46" data-line-number="46"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb14-47" data-line-number="47"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb14-48" data-line-number="48"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb14-49" data-line-number="49"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-50" data-line-number="50"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-51" data-line-number="51"><span class="co">#&gt; [1]  train-rmse:143251.233056 </span></a>
-<a class="sourceLine" id="cb14-52" data-line-number="52"><span class="co">#&gt; Will train until train_rmse hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb14-53" data-line-number="53"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-54" data-line-number="54"><span class="co">#&gt; [10] train-rmse:16330.818909</span></a>
-<a class="sourceLine" id="cb14-55" data-line-number="55"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb14-56" data-line-number="56"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb14-57" data-line-number="57"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/objective/regression_obj.cu:203: reg:linear is now deprecated in favor of reg:squarederror.</span></a>
-<a class="sourceLine" id="cb14-58" data-line-number="58"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb14-59" data-line-number="59"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb14-60" data-line-number="60"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-61" data-line-number="61"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb14-62" data-line-number="62"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb14-63" data-line-number="63"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb14-64" data-line-number="64"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-65" data-line-number="65"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-66" data-line-number="66"><span class="co">#&gt; [1]  train-rmse:143834.662493 </span></a>
-<a class="sourceLine" id="cb14-67" data-line-number="67"><span class="co">#&gt; Will train until train_rmse hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb14-68" data-line-number="68"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-69" data-line-number="69"><span class="co">#&gt; [50] train-rmse:3819.400511</span></a>
-<a class="sourceLine" id="cb14-70" data-line-number="70"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb14-71" data-line-number="71"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb14-72" data-line-number="72"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/objective/regression_obj.cu:203: reg:linear is now deprecated in favor of reg:squarederror.</span></a>
-<a class="sourceLine" id="cb14-73" data-line-number="73"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb14-74" data-line-number="74"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb14-75" data-line-number="75"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-76" data-line-number="76"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb14-77" data-line-number="77"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb14-78" data-line-number="78"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb14-79" data-line-number="79"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-80" data-line-number="80"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-81" data-line-number="81"><span class="co">#&gt; [1]  train-rmse:140929.342988 </span></a>
-<a class="sourceLine" id="cb14-82" data-line-number="82"><span class="co">#&gt; Will train until train_rmse hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb14-83" data-line-number="83"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-84" data-line-number="84"><span class="co">#&gt; [50] train-rmse:3905.734710</span></a>
-<a class="sourceLine" id="cb14-85" data-line-number="85"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb14-86" data-line-number="86"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb14-87" data-line-number="87"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/objective/regression_obj.cu:203: reg:linear is now deprecated in favor of reg:squarederror.</span></a>
-<a class="sourceLine" id="cb14-88" data-line-number="88"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb14-89" data-line-number="89"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb14-90" data-line-number="90"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-91" data-line-number="91"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb14-92" data-line-number="92"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb14-93" data-line-number="93"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb14-94" data-line-number="94"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-95" data-line-number="95"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-96" data-line-number="96"><span class="co">#&gt; [1]  train-rmse:143251.233056 </span></a>
-<a class="sourceLine" id="cb14-97" data-line-number="97"><span class="co">#&gt; Will train until train_rmse hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb14-98" data-line-number="98"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-99" data-line-number="99"><span class="co">#&gt; [50] train-rmse:3718.327761</span></a>
-<a class="sourceLine" id="cb14-100" data-line-number="100"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb14-101" data-line-number="101"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb14-102" data-line-number="102"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/objective/regression_obj.cu:203: reg:linear is now deprecated in favor of reg:squarederror.</span></a>
-<a class="sourceLine" id="cb14-103" data-line-number="103"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb14-104" data-line-number="104"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb14-105" data-line-number="105"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-106" data-line-number="106"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb14-107" data-line-number="107"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb14-108" data-line-number="108"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb14-109" data-line-number="109"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-110" data-line-number="110"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-111" data-line-number="111"><span class="co">#&gt; [1]  train-rmse:144732.651251 </span></a>
-<a class="sourceLine" id="cb14-112" data-line-number="112"><span class="co">#&gt; Will train until train_rmse hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb14-113" data-line-number="113"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-114" data-line-number="114"><span class="co">#&gt; [10] train-rmse:32563.362240</span></a>
-<a class="sourceLine" id="cb14-115" data-line-number="115"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb14-116" data-line-number="116"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb14-117" data-line-number="117"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/objective/regression_obj.cu:203: reg:linear is now deprecated in favor of reg:squarederror.</span></a>
-<a class="sourceLine" id="cb14-118" data-line-number="118"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb14-119" data-line-number="119"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb14-120" data-line-number="120"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-121" data-line-number="121"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb14-122" data-line-number="122"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb14-123" data-line-number="123"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb14-124" data-line-number="124"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-125" data-line-number="125"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-126" data-line-number="126"><span class="co">#&gt; [1]  train-rmse:141943.965863 </span></a>
-<a class="sourceLine" id="cb14-127" data-line-number="127"><span class="co">#&gt; Will train until train_rmse hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb14-128" data-line-number="128"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-129" data-line-number="129"><span class="co">#&gt; [10] train-rmse:31118.978041</span></a>
-<a class="sourceLine" id="cb14-130" data-line-number="130"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb14-131" data-line-number="131"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb14-132" data-line-number="132"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/objective/regression_obj.cu:203: reg:linear is now deprecated in favor of reg:squarederror.</span></a>
-<a class="sourceLine" id="cb14-133" data-line-number="133"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb14-134" data-line-number="134"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb14-135" data-line-number="135"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-136" data-line-number="136"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb14-137" data-line-number="137"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb14-138" data-line-number="138"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb14-139" data-line-number="139"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-140" data-line-number="140"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-141" data-line-number="141"><span class="co">#&gt; [1]  train-rmse:144076.337327 </span></a>
-<a class="sourceLine" id="cb14-142" data-line-number="142"><span class="co">#&gt; Will train until train_rmse hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb14-143" data-line-number="143"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-144" data-line-number="144"><span class="co">#&gt; [10] train-rmse:27683.098538</span></a>
-<a class="sourceLine" id="cb14-145" data-line-number="145"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb14-146" data-line-number="146"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb14-147" data-line-number="147"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/objective/regression_obj.cu:203: reg:linear is now deprecated in favor of reg:squarederror.</span></a>
-<a class="sourceLine" id="cb14-148" data-line-number="148"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb14-149" data-line-number="149"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb14-150" data-line-number="150"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-151" data-line-number="151"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb14-152" data-line-number="152"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb14-153" data-line-number="153"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb14-154" data-line-number="154"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-155" data-line-number="155"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-156" data-line-number="156"><span class="co">#&gt; [1]  train-rmse:144732.651251 </span></a>
-<a class="sourceLine" id="cb14-157" data-line-number="157"><span class="co">#&gt; Will train until train_rmse hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb14-158" data-line-number="158"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-159" data-line-number="159"><span class="co">#&gt; [50] train-rmse:17622.435150</span></a>
-<a class="sourceLine" id="cb14-160" data-line-number="160"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb14-161" data-line-number="161"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb14-162" data-line-number="162"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/objective/regression_obj.cu:203: reg:linear is now deprecated in favor of reg:squarederror.</span></a>
-<a class="sourceLine" id="cb14-163" data-line-number="163"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb14-164" data-line-number="164"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb14-165" data-line-number="165"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-166" data-line-number="166"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb14-167" data-line-number="167"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb14-168" data-line-number="168"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb14-169" data-line-number="169"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-170" data-line-number="170"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-171" data-line-number="171"><span class="co">#&gt; [1]  train-rmse:141943.965863 </span></a>
-<a class="sourceLine" id="cb14-172" data-line-number="172"><span class="co">#&gt; Will train until train_rmse hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb14-173" data-line-number="173"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-174" data-line-number="174"><span class="co">#&gt; [50] train-rmse:16389.178107</span></a>
-<a class="sourceLine" id="cb14-175" data-line-number="175"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb14-176" data-line-number="176"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb14-177" data-line-number="177"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/objective/regression_obj.cu:203: reg:linear is now deprecated in favor of reg:squarederror.</span></a>
-<a class="sourceLine" id="cb14-178" data-line-number="178"><span class="co">#&gt; [12:05:57] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb14-179" data-line-number="179"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb14-180" data-line-number="180"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-181" data-line-number="181"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb14-182" data-line-number="182"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb14-183" data-line-number="183"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb14-184" data-line-number="184"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-185" data-line-number="185"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-186" data-line-number="186"><span class="co">#&gt; [1]  train-rmse:144076.337327 </span></a>
-<a class="sourceLine" id="cb14-187" data-line-number="187"><span class="co">#&gt; Will train until train_rmse hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb14-188" data-line-number="188"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-189" data-line-number="189"><span class="co">#&gt; [50] train-rmse:15743.306882</span></a>
-<a class="sourceLine" id="cb14-190" data-line-number="190">gst<span class="op">$</span><span class="kw">best_iteration</span>()</a>
-<a class="sourceLine" id="cb14-191" data-line-number="191"><span class="co">#&gt; $n_estimators</span></a>
-<a class="sourceLine" id="cb14-192" data-line-number="192"><span class="co">#&gt; [1] 10</span></a>
-<a class="sourceLine" id="cb14-193" data-line-number="193"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-194" data-line-number="194"><span class="co">#&gt; $max_depth</span></a>
-<a class="sourceLine" id="cb14-195" data-line-number="195"><span class="co">#&gt; [1] 5</span></a>
-<a class="sourceLine" id="cb14-196" data-line-number="196"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-197" data-line-number="197"><span class="co">#&gt; $accuracy_avg</span></a>
-<a class="sourceLine" id="cb14-198" data-line-number="198"><span class="co">#&gt; [1] 0</span></a>
-<a class="sourceLine" id="cb14-199" data-line-number="199"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-200" data-line-number="200"><span class="co">#&gt; $accuracy_sd</span></a>
-<a class="sourceLine" id="cb14-201" data-line-number="201"><span class="co">#&gt; [1] 0</span></a>
-<a class="sourceLine" id="cb14-202" data-line-number="202"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-203" data-line-number="203"><span class="co">#&gt; $auc_avg</span></a>
-<a class="sourceLine" id="cb14-204" data-line-number="204"><span class="co">#&gt; [1] NaN</span></a>
-<a class="sourceLine" id="cb14-205" data-line-number="205"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-206" data-line-number="206"><span class="co">#&gt; $auc_sd</span></a>
-<a class="sourceLine" id="cb14-207" data-line-number="207"><span class="co">#&gt; [1] NA</span></a></code></pre></div>
+<a class="sourceLine" id="cb14-8" data-line-number="8">gst<span class="op">$</span><span class="kw">best_iteration</span>()</a></code></pre></div>
 <p><strong>Random Search</strong></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">rf &lt;-<span class="st"> </span>RFTrainer<span class="op">$</span><span class="kw">new</span>()</a>
 <a class="sourceLine" id="cb15-2" data-line-number="2">rst &lt;-<span class="st"> </span>RandomSearchCV<span class="op">$</span><span class="kw">new</span>(<span class="dt">trainer =</span> rf,</a>
@@ -988,10 +766,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb15-15" data-line-number="15"><span class="co">#&gt; [1] 2</span></a>
 <a class="sourceLine" id="cb15-16" data-line-number="16"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb15-17" data-line-number="17"><span class="co">#&gt; $accuracy_avg</span></a>
-<a class="sourceLine" id="cb15-18" data-line-number="18"><span class="co">#&gt; [1] 0.01074421</span></a>
+<a class="sourceLine" id="cb15-18" data-line-number="18"><span class="co">#&gt; [1] 0.006834145</span></a>
 <a class="sourceLine" id="cb15-19" data-line-number="19"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb15-20" data-line-number="20"><span class="co">#&gt; $accuracy_sd</span></a>
-<a class="sourceLine" id="cb15-21" data-line-number="21"><span class="co">#&gt; [1] 0.003393777</span></a>
+<a class="sourceLine" id="cb15-21" data-line-number="21"><span class="co">#&gt; [1] 0.0033791</span></a>
 <a class="sourceLine" id="cb15-22" data-line-number="22"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb15-23" data-line-number="23"><span class="co">#&gt; $auc_avg</span></a>
 <a class="sourceLine" id="cb15-24" data-line-number="24"><span class="co">#&gt; [1] NaN</span></a>
@@ -1152,27 +930,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb24-5" data-line-number="5">                      , <span class="dt">learning_rate =</span> <span class="fl">0.1</span></a>
 <a class="sourceLine" id="cb24-6" data-line-number="6">                      ,<span class="dt">max_depth =</span> <span class="dv">6</span>)</a>
 <a class="sourceLine" id="cb24-7" data-line-number="7">xgb<span class="op">$</span><span class="kw">fit</span>(<span class="dt">X =</span> xtrain, <span class="dt">y =</span> <span class="st">&quot;Survived&quot;</span>, <span class="dt">valid =</span> xtest)</a>
-<a class="sourceLine" id="cb24-8" data-line-number="8"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb24-9" data-line-number="9"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb24-10" data-line-number="10"><span class="co">#&gt; [12:05:58] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb24-11" data-line-number="11"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb24-12" data-line-number="12"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb24-13" data-line-number="13"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb24-14" data-line-number="14"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb24-15" data-line-number="15"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb24-16" data-line-number="16"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb24-17" data-line-number="17"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb24-18" data-line-number="18"><span class="co">#&gt; [1]  train-auc:0.886258  val-auc:0.879085 </span></a>
-<a class="sourceLine" id="cb24-19" data-line-number="19"><span class="co">#&gt; Multiple eval metrics are present. Will use val_auc for early stopping.</span></a>
-<a class="sourceLine" id="cb24-20" data-line-number="20"><span class="co">#&gt; Will train until val_auc hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb24-21" data-line-number="21"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb24-22" data-line-number="22"><span class="co">#&gt; [51] train-auc:0.972938  val-auc:0.866370 </span></a>
-<a class="sourceLine" id="cb24-23" data-line-number="23"><span class="co">#&gt; Stopping. Best iteration:</span></a>
-<a class="sourceLine" id="cb24-24" data-line-number="24"><span class="co">#&gt; [1]  train-auc:0.886258  val-auc:0.879085</span></a>
-<a class="sourceLine" id="cb24-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb24-26" data-line-number="26">pred &lt;-<span class="st"> </span>xgb<span class="op">$</span><span class="kw">predict</span>(xtest)</a>
-<a class="sourceLine" id="cb24-27" data-line-number="27"><span class="kw">auc</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>Survived, <span class="dt">predicted =</span> pred)</a>
-<a class="sourceLine" id="cb24-28" data-line-number="28"><span class="co">#&gt; [1] 0.879085</span></a></code></pre></div>
+<a class="sourceLine" id="cb24-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb24-9" data-line-number="9">pred &lt;-<span class="st"> </span>xgb<span class="op">$</span><span class="kw">predict</span>(xtest)</a>
+<a class="sourceLine" id="cb24-10" data-line-number="10"><span class="kw">auc</span>(<span class="dt">actual =</span> xtest<span class="op">$</span>Survived, <span class="dt">predicted =</span> pred)</a></code></pre></div>
 <p><strong>Grid Search</strong></p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">xgb &lt;-<span class="st"> </span>XGBTrainer<span class="op">$</span><span class="kw">new</span>(<span class="dt">objective=</span><span class="st">&quot;binary:logistic&quot;</span>)</a>
 <a class="sourceLine" id="cb25-2" data-line-number="2">gst &lt;-GridSearchCV<span class="op">$</span><span class="kw">new</span>(<span class="dt">trainer =</span> xgb,</a>
@@ -1181,194 +941,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb25-5" data-line-number="5">                             <span class="dt">n_folds =</span> <span class="dv">3</span>,</a>
 <a class="sourceLine" id="cb25-6" data-line-number="6">                             <span class="dt">scoring =</span> <span class="kw">c</span>(<span class="st">'accuracy'</span>,<span class="st">'auc'</span>))</a>
 <a class="sourceLine" id="cb25-7" data-line-number="7">gst<span class="op">$</span><span class="kw">fit</span>(xtrain, <span class="st">&quot;Survived&quot;</span>)</a>
-<a class="sourceLine" id="cb25-8" data-line-number="8"><span class="co">#&gt; [1] &quot;entering grid search&quot;</span></a>
-<a class="sourceLine" id="cb25-9" data-line-number="9"><span class="co">#&gt; [1] &quot;In total, 4 models will be trained&quot;</span></a>
-<a class="sourceLine" id="cb25-10" data-line-number="10"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb25-11" data-line-number="11"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb25-12" data-line-number="12"><span class="co">#&gt; [12:05:58] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb25-13" data-line-number="13"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb25-14" data-line-number="14"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-15" data-line-number="15"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb25-16" data-line-number="16"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb25-17" data-line-number="17"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb25-18" data-line-number="18"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-19" data-line-number="19"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-20" data-line-number="20"><span class="co">#&gt; [1]  train-logloss:0.559993 </span></a>
-<a class="sourceLine" id="cb25-21" data-line-number="21"><span class="co">#&gt; Will train until train_logloss hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb25-22" data-line-number="22"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-23" data-line-number="23"><span class="co">#&gt; [10] train-logloss:0.304225</span></a>
-<a class="sourceLine" id="cb25-24" data-line-number="24"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb25-25" data-line-number="25"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb25-26" data-line-number="26"><span class="co">#&gt; [12:05:58] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb25-27" data-line-number="27"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb25-28" data-line-number="28"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-29" data-line-number="29"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb25-30" data-line-number="30"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb25-31" data-line-number="31"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb25-32" data-line-number="32"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-33" data-line-number="33"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-34" data-line-number="34"><span class="co">#&gt; [1]  train-logloss:0.558838 </span></a>
-<a class="sourceLine" id="cb25-35" data-line-number="35"><span class="co">#&gt; Will train until train_logloss hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb25-36" data-line-number="36"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-37" data-line-number="37"><span class="co">#&gt; [10] train-logloss:0.302156</span></a>
-<a class="sourceLine" id="cb25-38" data-line-number="38"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb25-39" data-line-number="39"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb25-40" data-line-number="40"><span class="co">#&gt; [12:05:58] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb25-41" data-line-number="41"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb25-42" data-line-number="42"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-43" data-line-number="43"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb25-44" data-line-number="44"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb25-45" data-line-number="45"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb25-46" data-line-number="46"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-47" data-line-number="47"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-48" data-line-number="48"><span class="co">#&gt; [1]  train-logloss:0.547201 </span></a>
-<a class="sourceLine" id="cb25-49" data-line-number="49"><span class="co">#&gt; Will train until train_logloss hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb25-50" data-line-number="50"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-51" data-line-number="51"><span class="co">#&gt; [10] train-logloss:0.284697</span></a>
-<a class="sourceLine" id="cb25-52" data-line-number="52"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb25-53" data-line-number="53"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb25-54" data-line-number="54"><span class="co">#&gt; [12:05:58] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb25-55" data-line-number="55"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb25-56" data-line-number="56"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-57" data-line-number="57"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb25-58" data-line-number="58"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb25-59" data-line-number="59"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb25-60" data-line-number="60"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-61" data-line-number="61"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-62" data-line-number="62"><span class="co">#&gt; [1]  train-logloss:0.559993 </span></a>
-<a class="sourceLine" id="cb25-63" data-line-number="63"><span class="co">#&gt; Will train until train_logloss hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb25-64" data-line-number="64"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-65" data-line-number="65"><span class="co">#&gt; [50] train-logloss:0.172763</span></a>
-<a class="sourceLine" id="cb25-66" data-line-number="66"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb25-67" data-line-number="67"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb25-68" data-line-number="68"><span class="co">#&gt; [12:05:58] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb25-69" data-line-number="69"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb25-70" data-line-number="70"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-71" data-line-number="71"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb25-72" data-line-number="72"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb25-73" data-line-number="73"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb25-74" data-line-number="74"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-75" data-line-number="75"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-76" data-line-number="76"><span class="co">#&gt; [1]  train-logloss:0.558838 </span></a>
-<a class="sourceLine" id="cb25-77" data-line-number="77"><span class="co">#&gt; Will train until train_logloss hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb25-78" data-line-number="78"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-79" data-line-number="79"><span class="co">#&gt; [50] train-logloss:0.160542</span></a>
-<a class="sourceLine" id="cb25-80" data-line-number="80"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb25-81" data-line-number="81"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb25-82" data-line-number="82"><span class="co">#&gt; [12:05:58] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb25-83" data-line-number="83"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb25-84" data-line-number="84"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-85" data-line-number="85"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb25-86" data-line-number="86"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb25-87" data-line-number="87"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb25-88" data-line-number="88"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-89" data-line-number="89"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-90" data-line-number="90"><span class="co">#&gt; [1]  train-logloss:0.547201 </span></a>
-<a class="sourceLine" id="cb25-91" data-line-number="91"><span class="co">#&gt; Will train until train_logloss hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb25-92" data-line-number="92"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-93" data-line-number="93"><span class="co">#&gt; [50] train-logloss:0.134347</span></a>
-<a class="sourceLine" id="cb25-94" data-line-number="94"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb25-95" data-line-number="95"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb25-96" data-line-number="96"><span class="co">#&gt; [12:05:58] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb25-97" data-line-number="97"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb25-98" data-line-number="98"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-99" data-line-number="99"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb25-100" data-line-number="100"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb25-101" data-line-number="101"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb25-102" data-line-number="102"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-103" data-line-number="103"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-104" data-line-number="104"><span class="co">#&gt; [1]  train-logloss:0.586389 </span></a>
-<a class="sourceLine" id="cb25-105" data-line-number="105"><span class="co">#&gt; Will train until train_logloss hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb25-106" data-line-number="106"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-107" data-line-number="107"><span class="co">#&gt; [10] train-logloss:0.416683</span></a>
-<a class="sourceLine" id="cb25-108" data-line-number="108"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb25-109" data-line-number="109"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb25-110" data-line-number="110"><span class="co">#&gt; [12:05:58] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb25-111" data-line-number="111"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb25-112" data-line-number="112"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-113" data-line-number="113"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb25-114" data-line-number="114"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb25-115" data-line-number="115"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb25-116" data-line-number="116"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-117" data-line-number="117"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-118" data-line-number="118"><span class="co">#&gt; [1]  train-logloss:0.590015 </span></a>
-<a class="sourceLine" id="cb25-119" data-line-number="119"><span class="co">#&gt; Will train until train_logloss hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb25-120" data-line-number="120"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-121" data-line-number="121"><span class="co">#&gt; [10] train-logloss:0.416606</span></a>
-<a class="sourceLine" id="cb25-122" data-line-number="122"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb25-123" data-line-number="123"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb25-124" data-line-number="124"><span class="co">#&gt; [12:05:58] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb25-125" data-line-number="125"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb25-126" data-line-number="126"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-127" data-line-number="127"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb25-128" data-line-number="128"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb25-129" data-line-number="129"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb25-130" data-line-number="130"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-131" data-line-number="131"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-132" data-line-number="132"><span class="co">#&gt; [1]  train-logloss:0.582958 </span></a>
-<a class="sourceLine" id="cb25-133" data-line-number="133"><span class="co">#&gt; Will train until train_logloss hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb25-134" data-line-number="134"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-135" data-line-number="135"><span class="co">#&gt; [10] train-logloss:0.393512</span></a>
-<a class="sourceLine" id="cb25-136" data-line-number="136"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb25-137" data-line-number="137"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb25-138" data-line-number="138"><span class="co">#&gt; [12:05:58] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb25-139" data-line-number="139"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb25-140" data-line-number="140"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-141" data-line-number="141"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb25-142" data-line-number="142"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb25-143" data-line-number="143"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb25-144" data-line-number="144"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-145" data-line-number="145"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-146" data-line-number="146"><span class="co">#&gt; [1]  train-logloss:0.586389 </span></a>
-<a class="sourceLine" id="cb25-147" data-line-number="147"><span class="co">#&gt; Will train until train_logloss hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb25-148" data-line-number="148"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-149" data-line-number="149"><span class="co">#&gt; [50] train-logloss:0.325189</span></a>
-<a class="sourceLine" id="cb25-150" data-line-number="150"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb25-151" data-line-number="151"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb25-152" data-line-number="152"><span class="co">#&gt; [12:05:59] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb25-153" data-line-number="153"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb25-154" data-line-number="154"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-155" data-line-number="155"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb25-156" data-line-number="156"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb25-157" data-line-number="157"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb25-158" data-line-number="158"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-159" data-line-number="159"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-160" data-line-number="160"><span class="co">#&gt; [1]  train-logloss:0.590015 </span></a>
-<a class="sourceLine" id="cb25-161" data-line-number="161"><span class="co">#&gt; Will train until train_logloss hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb25-162" data-line-number="162"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-163" data-line-number="163"><span class="co">#&gt; [50] train-logloss:0.320031</span></a>
-<a class="sourceLine" id="cb25-164" data-line-number="164"><span class="co">#&gt; converting the data into xgboost format..</span></a>
-<a class="sourceLine" id="cb25-165" data-line-number="165"><span class="co">#&gt; starting with training...</span></a>
-<a class="sourceLine" id="cb25-166" data-line-number="166"><span class="co">#&gt; [12:05:59] </span><span class="al">WARNING</span><span class="co">: amalgamation/../src/learner.cc:627: </span></a>
-<a class="sourceLine" id="cb25-167" data-line-number="167"><span class="co">#&gt; Parameters: { &quot;nrounds&quot; } might not be used.</span></a>
-<a class="sourceLine" id="cb25-168" data-line-number="168"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-169" data-line-number="169"><span class="co">#&gt;   This could be a false alarm, with some parameters getting used by language bindings but</span></a>
-<a class="sourceLine" id="cb25-170" data-line-number="170"><span class="co">#&gt;   then being mistakenly passed down to XGBoost core, or some parameter actually being used</span></a>
-<a class="sourceLine" id="cb25-171" data-line-number="171"><span class="co">#&gt;   but getting flagged wrongly here. Please open an issue if you find any such cases.</span></a>
-<a class="sourceLine" id="cb25-172" data-line-number="172"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-173" data-line-number="173"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-174" data-line-number="174"><span class="co">#&gt; [1]  train-logloss:0.582958 </span></a>
-<a class="sourceLine" id="cb25-175" data-line-number="175"><span class="co">#&gt; Will train until train_logloss hasn't improved in 50 rounds.</span></a>
-<a class="sourceLine" id="cb25-176" data-line-number="176"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-177" data-line-number="177"><span class="co">#&gt; [50] train-logloss:0.308201</span></a>
-<a class="sourceLine" id="cb25-178" data-line-number="178">gst<span class="op">$</span><span class="kw">best_iteration</span>()</a>
-<a class="sourceLine" id="cb25-179" data-line-number="179"><span class="co">#&gt; $n_estimators</span></a>
-<a class="sourceLine" id="cb25-180" data-line-number="180"><span class="co">#&gt; [1] 10</span></a>
-<a class="sourceLine" id="cb25-181" data-line-number="181"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-182" data-line-number="182"><span class="co">#&gt; $max_depth</span></a>
-<a class="sourceLine" id="cb25-183" data-line-number="183"><span class="co">#&gt; [1] 5</span></a>
-<a class="sourceLine" id="cb25-184" data-line-number="184"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-185" data-line-number="185"><span class="co">#&gt; $accuracy_avg</span></a>
-<a class="sourceLine" id="cb25-186" data-line-number="186"><span class="co">#&gt; [1] 0</span></a>
-<a class="sourceLine" id="cb25-187" data-line-number="187"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-188" data-line-number="188"><span class="co">#&gt; $accuracy_sd</span></a>
-<a class="sourceLine" id="cb25-189" data-line-number="189"><span class="co">#&gt; [1] 0</span></a>
-<a class="sourceLine" id="cb25-190" data-line-number="190"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-191" data-line-number="191"><span class="co">#&gt; $auc_avg</span></a>
-<a class="sourceLine" id="cb25-192" data-line-number="192"><span class="co">#&gt; [1] 0.8630918</span></a>
-<a class="sourceLine" id="cb25-193" data-line-number="193"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb25-194" data-line-number="194"><span class="co">#&gt; $auc_sd</span></a>
-<a class="sourceLine" id="cb25-195" data-line-number="195"><span class="co">#&gt; [1] 0.02270548</span></a></code></pre></div>
+<a class="sourceLine" id="cb25-8" data-line-number="8">gst<span class="op">$</span><span class="kw">best_iteration</span>()</a></code></pre></div>
 <p><strong>Random Search</strong></p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">rf &lt;-<span class="st"> </span>RFTrainer<span class="op">$</span><span class="kw">new</span>()</a>
 <a class="sourceLine" id="cb26-2" data-line-number="2">rst &lt;-<span class="st"> </span>RandomSearchCV<span class="op">$</span><span class="kw">new</span>(<span class="dt">trainer =</span> rf,</a>
