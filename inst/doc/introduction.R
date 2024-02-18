@@ -4,19 +4,19 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  install.packages("superml")
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  devtools::install_github("saraswatmks/superml")
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  install.packages("superml", dependencies=TRUE)
 
 ## -----------------------------------------------------------------------------
 load("../data/reg_train.rda")
 # if the above doesn't work, you can try: load("reg_train.rda")
-
+# superml::check_package("caret")
 library(data.table)
 library(caret)
 library(superml)
@@ -66,7 +66,7 @@ probs <- knn$predict(type = 'prob')
 labels <- knn$predict(type='raw')
 rmse(actual = xtest$SalePrice, predicted=labels)
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  svm <- SVMTrainer$new()
 #  svm$fit(xtrain, 'SalePrice')
 #  pred <- svm$predict(xtest)
@@ -91,7 +91,7 @@ lf$fit(X = xtrain, y = "SalePrice")
 predictions <- lf$predict(df = xtest)
 rmse(actual = xtest$SalePrice, predicted = predictions)
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  lf <- LMTrainer$new(family = "gaussian")
 #  lf$cv_model(X = xtrain, y = 'SalePrice', nfolds = 5, parallel = FALSE)
 #  predictions <- lf$cv_predict(df = xtest)
@@ -105,7 +105,7 @@ pred <- rf$predict(df = xtest)
 rf$get_importance()
 rmse(actual = xtest$SalePrice, predicted = pred)
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  xgb <- XGBTrainer$new(objective = "reg:linear"
 #                        , n_estimators = 500
 #                        , eval_metric = "rmse"
@@ -116,7 +116,7 @@ rmse(actual = xtest$SalePrice, predicted = pred)
 #  pred <- xgb$predict(xtest)
 #  rmse(actual = xtest$SalePrice, predicted = pred)
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  xgb <- XGBTrainer$new(objective = "reg:linear")
 #  
 #  gst <- GridSearchCV$new(trainer = xgb,
@@ -180,7 +180,7 @@ nb$fit(xtrain, 'Survived')
 pred <- nb$predict(xtest)
 auc(actual = xtest$Survived, predicted = pred)
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  #predicts labels
 #  svm <- SVMTrainer$new()
 #  svm$fit(xtrain, 'Survived')
@@ -195,14 +195,14 @@ predictions <- lf$predict(df = xtest)
 auc(actual = xtest$Survived, predicted = predictions)
 
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  lf <- LMTrainer$new(family="binomial", alpha=1)
 #  lf$cv_model(X = xtrain, y = "Survived", nfolds = 5, parallel = FALSE)
 #  pred <- lf$cv_predict(df = xtest)
 #  auc(actual = xtest$Survived, predicted = pred)
 #  
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  lf <- LMTrainer$new(family="binomial", alpha=0)
 #  lf$cv_model(X = xtrain, y = "Survived", nfolds = 5, parallel = FALSE)
 #  pred <- lf$cv_predict(df = xtest)
@@ -217,7 +217,7 @@ rf$get_importance()
 
 auc(actual = xtest$Survived, predicted = pred)
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  xgb <- XGBTrainer$new(objective = "binary:logistic"
 #                        , n_estimators = 500
 #                        , eval_metric = "auc"
@@ -229,7 +229,7 @@ auc(actual = xtest$Survived, predicted = pred)
 #  pred <- xgb$predict(xtest)
 #  auc(actual = xtest$Survived, predicted = pred)
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  xgb <- XGBTrainer$new(objective="binary:logistic")
 #  gst <-GridSearchCV$new(trainer = xgb,
 #                               parameters = list(n_estimators = c(10,50),
